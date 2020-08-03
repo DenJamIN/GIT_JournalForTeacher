@@ -34,7 +34,7 @@ namespace JournalForStudents
             command.Parameters.Add(param);
 
             MySqlDataReader reader = command.ExecuteReader();
-
+            //Заполняем поля данными из базы данных
             while (reader.Read())
             {
                 rankProf.Text = Convert.ToString(reader["rank"]);

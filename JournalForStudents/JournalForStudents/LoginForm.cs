@@ -64,7 +64,7 @@ namespace JournalForStudents
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passwordField.Text;
             command.Parameters.Add("@rank", MySqlDbType.Text).Value = rankField.Text;
-
+            
             adapter.SelectCommand = command;
             //Переводим наши данные в таблицу (логин и пароль)
             adapter.Fill(table);
@@ -73,6 +73,7 @@ namespace JournalForStudents
             {
                 if (rankField.Text == "Студент")
                 {
+                    //Скрываем текущее окно и передаем значение логина переменной, для работы с базы даннами по логину пользователя
                     mainStudentForm mainStudent = new mainStudentForm();
                     mainStudent.studentFromLoginForm = Convert.ToString(loginField.Text);
                     mainStudent.LoadData();

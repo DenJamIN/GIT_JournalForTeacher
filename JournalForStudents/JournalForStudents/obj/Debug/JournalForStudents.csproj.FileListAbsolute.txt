@@ -27,3 +27,32 @@ C:\Users\denla\Desktop\Электронный журнал\JournalForStudents\Jo
 C:\Users\denla\Desktop\Электронный журнал\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.RegisterForm.resources
 C:\Users\denla\Desktop\Электронный журнал\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.mainStudentForm.resources
 C:\Users\denla\Desktop\Электронный журнал\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.mainTeacherForm.resources
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\JournalForStudents.exe.config
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\JournalForStudents.exe
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\JournalForStudents.pdb
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\MySql.Data.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Google.Protobuf.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Zstandard.Net.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Renci.SshNet.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\System.Buffers.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\System.Memory.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\MySql.Data.xml
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.csprojAssemblyReference.cache
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.exe.config
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.LoginForm.resources
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.mainStudentForm.resources
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.mainTeacherForm.resources
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.Properties.Resources.resources
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.RegisterForm.resources
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.csproj.GenerateResource.cache
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.csproj.CoreCompileInputs.cache
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.csproj.CopyComplete
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.exe
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.pdb

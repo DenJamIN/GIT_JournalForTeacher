@@ -56,3 +56,6 @@ C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStuden
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.csproj.CopyComplete
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.exe
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.pdb
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Journal.exe
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Journal.pdb
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Journal.exe.config

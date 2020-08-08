@@ -17,6 +17,11 @@ namespace JournalForStudents
         {
             InitializeComponent();
 
+            FillField();
+        }
+
+        private void FillField()
+        {
             rankRegisterField.Text = "Не выбрано";
             userNameField.Text = "Введите Имя";
             userNameField.ForeColor = Color.Gray;
@@ -67,7 +72,6 @@ namespace JournalForStudents
             }    
                
         }
-
 
         private void userLastNameField_Enter(object sender, EventArgs e)
         {

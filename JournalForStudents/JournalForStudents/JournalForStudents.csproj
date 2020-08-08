@@ -57,6 +57,12 @@
     <Compile Include="GroupDataForm.Designer.cs">
       <DependentUpon>GroupDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="JournalsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JournalsListForm.Designer.cs">
+      <DependentUpon>JournalsListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="JournalsListForm.resx">
+      <DependentUpon>JournalsListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +136,7 @@
   <ItemGroup>
     <Content Include="images\Authorization_Password.png" />
     <Content Include="images\Authorization_User.png" />
+    <None Include="images\CreateNewJournal.png" />
     <Content Include="images\Профиль_ГлавныйЭкран.png" />
     <None Include="images\rankSelection.png" />
     <None Include="images\rankSelection.jpg" />

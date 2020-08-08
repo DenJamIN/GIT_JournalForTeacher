@@ -59,3 +59,4 @@ C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStuden
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Journal.exe
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Journal.pdb
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\bin\Debug\Journal.exe.config
+C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.JournalsListForm.resources

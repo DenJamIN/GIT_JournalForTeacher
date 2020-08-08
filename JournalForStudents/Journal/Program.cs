@@ -1,11 +1,10 @@
-﻿using Journal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JournalForStudents
+namespace Journal
 {
     static class Program
     {
@@ -17,7 +16,7 @@ namespace JournalForStudents
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new JournalsListForm());
+            Application.Run(new JournalForm());
         }
     }
 }

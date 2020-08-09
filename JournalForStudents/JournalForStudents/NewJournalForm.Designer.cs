@@ -92,6 +92,7 @@
             this.Controls.Add(this.groupNameField);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NewJournalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewJournalForm";
             this.ResumeLayout(false);
             this.PerformLayout();

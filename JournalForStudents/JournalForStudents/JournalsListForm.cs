@@ -20,9 +20,9 @@ namespace JournalForStudents
 
         private void buttonCreateNewJournal_Click(object sender, EventArgs e)
         {
-            JournalForm journalForm = new JournalForm();
+            NewJournalForm newJournal = new NewJournalForm();
             this.Hide();
-            journalForm.Show();
+            newJournal.Show();
         }
 
         private void intoJournals_Click(object sender, EventArgs e)

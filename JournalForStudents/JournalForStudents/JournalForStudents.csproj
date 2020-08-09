@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountBusy.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="GroupDataForm.cs">
       <SubType>Form</SubType>
@@ -95,6 +96,9 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GroupDataForm.resx">
+      <DependentUpon>GroupDataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JournalsListForm.resx">
       <DependentUpon>JournalsListForm.cs</DependentUpon>
     </EmbeddedResource>

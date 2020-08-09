@@ -30,9 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tableStudent = new System.Windows.Forms.DataGridView();
             this.students = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.buttonCreateRows = new System.Windows.Forms.Button();
             this.tableLessonType = new System.Windows.Forms.DataGridView();
             this.nullColumns = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.disciplineName = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.buttonForSummation = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
@@ -71,6 +72,14 @@
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Maroon;
+            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(616, 109);
+            this.panel3.TabIndex = 3;
+            // 
             // tableStudent
             // 
             this.tableStudent.AllowUserToResizeColumns = false;
@@ -92,14 +101,6 @@
             this.students.MinimumWidth = 6;
             this.students.Name = "students";
             this.students.Width = 125;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Maroon;
-            this.panel3.Location = new System.Drawing.Point(0, 63);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(616, 109);
-            this.panel3.TabIndex = 3;
             // 
             // buttonCreateRows
             // 
@@ -206,12 +207,25 @@
             this.pictureBox3.TabIndex = 13;
             this.pictureBox3.TabStop = false;
             // 
+            // buttonForSummation
+            // 
+            this.buttonForSummation.BackColor = System.Drawing.Color.Gold;
+            this.buttonForSummation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonForSummation.Location = new System.Drawing.Point(523, 153);
+            this.buttonForSummation.Name = "buttonForSummation";
+            this.buttonForSummation.Size = new System.Drawing.Size(98, 54);
+            this.buttonForSummation.TabIndex = 14;
+            this.buttonForSummation.Text = "Суммировать";
+            this.buttonForSummation.UseVisualStyleBackColor = false;
+            this.buttonForSummation.Click += new System.EventHandler(this.buttonForSummation_Click);
+            // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 800);
+            this.Controls.Add(this.buttonForSummation);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.disciplineName);
             this.Controls.Add(this.label2);
@@ -225,6 +239,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "JournalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).EndInit();
@@ -253,6 +268,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label disciplineName;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button buttonForSummation;
     }
 }
 

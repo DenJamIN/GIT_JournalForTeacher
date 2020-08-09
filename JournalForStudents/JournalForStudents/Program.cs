@@ -17,7 +17,7 @@ namespace JournalForStudents
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NewJournalForm());
+            Application.Run(new JournalForm());
         }
     }
 }

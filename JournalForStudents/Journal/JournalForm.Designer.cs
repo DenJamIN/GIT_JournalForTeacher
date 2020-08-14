@@ -44,6 +44,8 @@
             this.disciplineName = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.buttonForSummation = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.scoresPerLesson = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
@@ -56,8 +58,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 800);
+            this.panel1.Size = new System.Drawing.Size(125, 650);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -65,9 +68,10 @@
             this.panel2.BackColor = System.Drawing.Color.LightSalmon;
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(167, 0);
+            this.panel2.Location = new System.Drawing.Point(125, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1273, 44);
+            this.panel2.Size = new System.Drawing.Size(955, 36);
             this.panel2.TabIndex = 1;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
@@ -75,9 +79,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Maroon;
-            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Location = new System.Drawing.Point(0, 51);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(616, 109);
+            this.panel3.Size = new System.Drawing.Size(462, 89);
             this.panel3.TabIndex = 3;
             // 
             // tableStudent
@@ -87,12 +92,13 @@
             this.tableStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.students});
-            this.tableStudent.Location = new System.Drawing.Point(167, 273);
+            this.tableStudent.Location = new System.Drawing.Point(125, 222);
+            this.tableStudent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableStudent.Name = "tableStudent";
             this.tableStudent.RowHeadersWidth = 51;
             this.tableStudent.RowTemplate.Height = 24;
             this.tableStudent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tableStudent.Size = new System.Drawing.Size(264, 527);
+            this.tableStudent.Size = new System.Drawing.Size(198, 428);
             this.tableStudent.TabIndex = 2;
             // 
             // students
@@ -107,9 +113,10 @@
             this.buttonCreateRows.BackColor = System.Drawing.Color.Orange;
             this.buttonCreateRows.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCreateRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonCreateRows.Location = new System.Drawing.Point(428, 153);
+            this.buttonCreateRows.Location = new System.Drawing.Point(321, 139);
+            this.buttonCreateRows.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonCreateRows.Name = "buttonCreateRows";
-            this.buttonCreateRows.Size = new System.Drawing.Size(98, 54);
+            this.buttonCreateRows.Size = new System.Drawing.Size(128, 29);
             this.buttonCreateRows.TabIndex = 6;
             this.buttonCreateRows.Text = "Новый столбик";
             this.buttonCreateRows.UseVisualStyleBackColor = false;
@@ -120,12 +127,13 @@
             this.tableLessonType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLessonType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nullColumns});
-            this.tableLessonType.Location = new System.Drawing.Point(167, 227);
+            this.tableLessonType.Location = new System.Drawing.Point(125, 184);
+            this.tableLessonType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLessonType.Name = "tableLessonType";
             this.tableLessonType.RowHeadersWidth = 51;
             this.tableLessonType.RowTemplate.Height = 24;
             this.tableLessonType.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tableLessonType.Size = new System.Drawing.Size(264, 49);
+            this.tableLessonType.Size = new System.Drawing.Size(198, 40);
             this.tableLessonType.TabIndex = 7;
             // 
             // nullColumns
@@ -141,12 +149,13 @@
             this.tableLessonDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLessonDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            this.tableLessonDate.Location = new System.Drawing.Point(167, 204);
+            this.tableLessonDate.Location = new System.Drawing.Point(125, 166);
+            this.tableLessonDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLessonDate.Name = "tableLessonDate";
             this.tableLessonDate.RowHeadersWidth = 51;
             this.tableLessonDate.RowTemplate.Height = 24;
             this.tableLessonDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tableLessonDate.Size = new System.Drawing.Size(264, 49);
+            this.tableLessonDate.Size = new System.Drawing.Size(198, 40);
             this.tableLessonDate.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumn1
@@ -161,9 +170,10 @@
             // 
             this.group.AutoSize = true;
             this.group.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.group.Location = new System.Drawing.Point(461, 63);
+            this.group.Location = new System.Drawing.Point(346, 51);
+            this.group.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.group.Name = "group";
-            this.group.Size = new System.Drawing.Size(76, 25);
+            this.group.Size = new System.Drawing.Size(61, 20);
             this.group.TabIndex = 9;
             this.group.Text = "Группа";
             // 
@@ -171,9 +181,10 @@
             // 
             this.discipline.AutoSize = true;
             this.discipline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.discipline.Location = new System.Drawing.Point(409, 106);
+            this.discipline.Location = new System.Drawing.Point(307, 86);
+            this.discipline.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.discipline.Name = "discipline";
-            this.discipline.Size = new System.Drawing.Size(128, 25);
+            this.discipline.Size = new System.Drawing.Size(102, 20);
             this.discipline.TabIndex = 10;
             this.discipline.Text = "Дисциплина";
             // 
@@ -181,9 +192,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(564, 63);
+            this.label2.Location = new System.Drawing.Point(423, 51);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 25);
+            this.label2.Size = new System.Drawing.Size(92, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "groupName";
             // 
@@ -191,18 +203,20 @@
             // 
             this.disciplineName.AutoSize = true;
             this.disciplineName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.disciplineName.Location = new System.Drawing.Point(564, 106);
+            this.disciplineName.Location = new System.Drawing.Point(423, 86);
+            this.disciplineName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.disciplineName.Name = "disciplineName";
-            this.disciplineName.Size = new System.Drawing.Size(144, 25);
+            this.disciplineName.Size = new System.Drawing.Size(115, 20);
             this.disciplineName.TabIndex = 12;
             this.disciplineName.Text = "disciplineName";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Journal.Properties.Resources.Значок_Кгу;
-            this.pictureBox3.Location = new System.Drawing.Point(167, 77);
+            this.pictureBox3.Location = new System.Drawing.Point(125, 63);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(236, 199);
+            this.pictureBox3.Size = new System.Drawing.Size(177, 162);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 13;
             this.pictureBox3.TabStop = false;
@@ -211,20 +225,41 @@
             // 
             this.buttonForSummation.BackColor = System.Drawing.Color.Gold;
             this.buttonForSummation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonForSummation.Location = new System.Drawing.Point(523, 153);
+            this.buttonForSummation.Location = new System.Drawing.Point(444, 139);
+            this.buttonForSummation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonForSummation.Name = "buttonForSummation";
-            this.buttonForSummation.Size = new System.Drawing.Size(98, 54);
+            this.buttonForSummation.Size = new System.Drawing.Size(123, 29);
             this.buttonForSummation.TabIndex = 14;
             this.buttonForSummation.Text = "Суммировать";
             this.buttonForSummation.UseVisualStyleBackColor = false;
             this.buttonForSummation.Click += new System.EventHandler(this.buttonForSummation_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(317, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 20);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Балл за посещение";
+            // 
+            // scoresPerLesson
+            // 
+            this.scoresPerLesson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scoresPerLesson.Location = new System.Drawing.Point(481, 114);
+            this.scoresPerLesson.Name = "scoresPerLesson";
+            this.scoresPerLesson.Size = new System.Drawing.Size(57, 26);
+            this.scoresPerLesson.TabIndex = 16;
+            // 
             // JournalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1440, 800);
+            this.ClientSize = new System.Drawing.Size(1080, 650);
+            this.Controls.Add(this.scoresPerLesson);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonForSummation);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.disciplineName);
@@ -238,6 +273,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "JournalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -269,6 +305,8 @@
         private System.Windows.Forms.Label disciplineName;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button buttonForSummation;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox scoresPerLesson;
     }
 }
 

@@ -98,6 +98,10 @@ namespace Journal
                 for (int j = 2; j < tableStudent.Columns.Count; j += 2)
                 {
                     summa += Convert.ToDouble(tableStudent[j, i].Value);
+                    if (Convert.ToBoolean(tableStudent[j - 1, i].Value))
+                    {
+                        summa += Convert.ToDouble(scoresPerLesson.Text);
+                    }
                 }
                 tableStudent["scoreSummation", i].Value = Convert.ToDouble(summa);
                 summa = 0;

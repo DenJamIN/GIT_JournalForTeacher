@@ -17,6 +17,11 @@ namespace JournalForStudents
         {
             InitializeComponent();
 
+            FillField();
+        }
+
+        private void FillField()
+        {
             rankRegisterField.Text = "Не выбрано";
             userNameField.Text = "Введите Имя";
             userNameField.ForeColor = Color.Gray;
@@ -67,7 +72,6 @@ namespace JournalForStudents
             }    
                
         }
-
 
         private void userLastNameField_Enter(object sender, EventArgs e)
         {
@@ -145,13 +149,19 @@ namespace JournalForStudents
                 return;
             }
 
-            if (isUsersExists())
+            AccountBusy accountBusy = new AccountBusy();
+            if (accountBusy.isUsersExists(
+                "SELECT * FROM `users` WHERE `login`=@login",
+                "@login",
+                Convert.ToString(loginField.Text)))
             {
                 return;
             }
 
             DataBase database = new DataBase();
-            MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`login`, `password`, `rank`, `name`, `lastname`) VALUES(@login,@password,@rank,@name,@lastname)", database.getConnection());
+            MySqlCommand command = new MySqlCommand(
+                "INSERT INTO `users` (`login`, `password`, `rank`, `name`, `lastname`) VALUES(@login,@password,@rank,@name,@lastname)",
+                database.getConnection());
 
             command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
             command.Parameters.Add("@password", MySqlDbType.VarChar).Value = passwordField.Text;
@@ -180,31 +190,6 @@ namespace JournalForStudents
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
             }
-        }
-
-        public Boolean isUsersExists()
-        {
-            DataBase database = new DataBase();
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login`=@login", database.getConnection());
-
-            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
-
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-
-            if (table.Rows.Count > 0)
-            {
-                MessageBox.Show("Аккаунт с таким названием существует");
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
+        }      
     }
 }

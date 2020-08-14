@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +19,18 @@ namespace Journal
             InitializeComponent();
         }
 
+        const int generalWidthColumn = 160;
         private void buttonCreateRows_Click(object sender, EventArgs e)
         {
-            const int generalWidthColumn = 160;
+            if (tableStudent.Columns.Contains("scoreSummation"))
+            {
+                DeleteScoreSummation();
+            }
 
             tableLessonDate.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "lessonDate",
-                HeaderText = "Дата (дд/мм)", 
+                HeaderText = "Дата (дд/мм)",
                 Width = generalWidthColumn
             });
 
@@ -40,18 +45,81 @@ namespace Journal
             {
                 Name = "checkPresence",
                 HeaderText = "Посещение",
-                Width = 90 
+                Width = 90
             });
-            tableStudent.Columns.Add(new DataGridViewTextBoxColumn() 
-            { 
-                Name = "scorePerLesson", 
-                HeaderText = "Балл", 
-                Width = 70 
+            tableStudent.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                Name = "scorePerLesson",
+                HeaderText = "Балл",
+                Width = 70
+            });
+            SlideTables();
+        }
+
+        private void buttonForSummation_Click(object sender, EventArgs e)
+        {
+            if (tableStudent.Columns.Contains("scoreSummation"))
+            {
+                DeleteScoreSummation();
+            }
+
+            tableLessonType.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                Name = "nullType",
+                HeaderText = "",
+                Width = generalWidthColumn
             });
 
+            tableLessonDate.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                Name = "nullDate",
+                HeaderText = "",
+                Width = generalWidthColumn
+            });
+
+
+            tableStudent.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                Name = "scoreSummation",
+                HeaderText = "Набранные баллы",
+                Width = generalWidthColumn
+            });
+
+            ScoreSummation();
+
+            SlideTables();
+        }
+
+        private void ScoreSummation()
+        {
+            double summa = 0;
+            for (int i = 0; i < tableStudent.Rows.Count; i++)
+            {
+                for (int j = 2; j < tableStudent.Columns.Count; j += 2)
+                {
+                    summa += Convert.ToDouble(tableStudent[j, i].Value);
+                }
+                tableStudent["scoreSummation", i].Value = Convert.ToDouble(summa);
+                summa = 0;
+            }
+        }
+
+        private void SlideTables()
+        {
             tableStudent.Width += generalWidthColumn;
             tableLessonDate.Width += generalWidthColumn;
             tableLessonType.Width += generalWidthColumn;
+        }
+
+        private void DeleteScoreSummation()
+        {
+            tableStudent.Columns.Remove("scoreSummation");
+            tableLessonType.Columns.Remove("nullType");
+            tableLessonDate.Columns.Remove("nullDate");
+
+            tableStudent.Width -= generalWidthColumn;
+            tableLessonDate.Width -= generalWidthColumn;
+            tableLessonType.Width -= generalWidthColumn;
         }
 
         Point lastPoint;

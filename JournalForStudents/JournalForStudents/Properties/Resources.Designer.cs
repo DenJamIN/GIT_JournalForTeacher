@@ -113,6 +113,16 @@ namespace JournalForStudents.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Значок_Кгу {
+            get {
+                object obj = ResourceManager.GetObject("Значок_Кгу", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Профиль_ГлавныйЭкран {
             get {
                 object obj = ResourceManager.GetObject("Профиль_ГлавныйЭкран", resourceCulture);

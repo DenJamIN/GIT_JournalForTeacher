@@ -1,6 +1,9 @@
-﻿using MySql.Data.MySqlClient;
+﻿using JournalForStudents;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace Journal
@@ -136,14 +139,22 @@ namespace Journal
 
         private void buttonSafeChanges_Click(object sender, EventArgs e)
         {
+           int govno = tableStudent.Columns.Count;
+
             DataBase dataBase = new DataBase();
 
-            string createNewColumnInDb = "ALTER TABLE `journals` ADD COLUMN `" + count + "` VARCHAR(256) AFTER `discipline`";
+          //  string primaryColumnCount = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ``"
 
-            MySqlCommand command = new MySqlCommand(createNewColumnInDb, dataBase.getConnection());
-            dataBase.openConnection();
-            command.ExecuteNonQuery();
-            dataBase.closeConnection();
+
+            for (int i = 1; i <= tableStudent.Columns.Count - 0; i++)
+            {
+                string createNewColumnInDb = "ALTER TABLE `journals` ADD COLUMN `scoreColumn № " + i + "` VARCHAR(256)";
+
+                MySqlCommand command = new MySqlCommand(createNewColumnInDb, dataBase.getConnection());
+                dataBase.openConnection();
+                command.ExecuteNonQuery();
+                dataBase.closeConnection();
+            }
 
         }
     }

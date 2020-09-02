@@ -85,7 +85,7 @@
             // 
             this.buttonCreateNewJournal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCreateNewJournal.Image = global::JournalForStudents.Properties.Resources.CreateNewJournal;
-            this.buttonCreateNewJournal.Location = new System.Drawing.Point(1135, 440);
+            this.buttonCreateNewJournal.Location = new System.Drawing.Point(1208, 436);
             this.buttonCreateNewJournal.Name = "buttonCreateNewJournal";
             this.buttonCreateNewJournal.Size = new System.Drawing.Size(231, 232);
             this.buttonCreateNewJournal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

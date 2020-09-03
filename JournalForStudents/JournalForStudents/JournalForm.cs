@@ -1,6 +1,9 @@
-﻿using MySql.Data.MySqlClient;
+﻿using JournalForStudents;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace Journal
@@ -9,9 +12,8 @@ namespace Journal
     {
         public JournalForm()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
-
         const int generalWidthColumn = 160;
         private void buttonCreateRows_Click(object sender, EventArgs e)
         {
@@ -47,6 +49,8 @@ namespace Journal
                 Width = 70
             });
             SlideTables();
+
+            createColumnsIntoDb(tableLessonDate.Columns.Count - 1);
         }
 
         private void buttonForSummation_Click(object sender, EventArgs e)
@@ -136,15 +140,28 @@ namespace Journal
 
         private void buttonSafeChanges_Click(object sender, EventArgs e)
         {
+            //string insertStudentData = "SELECT journalName_id FROM `students` WHERE journalName_id = @journalName_id";
+            //Присвоить значение заглушки из формы JournalsListForm
+            //Предварительно в JournalsListForm сделать DataGridView и TextBox/Label, чтобы передать туда выбранный журнал из таблицы
+            //Значение заглушки равно значению TextBox/Label
+            //После проверки начинается подгрузка студентов из базы данных в таблицу
+            //Далее разработаем передачу из таблицы в базу данных
+            //Метод с цикличным sql-запросом для пробежки по всем колонам базы данных таблицы studentdata
+            //И заполнение туда значений
+            //Работа через кнопку Сохранить!
+        }
+
+        private void createColumnsIntoDb(int i)
+        {
             DataBase dataBase = new DataBase();
 
-            string createNewColumnInDb = "ALTER TABLE `journals` ADD COLUMN `" + count + "` VARCHAR(256) AFTER `discipline`";
+            //Create new columns in data base
+            string createNewColumnInDb = "ALTER TABLE `studentdata` ADD COLUMN (`dataLesson" + i + "`VARCHAR(20), " + "`typeLesson" + i + "`VARCHAR(20), " + "`checkBox" + i + "`VARCHAR(20), " + "`scoreLesson" + i + "`VARCHAR(20))";
 
             MySqlCommand command = new MySqlCommand(createNewColumnInDb, dataBase.getConnection());
             dataBase.openConnection();
             command.ExecuteNonQuery();
             dataBase.closeConnection();
-
         }
     }
 }

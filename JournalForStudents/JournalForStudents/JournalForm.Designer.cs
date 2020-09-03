@@ -42,11 +42,11 @@
             this.discipline = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.disciplineName = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.buttonForSummation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.scoresPerLesson = new System.Windows.Forms.TextBox();
             this.buttonSafeChanges = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
@@ -207,17 +207,6 @@
             this.disciplineName.TabIndex = 12;
             this.disciplineName.Text = "disciplineName";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Journal.Properties.Resources.Значок_Кгу;
-            this.pictureBox3.Location = new System.Drawing.Point(167, 78);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(236, 199);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 13;
-            this.pictureBox3.TabStop = false;
-            // 
             // buttonForSummation
             // 
             this.buttonForSummation.BackColor = System.Drawing.Color.Gold;
@@ -246,7 +235,7 @@
             // 
             this.scoresPerLesson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.scoresPerLesson.Location = new System.Drawing.Point(641, 140);
-            this.scoresPerLesson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scoresPerLesson.Margin = new System.Windows.Forms.Padding(4);
             this.scoresPerLesson.Name = "scoresPerLesson";
             this.scoresPerLesson.Size = new System.Drawing.Size(75, 30);
             this.scoresPerLesson.TabIndex = 16;
@@ -264,17 +253,27 @@
             this.buttonSafeChanges.UseVisualStyleBackColor = false;
             this.buttonSafeChanges.Click += new System.EventHandler(this.buttonSafeChanges_Click);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::JournalForStudents.Properties.Resources.Значок_Кгу;
+            this.pictureBox3.Location = new System.Drawing.Point(167, 81);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(236, 194);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 18;
+            this.pictureBox3.TabStop = false;
+            // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 800);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.buttonSafeChanges);
             this.Controls.Add(this.scoresPerLesson);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonForSummation);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.disciplineName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.discipline);
@@ -316,11 +315,11 @@
         private System.Windows.Forms.Label discipline;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label disciplineName;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button buttonForSummation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox scoresPerLesson;
         private System.Windows.Forms.Button buttonSafeChanges;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

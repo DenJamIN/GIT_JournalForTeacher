@@ -1,4 +1,5 @@
 ﻿using Journal;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,30 @@ namespace JournalForStudents
         public JournalsListForm()
         {
             InitializeComponent();
+            LoadJournalsData();
+        }
+
+        private void LoadJournalsData()
+        {
+            string journalsDataDB = "SELECT * FROM groups ORDER BY groups_id";
+
+            DataBase dataBase = new DataBase();
+            MySqlCommand command = new MySqlCommand(journalsDataDB, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            MySqlDataReader reader = command.ExecuteReader();
+            var data = new List<string[]>();
+            while (reader.Read())
+            {
+                data.Add(new string[2]);
+                data[data.Count - 1][0] = reader[1].ToString();
+                data[data.Count - 1][1] = reader[2].ToString();
+            }
+            reader.Close();
+            dataBase.closeConnection();
+            foreach (string[] line in data)
+                tableJournalsList.Rows.Add(line);
         }
 
         private void buttonCreateNewJournal_Click(object sender, EventArgs e)

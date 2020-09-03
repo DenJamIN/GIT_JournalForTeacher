@@ -28,13 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.intoTimetable = new System.Windows.Forms.Label();
             this.intoJournals = new System.Windows.Forms.Label();
             this.intoProfile = new System.Windows.Forms.Label();
             this.buttonCreateNewJournal = new System.Windows.Forms.PictureBox();
+            this.tableJournalsList = new System.Windows.Forms.DataGridView();
+            this.groupName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonCreateNewJournal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableJournalsList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,13 +91,61 @@
             // 
             this.buttonCreateNewJournal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCreateNewJournal.Image = global::JournalForStudents.Properties.Resources.CreateNewJournal;
-            this.buttonCreateNewJournal.Location = new System.Drawing.Point(1208, 436);
+            this.buttonCreateNewJournal.Location = new System.Drawing.Point(1326, 691);
             this.buttonCreateNewJournal.Name = "buttonCreateNewJournal";
-            this.buttonCreateNewJournal.Size = new System.Drawing.Size(231, 232);
+            this.buttonCreateNewJournal.Size = new System.Drawing.Size(114, 109);
             this.buttonCreateNewJournal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.buttonCreateNewJournal.TabIndex = 9;
             this.buttonCreateNewJournal.TabStop = false;
             this.buttonCreateNewJournal.Click += new System.EventHandler(this.buttonCreateNewJournal_Click);
+            // 
+            // tableJournalsList
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tableJournalsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.tableJournalsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableJournalsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.groupName,
+            this.disciplineName});
+            this.tableJournalsList.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableJournalsList.DefaultCellStyle = dataGridViewCellStyle2;
+            this.tableJournalsList.Location = new System.Drawing.Point(193, 163);
+            this.tableJournalsList.Name = "tableJournalsList";
+            this.tableJournalsList.RowHeadersWidth = 51;
+            this.tableJournalsList.RowTemplate.Height = 24;
+            this.tableJournalsList.Size = new System.Drawing.Size(1204, 505);
+            this.tableJournalsList.TabIndex = 10;
+            // 
+            // groupName
+            // 
+            this.groupName.HeaderText = "Название группы";
+            this.groupName.MinimumWidth = 6;
+            this.groupName.Name = "groupName";
+            this.groupName.ReadOnly = true;
+            this.groupName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.groupName.Width = 350;
+            // 
+            // disciplineName
+            // 
+            this.disciplineName.HeaderText = "Название Дисциплины";
+            this.disciplineName.MinimumWidth = 6;
+            this.disciplineName.Name = "disciplineName";
+            this.disciplineName.ReadOnly = true;
+            this.disciplineName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.disciplineName.Width = 500;
             // 
             // JournalsListForm
             // 
@@ -99,6 +153,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 800);
+            this.Controls.Add(this.tableJournalsList);
             this.Controls.Add(this.buttonCreateNewJournal);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -108,6 +163,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonCreateNewJournal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableJournalsList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,5 +175,8 @@
         private System.Windows.Forms.Label intoJournals;
         private System.Windows.Forms.Label intoProfile;
         private System.Windows.Forms.PictureBox buttonCreateNewJournal;
+        private System.Windows.Forms.DataGridView tableJournalsList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineName;
     }
 }

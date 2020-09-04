@@ -140,10 +140,20 @@ namespace Journal
 
         private void buttonSafeChanges_Click(object sender, EventArgs e)
         {
+            //А МОЖЕТ УБРАТЬ ТАБЛИЦУ JOURNALNAME И ТУПО СДЕЛАТЬ ВСЕ В ГРУППЕ. СТУДЕНТОВ ПРИВЯЗАТЬ К АЙДИ ГРУППЫ!!!???
             //string insertStudentData = "SELECT journalName_id FROM `students` WHERE journalName_id = @journalName_id";
-            //Присвоить значение заглушки из формы JournalsListForm
-            //Предварительно в JournalsListForm сделать DataGridView и TextBox/Label, чтобы передать туда выбранный журнал из таблицы
-            //Значение заглушки равно значению TextBox/Label
+            //Присвоить значение заглушки из формы JournalsListForm = journalData
+            //MySqlCommand command = new MySqlCommand(insertStudentData, database.getConnection());
+            //MySqlParameter param = new MySqlParameter("@journalName_id", journalData);
+            //command.Parameters.Add(param);
+            //MySqlDataReader reader = command.ExecuteReader();
+            //while (reader.Read())
+            //{
+            //    rankProf.Text = Convert.ToString(reader["rank"]);
+            //    nameProf.Text = Convert.ToString(reader["name"]);
+            //    lastnameProf.Text = Convert.ToString(reader["lastname"]);
+            //    middlenameProf.Text = Convert.ToString(reader["middlename"]);
+            //}
             //После проверки начинается подгрузка студентов из базы данных в таблицу
             //Далее разработаем передачу из таблицы в базу данных
             //Метод с цикличным sql-запросом для пробежки по всем колонам базы данных таблицы studentdata

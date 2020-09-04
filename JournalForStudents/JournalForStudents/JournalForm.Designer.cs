@@ -320,6 +320,7 @@
         private System.Windows.Forms.TextBox scoresPerLesson;
         private System.Windows.Forms.Button buttonSafeChanges;
         private System.Windows.Forms.PictureBox pictureBox3;
+        public string journalData = string.Empty;
     }
 }
 

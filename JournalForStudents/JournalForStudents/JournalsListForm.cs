@@ -62,8 +62,8 @@ namespace JournalForStudents
         {
             this.Hide();
             JournalForm journalForm = new JournalForm();
-            journalForm.journalData = GetJournalId(journalName.Text.ToString());
-            journalForm.Hide();
+            journalForm.GetStudentsDataFromDB(labelJournalName.Text.ToString());
+            journalForm.Show();
         }
 
         private string GetJournalId(string journalName)
@@ -84,7 +84,7 @@ namespace JournalForStudents
             {
                 selectedRows += tableJournalsList[i, tableJournalsList.CurrentRow.Index].Value + " | ";
             }
-            journalName.Text = selectedRows;
+            labelJournalName.Text = selectedRows;
         }
     }
 }

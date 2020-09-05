@@ -2,6 +2,8 @@
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
@@ -12,8 +14,39 @@ namespace Journal
     {
         public JournalForm()
         {
-            InitializeComponent();         
+            InitializeComponent();
         }
+
+        public void GetStudentsDataFromDB(string journalData)
+        {
+            GetJournalName(journalData);
+
+            //Считывание из БД
+            LoadStudents();
+        }
+
+        private void GetJournalName(string journalData)
+        {
+            DataBase dataBase = new DataBase();
+
+            dataBase.openConnection();
+
+            string getNames = "SELECT * FROM `groups` WHERE groups_id = @groups_id";
+
+            MySqlCommand command = new MySqlCommand(getNames, dataBase.getConnection());
+            MySqlParameter parameter = new MySqlParameter("@groups_id", journalData);
+            command.Parameters.Add(parameter);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                labelGroupID.Text = Convert.ToString(reader["groups_id"]);
+                labelGroupName.Text = Convert.ToString(reader["groupName"]);
+                labelDisciplineName.Text = Convert.ToString(reader["disciplineName"]);
+            }
+
+            dataBase.closeConnection();
+        }
+
         const int generalWidthColumn = 160;
         private void buttonCreateRows_Click(object sender, EventArgs e)
         {
@@ -140,25 +173,69 @@ namespace Journal
 
         private void buttonSafeChanges_Click(object sender, EventArgs e)
         {
-            //А МОЖЕТ УБРАТЬ ТАБЛИЦУ JOURNALNAME И ТУПО СДЕЛАТЬ ВСЕ В ГРУППЕ. СТУДЕНТОВ ПРИВЯЗАТЬ К АЙДИ ГРУППЫ!!!???
-            //string insertStudentData = "SELECT journalName_id FROM `students` WHERE journalName_id = @journalName_id";
-            //Присвоить значение заглушки из формы JournalsListForm = journalData
-            //MySqlCommand command = new MySqlCommand(insertStudentData, database.getConnection());
-            //MySqlParameter param = new MySqlParameter("@journalName_id", journalData);
-            //command.Parameters.Add(param);
-            //MySqlDataReader reader = command.ExecuteReader();
-            //while (reader.Read())
-            //{
-            //    rankProf.Text = Convert.ToString(reader["rank"]);
-            //    nameProf.Text = Convert.ToString(reader["name"]);
-            //    lastnameProf.Text = Convert.ToString(reader["lastname"]);
-            //    middlenameProf.Text = Convert.ToString(reader["middlename"]);
-            //}
+
+            //Заполнение в БД
+            InsertStudentInDB();
+            //
+            //
+            //
+            //
+
             //После проверки начинается подгрузка студентов из базы данных в таблицу
             //Далее разработаем передачу из таблицы в базу данных
             //Метод с цикличным sql-запросом для пробежки по всем колонам базы данных таблицы studentdata
             //И заполнение туда значений
             //Работа через кнопку Сохранить!
+        }
+
+        private void LoadStudents()
+        {
+            DataBase dataBase = new DataBase();
+
+            dataBase.openConnection();
+
+            string loadStudentData = "SELECT * FROM `students` WHERE groups_id = @groups_id";
+            MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+
+            MySqlParameter param = new MySqlParameter("@groups_id", labelGroupID.Text);
+            command.Parameters.Add(param);
+
+            MySqlDataReader reader = command.ExecuteReader();
+            var data = new List<string[]>();
+            while (reader.Read())
+            {
+                data.Add(new string[1]);
+                data[data.Count - 1][0] = reader[1].ToString();
+
+            }
+            reader.Close();
+            dataBase.closeConnection();
+            foreach (string[] line in data)
+                tableStudent.Rows.Add(line);
+
+            dataBase.closeConnection();
+        }
+
+        private void InsertStudentInDB()
+        {
+            DataBase dataBase = new DataBase();
+            string insertStudentData = "INSERT INTO `students` (`surname_name`, `groups_id`) VALUES (@surname_name, @groups_id)";
+
+            MySqlCommand command = new MySqlCommand(insertStudentData, dataBase.getConnection());
+
+            //СДЕЛАТЬ ТАК ЧТОБЫ ПЕРЕНОСИЛИСЬ ВСЕЕЕЕЕЕ СТРОКИ С ИМЕНЕМ СТУДЕНТОВ В БД. ПИШЕТ ЧТО ПОВТОРЯЕТСЯ
+            //А ТОЧНЕЕ УЖЕ ЗАДАН Parameters.Add("@surname_name". ХЗ КАК ОБОЙТИ
+            //command.Parameters.Add("@surname_name", MySqlDbType.VarChar).Value = ;
+            command.Parameters.Add("@groups_id", MySqlDbType.VarChar).Value = labelGroupID.Text;
+
+            dataBase.openConnection();
+
+            if (command.ExecuteNonQuery() == 1)
+                MessageBox.Show("Сохранение успешно");
+            else
+                MessageBox.Show("Не сохранено!!");
+
+            dataBase.closeConnection();
         }
 
         private void createColumnsIntoDb(int i)

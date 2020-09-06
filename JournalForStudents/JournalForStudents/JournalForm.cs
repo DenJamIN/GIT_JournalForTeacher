@@ -218,22 +218,51 @@ namespace Journal
 
         private void InsertStudentInDB()
         {
+            //Проверяем наличие студента в базе данных. Если его нет, то вписываем в базу. Если есть пропускаем
+            for (int i = 0; i < tableStudent.Rows.Count - 1; i++)
+            {
+                if(!IsStoredInDB(tableStudent[0, i].Value.ToString(),labelGroupID.Text.ToString()))
+                    InsertStudentDataDB(tableStudent[0, i].Value.ToString());
+            }
+           
+        }
+
+        private static bool IsStoredInDB(string valueCellStudent, string groupID)
+        {
+            DataBase dataBase = new DataBase();
+
+            string searchData = "SELECT * FROM students WHERE surname_name= '" + valueCellStudent + "' AND groups_id= '" + groupID + "'";
+
+            dataBase.openConnection();
+            MySqlCommand command = new MySqlCommand(searchData, dataBase.getConnection());
+            MySqlDataReader reader = command.ExecuteReader();           
+
+            if (!reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+            else
+            {
+                reader.Close();
+                return true;
+            }
+            
+        }
+
+        private void InsertStudentDataDB(string studentData)
+        {
             DataBase dataBase = new DataBase();
             string insertStudentData = "INSERT INTO `students` (`surname_name`, `groups_id`) VALUES (@surname_name, @groups_id)";
 
             MySqlCommand command = new MySqlCommand(insertStudentData, dataBase.getConnection());
 
-            //СДЕЛАТЬ ТАК ЧТОБЫ ПЕРЕНОСИЛИСЬ ВСЕЕЕЕЕЕ СТРОКИ С ИМЕНЕМ СТУДЕНТОВ В БД. ПИШЕТ ЧТО ПОВТОРЯЕТСЯ
-            //А ТОЧНЕЕ УЖЕ ЗАДАН Parameters.Add("@surname_name". ХЗ КАК ОБОЙТИ
-            //command.Parameters.Add("@surname_name", MySqlDbType.VarChar).Value = ;
+            command.Parameters.Add("@surname_name", MySqlDbType.VarChar).Value = studentData;
             command.Parameters.Add("@groups_id", MySqlDbType.VarChar).Value = labelGroupID.Text;
 
             dataBase.openConnection();
 
-            if (command.ExecuteNonQuery() == 1)
-                MessageBox.Show("Сохранение успешно");
-            else
-                MessageBox.Show("Не сохранено!!");
+            command.ExecuteNonQuery();
 
             dataBase.closeConnection();
         }

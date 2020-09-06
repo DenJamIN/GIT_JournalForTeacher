@@ -36,8 +36,11 @@
             this.intoProfile = new System.Windows.Forms.Label();
             this.buttonCreateNewJournal = new System.Windows.Forms.PictureBox();
             this.tableJournalsList = new System.Windows.Forms.DataGridView();
+            this.journal_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.disciplineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonToJournalForm = new System.Windows.Forms.Button();
+            this.labelJournalName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonCreateNewJournal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableJournalsList)).BeginInit();
@@ -111,6 +114,7 @@
             this.tableJournalsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tableJournalsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableJournalsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.journal_id,
             this.groupName,
             this.disciplineName});
             this.tableJournalsList.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -128,6 +132,16 @@
             this.tableJournalsList.RowTemplate.Height = 24;
             this.tableJournalsList.Size = new System.Drawing.Size(1204, 505);
             this.tableJournalsList.TabIndex = 10;
+            this.tableJournalsList.Click += new System.EventHandler(this.tableJournalsList_Click);
+            // 
+            // journal_id
+            // 
+            this.journal_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.journal_id.HeaderText = "id";
+            this.journal_id.MinimumWidth = 6;
+            this.journal_id.Name = "journal_id";
+            this.journal_id.ReadOnly = true;
+            this.journal_id.Width = 62;
             // 
             // groupName
             // 
@@ -136,7 +150,7 @@
             this.groupName.Name = "groupName";
             this.groupName.ReadOnly = true;
             this.groupName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.groupName.Width = 350;
+            this.groupName.Width = 300;
             // 
             // disciplineName
             // 
@@ -147,12 +161,37 @@
             this.disciplineName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.disciplineName.Width = 500;
             // 
+            // buttonToJournalForm
+            // 
+            this.buttonToJournalForm.BackColor = System.Drawing.Color.YellowGreen;
+            this.buttonToJournalForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonToJournalForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonToJournalForm.Location = new System.Drawing.Point(1165, 107);
+            this.buttonToJournalForm.Name = "buttonToJournalForm";
+            this.buttonToJournalForm.Size = new System.Drawing.Size(232, 59);
+            this.buttonToJournalForm.TabIndex = 11;
+            this.buttonToJournalForm.Text = "Открыть журнал";
+            this.buttonToJournalForm.UseVisualStyleBackColor = false;
+            this.buttonToJournalForm.Click += new System.EventHandler(this.buttonToJournalForm_Click);
+            // 
+            // labelJournalName
+            // 
+            this.labelJournalName.AutoSize = true;
+            this.labelJournalName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelJournalName.Location = new System.Drawing.Point(309, 107);
+            this.labelJournalName.Name = "labelJournalName";
+            this.labelJournalName.Size = new System.Drawing.Size(238, 31);
+            this.labelJournalName.TabIndex = 12;
+            this.labelJournalName.Text = "Выберите журнал";
+            // 
             // JournalsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 800);
+            this.Controls.Add(this.labelJournalName);
+            this.Controls.Add(this.buttonToJournalForm);
             this.Controls.Add(this.tableJournalsList);
             this.Controls.Add(this.buttonCreateNewJournal);
             this.Controls.Add(this.panel1);
@@ -165,6 +204,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonCreateNewJournal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableJournalsList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -176,6 +216,9 @@
         private System.Windows.Forms.Label intoProfile;
         private System.Windows.Forms.PictureBox buttonCreateNewJournal;
         private System.Windows.Forms.DataGridView tableJournalsList;
+        private System.Windows.Forms.Button buttonToJournalForm;
+        private System.Windows.Forms.Label labelJournalName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn journal_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupName;
         private System.Windows.Forms.DataGridViewTextBoxColumn disciplineName;
     }

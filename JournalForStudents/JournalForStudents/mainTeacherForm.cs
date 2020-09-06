@@ -16,8 +16,6 @@ namespace JournalForStudents
         public mainTeacherForm()
         {
             InitializeComponent();
-
-            LoadData();
         }
 
         public void LoadData()

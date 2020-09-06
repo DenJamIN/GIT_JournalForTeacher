@@ -76,7 +76,7 @@ namespace JournalForStudents
             }
            
             AccountBusy accountBusy = new AccountBusy();
-            if (accountBusy.isUsersExists("SELECT * FROM `journals` WHERE `discipline` = @discipline",
+            if (accountBusy.isUsersExists("SELECT * FROM `groups` WHERE `discipline` = @discipline",
                                           "@discipline",
                                           Convert.ToString(disciplineNameField.Text)))
             {

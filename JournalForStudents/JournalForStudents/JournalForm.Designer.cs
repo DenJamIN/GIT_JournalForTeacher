@@ -40,13 +40,14 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.group = new System.Windows.Forms.Label();
             this.discipline = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.disciplineName = new System.Windows.Forms.Label();
+            this.labelGroupName = new System.Windows.Forms.Label();
+            this.labelDisciplineName = new System.Windows.Forms.Label();
             this.buttonForSummation = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelScorePerLesson = new System.Windows.Forms.Label();
             this.scoresPerLesson = new System.Windows.Forms.TextBox();
             this.buttonSafeChanges = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.labelGroupID = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
@@ -187,25 +188,25 @@
             this.discipline.TabIndex = 10;
             this.discipline.Text = "Дисциплина";
             // 
-            // label2
+            // labelGroupName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(564, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 25);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "groupName";
+            this.labelGroupName.AutoSize = true;
+            this.labelGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelGroupName.Location = new System.Drawing.Point(564, 63);
+            this.labelGroupName.Name = "labelGroupName";
+            this.labelGroupName.Size = new System.Drawing.Size(114, 25);
+            this.labelGroupName.TabIndex = 11;
+            this.labelGroupName.Text = "groupName";
             // 
-            // disciplineName
+            // labelDisciplineName
             // 
-            this.disciplineName.AutoSize = true;
-            this.disciplineName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.disciplineName.Location = new System.Drawing.Point(564, 106);
-            this.disciplineName.Name = "disciplineName";
-            this.disciplineName.Size = new System.Drawing.Size(144, 25);
-            this.disciplineName.TabIndex = 12;
-            this.disciplineName.Text = "disciplineName";
+            this.labelDisciplineName.AutoSize = true;
+            this.labelDisciplineName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDisciplineName.Location = new System.Drawing.Point(564, 106);
+            this.labelDisciplineName.Name = "labelDisciplineName";
+            this.labelDisciplineName.Size = new System.Drawing.Size(144, 25);
+            this.labelDisciplineName.TabIndex = 12;
+            this.labelDisciplineName.Text = "disciplineName";
             // 
             // buttonForSummation
             // 
@@ -220,21 +221,21 @@
             this.buttonForSummation.UseVisualStyleBackColor = false;
             this.buttonForSummation.Click += new System.EventHandler(this.buttonForSummation_Click);
             // 
-            // label1
+            // labelScorePerLesson
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(423, 148);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 25);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Балл за посещение";
+            this.labelScorePerLesson.AutoSize = true;
+            this.labelScorePerLesson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelScorePerLesson.Location = new System.Drawing.Point(440, 145);
+            this.labelScorePerLesson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelScorePerLesson.Name = "labelScorePerLesson";
+            this.labelScorePerLesson.Size = new System.Drawing.Size(193, 25);
+            this.labelScorePerLesson.TabIndex = 15;
+            this.labelScorePerLesson.Text = "Балл за посещение";
             // 
             // scoresPerLesson
             // 
             this.scoresPerLesson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.scoresPerLesson.Location = new System.Drawing.Point(641, 140);
+            this.scoresPerLesson.Location = new System.Drawing.Point(681, 139);
             this.scoresPerLesson.Margin = new System.Windows.Forms.Padding(4);
             this.scoresPerLesson.Name = "scoresPerLesson";
             this.scoresPerLesson.Size = new System.Drawing.Size(75, 30);
@@ -263,19 +264,30 @@
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
             // 
+            // labelGroupID
+            // 
+            this.labelGroupID.AutoSize = true;
+            this.labelGroupID.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelGroupID.Location = new System.Drawing.Point(170, 46);
+            this.labelGroupID.Name = "labelGroupID";
+            this.labelGroupID.Size = new System.Drawing.Size(19, 17);
+            this.labelGroupID.TabIndex = 19;
+            this.labelGroupID.Text = "id";
+            // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 800);
+            this.Controls.Add(this.labelGroupID);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.buttonSafeChanges);
             this.Controls.Add(this.scoresPerLesson);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelScorePerLesson);
             this.Controls.Add(this.buttonForSummation);
-            this.Controls.Add(this.disciplineName);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelDisciplineName);
+            this.Controls.Add(this.labelGroupName);
             this.Controls.Add(this.discipline);
             this.Controls.Add(this.group);
             this.Controls.Add(this.tableLessonDate);
@@ -313,13 +325,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label group;
         private System.Windows.Forms.Label discipline;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label disciplineName;
+        private System.Windows.Forms.Label labelGroupName;
+        private System.Windows.Forms.Label labelDisciplineName;
         private System.Windows.Forms.Button buttonForSummation;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelScorePerLesson;
         private System.Windows.Forms.TextBox scoresPerLesson;
         private System.Windows.Forms.Button buttonSafeChanges;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label labelGroupID;
     }
 }
 

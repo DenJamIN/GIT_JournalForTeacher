@@ -83,6 +83,24 @@ namespace Journal
             });
             SlideTables();
 
+            //Проверить есть ли в таблице колонка с названием DataLesson (tableLessonDate.Columns.Count - 1)
+            //И если она есть 
+            //ничего
+            //Если её нет 
+            //createColumnsIntoDb(tableLessonDate.Columns.Count - 1);    
+            //
+            //Ввод баллов в БД. Сравниваем колонку. Ищем столбец в БД номерКолонки - 1. Вписываем значение из данной ячейки
+            //Нужно пробежаться по всем ячейкам
+            //ОООООООООООООООООООООООООООООООООЙ СЛОЖНА
+            //
+            //Загрузка данных. Автоматическое расширение таблицы. Автоматическое добавление новых столбиков, пока есть столбики в БД
+            //Загрузка в конкретную ячейку одной Колонки конкретное значение из БД
+            //
+            //НЕ. Это жопа какая-то. Вот это походу конец моей работоспособности
+            //
+            //
+            //SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'studentata' AND COLUMN_NAME = 'dataLesson" + tableLessonDate.Columns.Count - 1 + "'
+            //ALTER TABLE `studentdata` ADD COLUMN (`dataLesson" + tableLessonDate.Columns.Count - 1 + "`VARCHAR(20), " + "`typeLesson" + tableLessonDate.Columns.Count - 1 + "`VARCHAR(20), " + "`checkBox" + tableLessonDate.Columns.Count - 1 + "`VARCHAR(20), " + "`scoreLesson" + tableLessonDate.Columns.Count - 1 + "`VARCHAR(20))";
             createColumnsIntoDb(tableLessonDate.Columns.Count - 1);
         }
 
@@ -173,19 +191,12 @@ namespace Journal
 
         private void buttonSafeChanges_Click(object sender, EventArgs e)
         {
-
             //Заполнение в БД
-            InsertStudentInDB();
+            InsertStudentInDB();//Студентов
             //
             //
             //
             //
-
-            //После проверки начинается подгрузка студентов из базы данных в таблицу
-            //Далее разработаем передачу из таблицы в базу данных
-            //Метод с цикличным sql-запросом для пробежки по всем колонам базы данных таблицы studentdata
-            //И заполнение туда значений
-            //Работа через кнопку Сохранить!
         }
 
         private void LoadStudents()

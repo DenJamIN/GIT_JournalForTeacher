@@ -233,7 +233,7 @@ namespace Journal
             for (int i = 0; i < tableStudent.Rows.Count - 1; i++)
             {
                 if(!IsStoredInDB(tableStudent[0, i].Value.ToString(),labelGroupID.Text.ToString()))
-                    InsertStudentDataDB(tableStudent[0, i].Value.ToString());
+                    InsertStudentData(tableStudent[0, i].Value.ToString());
             }
            
         }
@@ -261,7 +261,7 @@ namespace Journal
             
         }
 
-        private void InsertStudentDataDB(string studentData)
+        private void InsertStudentData(string studentData)
         {
             DataBase dataBase = new DataBase();
             string insertStudentData = "INSERT INTO `students` (`surname_name`, `groups_id`) VALUES (@surname_name, @groups_id)";

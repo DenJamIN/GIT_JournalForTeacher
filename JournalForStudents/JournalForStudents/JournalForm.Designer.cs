@@ -37,7 +37,6 @@
             this.tableLessonType = new System.Windows.Forms.DataGridView();
             this.nullColumns = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLessonDate = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.group = new System.Windows.Forms.Label();
             this.discipline = new System.Windows.Forms.Label();
             this.labelGroupName = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@
             this.buttonSafeChanges = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelGroupID = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
@@ -148,25 +148,21 @@
             // 
             // tableLessonDate
             // 
+            this.tableLessonDate.AllowUserToDeleteRows = false;
+            this.tableLessonDate.AllowUserToResizeColumns = false;
+            this.tableLessonDate.AllowUserToResizeRows = false;
             this.tableLessonDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLessonDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
             this.tableLessonDate.Location = new System.Drawing.Point(167, 204);
             this.tableLessonDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLessonDate.MultiSelect = false;
             this.tableLessonDate.Name = "tableLessonDate";
             this.tableLessonDate.RowHeadersWidth = 51;
             this.tableLessonDate.RowTemplate.Height = 24;
             this.tableLessonDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tableLessonDate.Size = new System.Drawing.Size(264, 49);
             this.tableLessonDate.TabIndex = 8;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // group
             // 
@@ -274,6 +270,16 @@
             this.labelGroupID.TabIndex = 19;
             this.labelGroupID.Text = "id";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -322,7 +328,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn students;
         private System.Windows.Forms.DataGridView tableLessonDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn nullColumns;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label group;
         private System.Windows.Forms.Label discipline;
         private System.Windows.Forms.Label labelGroupName;
@@ -333,6 +338,7 @@
         private System.Windows.Forms.Button buttonSafeChanges;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label labelGroupID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
 

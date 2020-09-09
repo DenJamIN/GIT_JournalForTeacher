@@ -37,6 +37,7 @@
             this.tableLessonType = new System.Windows.Forms.DataGridView();
             this.nullColumns = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLessonDate = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.group = new System.Windows.Forms.Label();
             this.discipline = new System.Windows.Forms.Label();
             this.labelGroupName = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.buttonSafeChanges = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelGroupID = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
@@ -164,6 +164,16 @@
             this.tableLessonDate.Size = new System.Drawing.Size(264, 49);
             this.tableLessonDate.TabIndex = 8;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
             // group
             // 
             this.group.AutoSize = true;
@@ -269,16 +279,6 @@
             this.labelGroupID.Size = new System.Drawing.Size(19, 17);
             this.labelGroupID.TabIndex = 19;
             this.labelGroupID.Text = "id";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // JournalForm
             // 

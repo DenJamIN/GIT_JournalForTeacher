@@ -20,9 +20,30 @@ namespace Journal
         public void GetStudentsDataFromDB(string journalData)
         {
             GetJournalName(journalData);
+            
+            //Автоматическое добавление столбцов в журнале
+            GetAutoColumnsToJournal();
 
             //Считывание из БД
             LoadStudents();
+            LoadStudentsScore();    
+        }
+
+        private string[] NameColumnsDB2222(int i)
+        {
+            string names = string.Empty;
+
+            names += "dateLesson" + i + " " +
+                "typeLesson" + i + " " +
+                "checkBox" + i + " " +
+                "scoreLesson" + i + " ";
+
+            return names.Split(' ');
+        }
+        private void GetAutoColumnsToJournal()
+        {
+            while (tableLessonDate.Columns.Count <= ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
+                CreateJournalColumns();
         }
 
         private void GetJournalName(string journalData)
@@ -56,6 +77,14 @@ namespace Journal
                 DeleteScoreSummation();
             }
 
+            CreateJournalColumns();
+
+            if (tableLessonDate.Columns.Count - 1 > ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
+                createColumnsIntoDb(tableLessonDate.Columns.Count - 1);
+        }
+
+        private void CreateJournalColumns()
+        {
             tableLessonDate.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "lessonDate",
@@ -82,26 +111,8 @@ namespace Journal
                 HeaderText = "Балл",
                 Width = 70
             });
-            SlideTables();
 
-            //Проверить есть ли в таблице колонка с названием DataLesson (tableLessonDate.Columns.Count - 1)
-            //И если она есть 
-            //ничего
-            //Если её нет 
-            //createColumnsIntoDb(tableLessonDate.Columns.Count - 1);    
-            //
-            //Ввод баллов в БД. Сравниваем колонку. Ищем столбец в БД номерКолонки - 1. Вписываем значение из данной ячейки
-            //Нужно пробежаться по всем ячейкам
-            //ОООООООООООООООООООООООООООООООООЙ СЛОЖНА
-            //
-            //Загрузка данных. Автоматическое расширение таблицы. Автоматическое добавление новых столбиков, пока есть столбики в БД
-            //Загрузка в конкретную ячейку одной Колонки конкретное значение из БД
-            //
-            //НЕ. Это жопа какая-то. Вот это походу конец моей работоспособности
-            //
-            //
-            
-            createColumnsIntoDb(tableLessonDate.Columns.Count - 1);
+            SlideTables();
         }
 
         private void buttonForSummation_Click(object sender, EventArgs e)
@@ -139,14 +150,17 @@ namespace Journal
         }
 
         private void ScoreSummation()
-        {
+        {        
             double summa = 0;
-            for (int i = 0; i < tableStudent.Rows.Count; i++)
-            {
+            for (int i = 0; i < tableStudent.Rows.Count-1; i++)
+            {              
                 for (int j = 2; j < tableStudent.Columns.Count; j += 2)
                 {
-                    summa += Convert.ToDouble(tableStudent[j, i].Value);
-                    if (Convert.ToBoolean(tableStudent[j - 1, i].Value))
+                    if (tableStudent[j, i].Value.ToString() == "")
+                        continue;
+
+                    summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
+                    if (!(tableStudent[j-1, i].Value.ToString() == "False"))
                     {
                         summa += Convert.ToDouble(scoresPerLesson.Text);
                     }
@@ -193,8 +207,7 @@ namespace Journal
         {
             //Заполнение в БД
             InsertStudentToDB();//Студентов
-
-            //Доработка
+            
             InsertScoreToDB();//Баллов
         }
 
@@ -204,8 +217,10 @@ namespace Journal
 
             dataBase.openConnection();
 
-            string loadStudentData = "SELECT * FROM `students` " +
+            string loadStudentData = 
+                "SELECT * FROM `students` " +
                 "WHERE groups_id = @groups_id";
+
             MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
 
             MySqlParameter param = new MySqlParameter("@groups_id", labelGroupID.Text);
@@ -225,6 +240,43 @@ namespace Journal
                 tableStudent.Rows.Add(line);
 
             dataBase.closeConnection();
+        }
+        
+        private void LoadStudentsScore()
+        {
+            for (int studentRows = 0; studentRows < tableStudent.Rows.Count-1; studentRows++)
+            {
+                for (int columnScore = 1; columnScore <= (CountColumnsDB("SELECT * FROM `studentdata`")-2)/4; columnScore++)
+                {
+                    DataBase dataBase = new DataBase();
+
+                    dataBase.openConnection();
+
+                    string loadStudentData =
+                        "SELECT * FROM `studentdata` " +
+                        "WHERE students_id = @students_id";
+
+                    MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+
+                    command.Parameters.Add("@students_id", MySqlDbType.VarChar).Value 
+                        = GetStudentsID(labelGroupID.Text.ToString(), tableStudent[0, studentRows].Value.ToString());
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    string[] nameColumns = NameColumnsDB2222(columnScore);
+
+                    while (reader.Read())
+                    {
+                        tableLessonDate[columnScore, 0].Value = Convert.ToString(reader[nameColumns[0]]);
+                        tableLessonType[columnScore, 0].Value = Convert.ToString(reader[nameColumns[1]]);
+                        tableStudent[columnScore*2-1, studentRows].Value = (reader[nameColumns[2]]);
+                        tableStudent[columnScore*2, studentRows].Value = Convert.ToString(reader[nameColumns[3]]);
+                    }
+                    reader.Close();
+
+                    dataBase.closeConnection();
+                }
+            }
         }
 
         private void InsertStudentToDB()
@@ -304,7 +356,7 @@ namespace Journal
             dataBase.closeConnection();
         }
         
-        private string[] NameColumnsDB(int countColumns, int i)
+        private string[] NameColumnsDB(int i)
         {
             string names = string.Empty;
 
@@ -331,7 +383,7 @@ namespace Journal
             dataBase.closeConnection();
 
             //Without studentdata_id, students_id
-            return countColumns - 2;
+            return countColumns;
         }
 
         private string GetStudentsID(string groupID, string studentName)
@@ -389,13 +441,10 @@ namespace Journal
                 nameColumns[2] + "=@checkBox," +
                 nameColumns[3] + "=@scoreLesson " +
                 "WHERE students_id =" + id;
-            //"INSERT INTO studentdata (" + nameColumns + ") " +
-            //"VALUES (@dateLesson, @typeLesson, @checkBox, @scoreLesson)";
-            //UPDATE `studentdata` SET `studentData_id`=[value-1],`students_id`=[value-2],`dateLesson1`=[value-3],`typeLesson1`=[value-4],`checkBox1`=[value-5],`scoreLesson1`=[value-6] WHERE 1
-
+  
             int columnNumber = j + j - 1;
             if (tableStudent[columnNumber, i].Value == null)
-                tableStudent[columnNumber, i].Value = "False";
+                tableStudent[columnNumber, i].Value = false;
 
             DataBase dataBase = new DataBase();
             MySqlCommand command = new MySqlCommand(insertScore, dataBase.getConnection());
@@ -414,7 +463,7 @@ namespace Journal
         {
             string id = string.Empty;
 
-            for (int columnScore = 1; columnScore <= CountColumnsDB("SELECT * FROM studentdata") / 4; columnScore++)
+            for (int columnScore = 1; columnScore <= ((CountColumnsDB("SELECT * FROM studentdata")-2) / 4); columnScore++)
             { 
 
                 for (int rowStudent = 0; rowStudent < tableStudent.Rows.Count-1; rowStudent++)
@@ -428,7 +477,7 @@ namespace Journal
 
                     if (IsStoredInDB("SELECT * FROM `studentdata` WHERE students_id=" + id))
                     {
-                        InsertScoreStudentData(NameColumnsDB(CountColumnsDB("SELECT * FROM studentdata"), columnScore),columnScore ,rowStudent, id);
+                        InsertScoreStudentData(NameColumnsDB(columnScore),columnScore ,rowStudent, id);
                     }
 
                 }

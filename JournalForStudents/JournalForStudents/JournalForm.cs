@@ -192,9 +192,21 @@ namespace Journal
         private void buttonSafeChanges_Click(object sender, EventArgs e)
         {
             //Заполнение в БД
-            InsertStudentInDB();//Студентов
+           // InsertStudentInDB();//Студентов
             //
             //
+            DataBase dataBase = new DataBase();
+            string huy= "SELECT * FROM `studentdata`";
+
+            MySqlCommand command = new MySqlCommand(huy, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            int h = reader.FieldCount;
+
+            dataBase.closeConnection();
             //
             //
         }

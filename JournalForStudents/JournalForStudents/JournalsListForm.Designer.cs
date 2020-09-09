@@ -127,7 +127,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableJournalsList.DefaultCellStyle = dataGridViewCellStyle2;
             this.tableJournalsList.Location = new System.Drawing.Point(193, 163);
+            this.tableJournalsList.MultiSelect = false;
             this.tableJournalsList.Name = "tableJournalsList";
+            this.tableJournalsList.ReadOnly = true;
             this.tableJournalsList.RowHeadersWidth = 51;
             this.tableJournalsList.RowTemplate.Height = 24;
             this.tableJournalsList.Size = new System.Drawing.Size(1204, 505);

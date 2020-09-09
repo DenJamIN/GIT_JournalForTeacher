@@ -20,9 +20,30 @@ namespace Journal
         public void GetStudentsDataFromDB(string journalData)
         {
             GetJournalName(journalData);
+            
+            //Автоматическое добавление столбцов в журнале
+            GetAutoColumnsToJournal();
 
             //Считывание из БД
             LoadStudents();
+            LoadStudentsScore();    
+        }
+
+        private string[] NameColumnsDB2222(int i)
+        {
+            string names = string.Empty;
+
+            names += "dateLesson" + i + " " +
+                "typeLesson" + i + " " +
+                "checkBox" + i + " " +
+                "scoreLesson" + i + " ";
+
+            return names.Split(' ');
+        }
+        private void GetAutoColumnsToJournal()
+        {
+            while (tableLessonDate.Columns.Count <= ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
+                CreateJournalColumns();
         }
 
         private void GetJournalName(string journalData)
@@ -31,7 +52,8 @@ namespace Journal
 
             dataBase.openConnection();
 
-            string getNames = "SELECT * FROM `groups` WHERE groups_id = @groups_id";
+            string getNames = "SELECT * FROM `groups` " +
+                "WHERE groups_id = @groups_id";
 
             MySqlCommand command = new MySqlCommand(getNames, dataBase.getConnection());
             MySqlParameter parameter = new MySqlParameter("@groups_id", journalData);
@@ -55,6 +77,14 @@ namespace Journal
                 DeleteScoreSummation();
             }
 
+            CreateJournalColumns();
+
+            if (tableLessonDate.Columns.Count - 1 > ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
+                createColumnsIntoDb(tableLessonDate.Columns.Count - 1);
+        }
+
+        private void CreateJournalColumns()
+        {
             tableLessonDate.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "lessonDate",
@@ -81,9 +111,8 @@ namespace Journal
                 HeaderText = "Балл",
                 Width = 70
             });
-            SlideTables();
 
-            createColumnsIntoDb(tableLessonDate.Columns.Count - 1);
+            SlideTables();
         }
 
         private void buttonForSummation_Click(object sender, EventArgs e)
@@ -121,14 +150,17 @@ namespace Journal
         }
 
         private void ScoreSummation()
-        {
+        {        
             double summa = 0;
-            for (int i = 0; i < tableStudent.Rows.Count; i++)
-            {
+            for (int i = 0; i < tableStudent.Rows.Count-1; i++)
+            {              
                 for (int j = 2; j < tableStudent.Columns.Count; j += 2)
                 {
-                    summa += Convert.ToDouble(tableStudent[j, i].Value);
-                    if (Convert.ToBoolean(tableStudent[j - 1, i].Value))
+                    if (tableStudent[j, i].Value.ToString() == "")
+                        continue;
+
+                    summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
+                    if (!(tableStudent[j-1, i].Value.ToString() == "False"))
                     {
                         summa += Convert.ToDouble(scoresPerLesson.Text);
                     }
@@ -173,19 +205,10 @@ namespace Journal
 
         private void buttonSafeChanges_Click(object sender, EventArgs e)
         {
-
             //Заполнение в БД
-            InsertStudentInDB();
-            //
-            //
-            //
-            //
-
-            //После проверки начинается подгрузка студентов из базы данных в таблицу
-            //Далее разработаем передачу из таблицы в базу данных
-            //Метод с цикличным sql-запросом для пробежки по всем колонам базы данных таблицы studentdata
-            //И заполнение туда значений
-            //Работа через кнопку Сохранить!
+            InsertStudentToDB();//Студентов
+            
+            InsertScoreToDB();//Баллов
         }
 
         private void LoadStudents()
@@ -194,7 +217,10 @@ namespace Journal
 
             dataBase.openConnection();
 
-            string loadStudentData = "SELECT * FROM `students` WHERE groups_id = @groups_id";
+            string loadStudentData = 
+                "SELECT * FROM `students` " +
+                "WHERE groups_id = @groups_id";
+
             MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
 
             MySqlParameter param = new MySqlParameter("@groups_id", labelGroupID.Text);
@@ -215,23 +241,65 @@ namespace Journal
 
             dataBase.closeConnection();
         }
+        
+        private void LoadStudentsScore()
+        {
+            for (int studentRows = 0; studentRows < tableStudent.Rows.Count-1; studentRows++)
+            {
+                for (int columnScore = 1; columnScore <= (CountColumnsDB("SELECT * FROM `studentdata`")-2)/4; columnScore++)
+                {
+                    DataBase dataBase = new DataBase();
 
-        private void InsertStudentInDB()
+                    dataBase.openConnection();
+
+                    string loadStudentData =
+                        "SELECT * FROM `studentdata` " +
+                        "WHERE students_id = @students_id";
+
+                    MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+
+                    command.Parameters.Add("@students_id", MySqlDbType.VarChar).Value 
+                        = GetStudentsID(labelGroupID.Text.ToString(), tableStudent[0, studentRows].Value.ToString());
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    string[] nameColumns = NameColumnsDB2222(columnScore);
+
+                    while (reader.Read())
+                    {
+                        tableLessonDate[columnScore, 0].Value = Convert.ToString(reader[nameColumns[0]]);
+                        tableLessonType[columnScore, 0].Value = Convert.ToString(reader[nameColumns[1]]);
+                        tableStudent[columnScore*2-1, studentRows].Value = (reader[nameColumns[2]]);
+                        tableStudent[columnScore*2, studentRows].Value = Convert.ToString(reader[nameColumns[3]]);
+                    }
+                    reader.Close();
+
+                    dataBase.closeConnection();
+                }
+            }
+        }
+
+        private void InsertStudentToDB()
         {
             //Проверяем наличие студента в базе данных. Если его нет, то вписываем в базу. Если есть пропускаем
+            
             for (int i = 0; i < tableStudent.Rows.Count - 1; i++)
             {
-                if(!IsStoredInDB(tableStudent[0, i].Value.ToString(),labelGroupID.Text.ToString()))
-                    InsertStudentDataDB(tableStudent[0, i].Value.ToString());
+                string searchData = 
+                    "SELECT * FROM students " +
+                    "WHERE surname_name= '" 
+                    + tableStudent[0, i].Value.ToString() + "' " +
+                    "AND groups_id= '" + labelGroupID.Text.ToString() + "'";
+                
+                if (!IsStoredInDB(searchData))
+                    InsertStudentData(tableStudent[0, i].Value.ToString());
             }
            
         }
 
-        private static bool IsStoredInDB(string valueCellStudent, string groupID)
+        private static bool IsStoredInDB(string searchData)
         {
             DataBase dataBase = new DataBase();
-
-            string searchData = "SELECT * FROM students WHERE surname_name= '" + valueCellStudent + "' AND groups_id= '" + groupID + "'";
 
             dataBase.openConnection();
             MySqlCommand command = new MySqlCommand(searchData, dataBase.getConnection());
@@ -250,10 +318,12 @@ namespace Journal
             
         }
 
-        private void InsertStudentDataDB(string studentData)
+        private void InsertStudentData(string studentData)
         {
             DataBase dataBase = new DataBase();
-            string insertStudentData = "INSERT INTO `students` (`surname_name`, `groups_id`) VALUES (@surname_name, @groups_id)";
+            string insertStudentData = 
+                "INSERT INTO `students` (`surname_name`, `groups_id`) " +
+                "VALUES (@surname_name, @groups_id)";
 
             MySqlCommand command = new MySqlCommand(insertStudentData, dataBase.getConnection());
 
@@ -272,12 +342,148 @@ namespace Journal
             DataBase dataBase = new DataBase();
 
             //Create new columns in data base
-            string createNewColumnInDb = "ALTER TABLE `studentdata` ADD COLUMN (`dataLesson" + i + "`VARCHAR(20), " + "`typeLesson" + i + "`VARCHAR(20), " + "`checkBox" + i + "`VARCHAR(20), " + "`scoreLesson" + i + "`VARCHAR(20))";
+            string createNewColumnInDb = 
+                "ALTER TABLE `studentdata` " +
+                "ADD COLUMN (`dateLesson" + i + "`VARCHAR(30), " + 
+                "`typeLesson" + i + "`VARCHAR(20), " + 
+                "`checkBox" + i + "`VARCHAR(10), " + 
+                "`scoreLesson" + i + "`VARCHAR(10))";
 
             MySqlCommand command = new MySqlCommand(createNewColumnInDb, dataBase.getConnection());
+
             dataBase.openConnection();
             command.ExecuteNonQuery();
             dataBase.closeConnection();
+        }
+        
+        private string[] NameColumnsDB(int i)
+        {
+            string names = string.Empty;
+
+            names += "`dateLesson" + i + "` " + 
+                "`typeLesson" + i + "` " + 
+                "`checkBox" + i + "` " + 
+                "`scoreLesson" + i + "` ";
+            
+            return names.Split(' ');
+        }
+
+        private int CountColumnsDB(string query)
+        {
+            DataBase dataBase = new DataBase();
+
+            MySqlCommand command = new MySqlCommand(query, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            int countColumns = reader.FieldCount;
+
+            dataBase.closeConnection();
+
+            //Without studentdata_id, students_id
+            return countColumns;
+        }
+
+        private string GetStudentsID(string groupID, string studentName)
+        {
+            string id = string.Empty;
+            string searchStudentID =
+                "SELECT * FROM students " +
+                "WHERE groups_id = @groups_id " +
+                "AND surname_name = @surname_name";
+
+            DataBase dataBase = new DataBase();
+            MySqlCommand command = new MySqlCommand(searchStudentID, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            command.Parameters.Add("@groups_id", MySqlDbType.VarChar).Value = groupID;
+            command.Parameters.Add("@surname_name", MySqlDbType.VarChar).Value = studentName;
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                id = reader[0].ToString();
+            }
+            reader.Close();
+
+            dataBase.closeConnection();
+
+            return id;
+        }
+           
+        private void InsertToStudentData(string id)
+        {
+            string insertStudentsID = 
+                "INSERT INTO studentdata(`students_id`) " +
+                "VALUES(@students_id)";
+
+            DataBase dataBase = new DataBase();
+            MySqlCommand command = new MySqlCommand(insertStudentsID, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            command.Parameters.Add("@students_id", MySqlDbType.VarChar).Value = id;
+            command.ExecuteNonQuery();
+
+            dataBase.closeConnection();
+        }
+
+        private void InsertScoreStudentData(string[] nameColumns, int j, int i, string id)
+        {             
+            string insertScore = 
+                "UPDATE `studentdata` " +
+                "SET " + nameColumns[0] + "=@dateLesson," +
+                nameColumns[1] +"=@typeLesson," +
+                nameColumns[2] + "=@checkBox," +
+                nameColumns[3] + "=@scoreLesson " +
+                "WHERE students_id =" + id;
+  
+            int columnNumber = j + j - 1;
+            if (tableStudent[columnNumber, i].Value == null)
+                tableStudent[columnNumber, i].Value = false;
+
+            DataBase dataBase = new DataBase();
+            MySqlCommand command = new MySqlCommand(insertScore, dataBase.getConnection());
+
+            command.Parameters.Add("@dateLesson", MySqlDbType.VarChar).Value = tableLessonDate[j,0].Value;
+            command.Parameters.Add("@typeLesson", MySqlDbType.VarChar).Value = tableLessonType[j,0].Value;
+            command.Parameters.Add("@checkBox", MySqlDbType.VarChar).Value = tableStudent[columnNumber,i].Value;
+            command.Parameters.Add("@scoreLesson", MySqlDbType.VarChar).Value = tableStudent[columnNumber+1,i].Value;
+
+            dataBase.openConnection();
+            command.ExecuteNonQuery();
+            dataBase.closeConnection();
+        }
+        
+        private void InsertScoreToDB()
+        {
+            string id = string.Empty;
+
+            for (int columnScore = 1; columnScore <= ((CountColumnsDB("SELECT * FROM studentdata")-2) / 4); columnScore++)
+            { 
+
+                for (int rowStudent = 0; rowStudent < tableStudent.Rows.Count-1; rowStudent++)
+                {
+                    id = GetStudentsID(labelGroupID.Text.ToString(), tableStudent[0, rowStudent].Value.ToString());
+
+                    if (!IsStoredInDB("SELECT * FROM `studentdata` WHERE students_id=" +id))
+                    {
+                        InsertToStudentData(id);
+                    }
+
+                    if (IsStoredInDB("SELECT * FROM `studentdata` WHERE students_id=" + id))
+                    {
+                        InsertScoreStudentData(NameColumnsDB(columnScore),columnScore ,rowStudent, id);
+                    }
+
+                }
+
+            }
+
         }
     }
 }

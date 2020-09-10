@@ -28,18 +28,7 @@ namespace Journal
             LoadStudents();
             LoadStudentsScore();    
         }
-
-        private string[] NameColumnsDB2222(int i)
-        {
-            string names = string.Empty;
-
-            names += "dateLesson" + i + " " +
-                "typeLesson" + i + " " +
-                "checkBox" + i + " " +
-                "scoreLesson" + i + " ";
-
-            return names.Split(' ');
-        }
+       
         private void GetAutoColumnsToJournal()
         {
             while (tableLessonDate.Columns.Count <= ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
@@ -157,10 +146,9 @@ namespace Journal
                 for (int j = 2; j < tableStudent.Columns.Count; j += 2)
                 {
                     if (tableStudent[j, i].Value.ToString() == "")
-                        continue;
-
+                        tableStudent[j, i].Value = "0";
                     summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
-                    if (!(tableStudent[j-1, i].Value.ToString() == "False"))
+                    if (!(tableStudent[j-1, i].Value.ToString() == "False") && !(tableStudent[j - 1, i].Value.ToString() == ""))
                     {
                         summa += Convert.ToDouble(scoresPerLesson.Text);
                     }
@@ -263,7 +251,7 @@ namespace Journal
 
                     MySqlDataReader reader = command.ExecuteReader();
 
-                    string[] nameColumns = NameColumnsDB2222(columnScore);
+                    string[] nameColumns = NameColumnsDB(columnScore);
 
                     while (reader.Read())
                     {
@@ -355,16 +343,16 @@ namespace Journal
             command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
-        
+
         private string[] NameColumnsDB(int i)
         {
             string names = string.Empty;
 
-            names += "`dateLesson" + i + "` " + 
-                "`typeLesson" + i + "` " + 
-                "`checkBox" + i + "` " + 
-                "`scoreLesson" + i + "` ";
-            
+            names += "dateLesson" + i + " " +
+                "typeLesson" + i + " " +
+                "checkBox" + i + " " +
+                "scoreLesson" + i + " ";
+
             return names.Split(' ');
         }
 
@@ -436,10 +424,10 @@ namespace Journal
         {             
             string insertScore = 
                 "UPDATE `studentdata` " +
-                "SET " + nameColumns[0] + "=@dateLesson," +
-                nameColumns[1] +"=@typeLesson," +
-                nameColumns[2] + "=@checkBox," +
-                nameColumns[3] + "=@scoreLesson " +
+                "SET `" + nameColumns[0] + "`=@dateLesson, `" +
+                nameColumns[1] +"`=@typeLesson, `" +
+                nameColumns[2] + "`=@checkBox, `" +
+                nameColumns[3] + "`=@scoreLesson " +
                 "WHERE students_id =" + id;
   
             int columnNumber = j + j - 1;
@@ -452,7 +440,10 @@ namespace Journal
             command.Parameters.Add("@dateLesson", MySqlDbType.VarChar).Value = tableLessonDate[j,0].Value;
             command.Parameters.Add("@typeLesson", MySqlDbType.VarChar).Value = tableLessonType[j,0].Value;
             command.Parameters.Add("@checkBox", MySqlDbType.VarChar).Value = tableStudent[columnNumber,i].Value;
-            command.Parameters.Add("@scoreLesson", MySqlDbType.VarChar).Value = tableStudent[columnNumber+1,i].Value;
+            command.Parameters.Add("@scoreLesson", MySqlDbType.VarChar).Value =
+                (tableStudent[columnNumber + 1, i].Value == DBNull.Value)
+                ? "0"
+                : tableStudent[columnNumber + 1, i].Value;
 
             dataBase.openConnection();
             command.ExecuteNonQuery();
@@ -461,7 +452,7 @@ namespace Journal
         
         private void InsertScoreToDB()
         {
-            string id = string.Empty;
+            string id;
 
             for (int columnScore = 1; columnScore <= ((CountColumnsDB("SELECT * FROM studentdata")-2) / 4); columnScore++)
             { 

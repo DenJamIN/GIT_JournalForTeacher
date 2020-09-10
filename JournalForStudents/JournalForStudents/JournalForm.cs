@@ -476,5 +476,12 @@ namespace Journal
             }
 
         }
+
+        private void intoJournals_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            JournalsListForm journalsList = new JournalsListForm();
+            journalsList.Show();
+        }
     }
 }

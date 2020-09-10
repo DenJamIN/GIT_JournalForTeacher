@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.intoJournals = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableStudent = new System.Windows.Forms.DataGridView();
@@ -48,6 +49,7 @@
             this.buttonSafeChanges = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelGroupID = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
@@ -58,12 +60,25 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.intoJournals);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(167, 800);
             this.panel1.TabIndex = 0;
+            // 
+            // intoJournals
+            // 
+            this.intoJournals.AutoSize = true;
+            this.intoJournals.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.intoJournals.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.intoJournals.Location = new System.Drawing.Point(41, 255);
+            this.intoJournals.Name = "intoJournals";
+            this.intoJournals.Size = new System.Drawing.Size(123, 29);
+            this.intoJournals.TabIndex = 20;
+            this.intoJournals.Text = "Журналы";
+            this.intoJournals.Click += new System.EventHandler(this.intoJournals_Click);
             // 
             // panel2
             // 
@@ -307,6 +322,8 @@
             this.Name = "JournalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).EndInit();
@@ -339,6 +356,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label labelGroupID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Label intoJournals;
     }
 }
 

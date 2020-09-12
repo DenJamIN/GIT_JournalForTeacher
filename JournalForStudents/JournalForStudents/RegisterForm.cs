@@ -25,8 +25,8 @@ namespace JournalForStudents
             rankRegisterField.Text = "Не выбрано";
             userNameField.Text = "Введите Имя";
             userNameField.ForeColor = Color.Gray;
-            userLastNameField.Text = "Введите Фамилию";
-            userLastNameField.ForeColor = Color.Gray;
+            userSurnameField.Text = "Введите Фамилию";
+            userSurnameField.ForeColor = Color.Gray;
             loginField.Text = "Название аккаунта";
             loginField.ForeColor = Color.Gray;
             passwordField.Text = "Введите пароль";
@@ -75,10 +75,10 @@ namespace JournalForStudents
 
         private void userLastNameField_Enter(object sender, EventArgs e)
         {
-            if (userLastNameField.Text == "Введите Фамилию")
+            if (userSurnameField.Text == "Введите Фамилию")
             {
-                userLastNameField.Text = "";
-                userLastNameField.ForeColor = Color.Black;
+                userSurnameField.Text = "";
+                userSurnameField.ForeColor = Color.Black;
             }
         }
 
@@ -94,10 +94,10 @@ namespace JournalForStudents
 
         private void userLastNameField_Leave(object sender, EventArgs e)
         {
-            if (userLastNameField.Text == "")
+            if (userSurnameField.Text == "")
             {
-                userLastNameField.Text = "Введите Фамилию";
-                userLastNameField.ForeColor = Color.Gray;
+                userSurnameField.Text = "Введите Фамилию";
+                userSurnameField.ForeColor = Color.Gray;
             }        
         }
 
@@ -139,11 +139,10 @@ namespace JournalForStudents
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            if(userNameField.Text == "Введите Имя" ||
-               userLastNameField.Text == "Введите Фамилию" ||
-               rankRegisterField.Text == "Не выбрано" ||
-               loginField.Text == "Название аккаунта"||
-               passwordField.Text=="Введите пароль")
+            if (userNameField.Text == "Введите Имя" ||
+               userSurnameField.Text == "Введите Фамилию" ||
+               loginField.Text == "Название аккаунта" ||
+               passwordField.Text == "Введите пароль")
             {
                 MessageBox.Show("Заполните ВСЕ поля для регистрации");
                 return;
@@ -158,16 +157,22 @@ namespace JournalForStudents
                 return;
             }
 
+            InsertUserName();
+
+            InsertAutorization();
+
+        }
+
+        private void InsertAutorization(string id)
+        {
+            string insertAuotorization = "INSERT INTO `authorization` (`login`, `password`, `users_id`) VALUES(@login, @password, @users_id)";
+            
             DataBase database = new DataBase();
-            MySqlCommand command = new MySqlCommand(
-                "INSERT INTO `users` (`login`, `password`, `rank`, `name`, `lastname`) VALUES(@login,@password,@rank,@name,@lastname)",
-                database.getConnection());
+            MySqlCommand command = new MySqlCommand(insertAuotorization, database.getConnection());
 
             command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
             command.Parameters.Add("@password", MySqlDbType.VarChar).Value = passwordField.Text;
-            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = userNameField.Text;
-            command.Parameters.Add("@lastname", MySqlDbType.VarChar).Value = userLastNameField.Text;
-            command.Parameters.Add("@rank", MySqlDbType.VarChar).Value = rankRegisterField.Text;
+            command.Parameters.Add("@users_id", MySqlDbType.VarChar).Value = id;
 
             bool accountStatus = false;
 
@@ -178,7 +183,7 @@ namespace JournalForStudents
                 MessageBox.Show("Аккаунт успешно зарегистрирован");
                 accountStatus = true;
             }
-                              
+
             else
                 MessageBox.Show("Аккаунт НЕ зарегистрирован");
 
@@ -190,6 +195,23 @@ namespace JournalForStudents
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
             }
-        }      
+        }
+
+        private static void InsertUserName(string name, string surname, string middlename)
+        {
+            string insertUserData = "INSERT INTO `users` (`name`, `middlename`, `surname`) VALUES (@name, @middlename, @surname)";
+
+            DataBase database = new DataBase();
+            MySqlCommand command = new MySqlCommand(insertUserData, database.getConnection());
+
+            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = surname;
+            command.Parameters.Add("@middlename", MySqlDbType.VarChar).Value = middlename;
+
+            database.openConnection();
+            command.ExecuteNonQuery();
+            database.closeConnection();
+        }
+
     }
 }

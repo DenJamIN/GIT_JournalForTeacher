@@ -36,15 +36,13 @@
             this.loginField = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MenuPanel = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.rankRegisterField = new System.Windows.Forms.ListBox();
-            this.userLastNameField = new System.Windows.Forms.TextBox();
+            this.userSurnameField = new System.Windows.Forms.TextBox();
             this.userNameField = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.middleNameField = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MenuPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,9 +136,8 @@
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.MenuPanel.Controls.Add(this.pictureBox3);
-            this.MenuPanel.Controls.Add(this.rankRegisterField);
-            this.MenuPanel.Controls.Add(this.userLastNameField);
+            this.MenuPanel.Controls.Add(this.middleNameField);
+            this.MenuPanel.Controls.Add(this.userSurnameField);
             this.MenuPanel.Controls.Add(this.userNameField);
             this.MenuPanel.Controls.Add(this.buttonRegister);
             this.MenuPanel.Controls.Add(this.passwordField);
@@ -156,39 +153,16 @@
             this.MenuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuPanel_MouseDown);
             this.MenuPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuPanel_MouseMove);
             // 
-            // pictureBox3
+            // userSurnameField
             // 
-            this.pictureBox3.Image = global::JournalForStudents.Properties.Resources.rankSelection1;
-            this.pictureBox3.Location = new System.Drawing.Point(40, 460);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(75, 80);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 10;
-            this.pictureBox3.TabStop = false;
-            // 
-            // rankRegisterField
-            // 
-            this.rankRegisterField.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rankRegisterField.FormattingEnabled = true;
-            this.rankRegisterField.ItemHeight = 38;
-            this.rankRegisterField.Items.AddRange(new object[] {
-            "Студент",
-            "Преподаватель"});
-            this.rankRegisterField.Location = new System.Drawing.Point(112, 460);
-            this.rankRegisterField.Name = "rankRegisterField";
-            this.rankRegisterField.Size = new System.Drawing.Size(263, 80);
-            this.rankRegisterField.TabIndex = 9;
-            // 
-            // userLastNameField
-            // 
-            this.userLastNameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userLastNameField.Location = new System.Drawing.Point(485, 172);
-            this.userLastNameField.Multiline = true;
-            this.userLastNameField.Name = "userLastNameField";
-            this.userLastNameField.Size = new System.Drawing.Size(369, 64);
-            this.userLastNameField.TabIndex = 7;
-            this.userLastNameField.Enter += new System.EventHandler(this.userLastNameField_Enter);
-            this.userLastNameField.Leave += new System.EventHandler(this.userLastNameField_Leave);
+            this.userSurnameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userSurnameField.Location = new System.Drawing.Point(485, 172);
+            this.userSurnameField.Multiline = true;
+            this.userSurnameField.Name = "userSurnameField";
+            this.userSurnameField.Size = new System.Drawing.Size(369, 64);
+            this.userSurnameField.TabIndex = 7;
+            this.userSurnameField.Enter += new System.EventHandler(this.userLastNameField_Enter);
+            this.userSurnameField.Leave += new System.EventHandler(this.userLastNameField_Leave);
             // 
             // userNameField
             // 
@@ -212,6 +186,15 @@
             this.panel2.Size = new System.Drawing.Size(899, 121);
             this.panel2.TabIndex = 0;
             // 
+            // middleNameField
+            // 
+            this.middleNameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.middleNameField.Location = new System.Drawing.Point(43, 295);
+            this.middleNameField.Multiline = true;
+            this.middleNameField.Name = "middleNameField";
+            this.middleNameField.Size = new System.Drawing.Size(369, 64);
+            this.middleNameField.TabIndex = 11;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -226,7 +209,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MenuPanel.ResumeLayout(false);
             this.MenuPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -243,9 +225,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel MenuPanel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox userLastNameField;
+        private System.Windows.Forms.TextBox userSurnameField;
         private System.Windows.Forms.TextBox userNameField;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.ListBox rankRegisterField;
+        private System.Windows.Forms.TextBox middleNameField;
     }
 }

@@ -59,11 +59,10 @@ namespace JournalForStudents
             // MySqlDataAdapter - служит для перевода из SQL данных в данные обычные (массивы, объекты...)
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             // MySqlCommand - позволяет записать SQL команду, что будет выполнена в базе данных
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL AND `password` = @uP AND `rank` = @rank", database.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `authorization` WHERE `login` = @uL AND `password` = @uP", database.getConnection());
             //Вместо заглушек вставляем наш пароль и логин и сравниваем с БД
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passwordField.Text;
-            command.Parameters.Add("@rank", MySqlDbType.Text).Value = rankField.Text;
             
             adapter.SelectCommand = command;
             //Переводим наши данные в таблицу (логин и пароль)

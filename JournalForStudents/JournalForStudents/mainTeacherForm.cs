@@ -24,7 +24,7 @@ namespace JournalForStudents
 
             database.openConnection();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @nameLogin", database.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `autorization` WHERE `login` = @nameLogin", database.getConnection());
 
             MySqlParameter param = new MySqlParameter("@nameLogin", teacherFromLoginForm);
             command.Parameters.Add(param);

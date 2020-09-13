@@ -483,5 +483,11 @@ namespace Journal
             JournalsListForm journalsList = new JournalsListForm();
             journalsList.Show();
         }
+
+        private void tableStudent_Scroll(object sender, ScrollEventArgs e)
+        {
+            tableLessonDate.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;
+            tableLessonType.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;
+        }
     }
 }

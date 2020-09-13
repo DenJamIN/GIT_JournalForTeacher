@@ -73,7 +73,7 @@
             this.intoJournals.AutoSize = true;
             this.intoJournals.Cursor = System.Windows.Forms.Cursors.Hand;
             this.intoJournals.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.intoJournals.Location = new System.Drawing.Point(41, 255);
+            this.intoJournals.Location = new System.Drawing.Point(21, 256);
             this.intoJournals.Name = "intoJournals";
             this.intoJournals.Size = new System.Drawing.Size(123, 29);
             this.intoJournals.TabIndex = 20;
@@ -111,12 +111,13 @@
             this.students});
             this.tableStudent.Location = new System.Drawing.Point(167, 273);
             this.tableStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableStudent.MultiSelect = false;
             this.tableStudent.Name = "tableStudent";
             this.tableStudent.RowHeadersWidth = 51;
             this.tableStudent.RowTemplate.Height = 24;
-            this.tableStudent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tableStudent.Size = new System.Drawing.Size(264, 527);
             this.tableStudent.TabIndex = 2;
+            this.tableStudent.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tableStudent_Scroll);
             // 
             // students
             // 
@@ -299,7 +300,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 800);
             this.Controls.Add(this.labelGroupID);
             this.Controls.Add(this.pictureBox3);

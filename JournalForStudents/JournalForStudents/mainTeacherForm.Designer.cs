@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.CloseButton = new System.Windows.Forms.Label();
-            this.lastnameProf = new System.Windows.Forms.Label();
+            this.surnameProf = new System.Windows.Forms.Label();
             this.nameProf = new System.Windows.Forms.Label();
             this.middlenameProf = new System.Windows.Forms.Label();
-            this.rankProf = new System.Windows.Forms.Label();
+            this.intoJournals = new System.Windows.Forms.Label();
+            this.labelUserID = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -49,24 +50,24 @@
             this.CloseButton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // lastnameProf
+            // surnameProf
             // 
-            this.lastnameProf.AutoSize = true;
-            this.lastnameProf.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lastnameProf.Font = new System.Drawing.Font("Times New Roman", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastnameProf.Location = new System.Drawing.Point(532, 262);
-            this.lastnameProf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lastnameProf.Name = "lastnameProf";
-            this.lastnameProf.Size = new System.Drawing.Size(115, 36);
-            this.lastnameProf.TabIndex = 13;
-            this.lastnameProf.Text = "Иванов";
+            this.surnameProf.AutoSize = true;
+            this.surnameProf.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.surnameProf.Font = new System.Drawing.Font("Times New Roman", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.surnameProf.Location = new System.Drawing.Point(532, 276);
+            this.surnameProf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.surnameProf.Name = "surnameProf";
+            this.surnameProf.Size = new System.Drawing.Size(115, 36);
+            this.surnameProf.TabIndex = 13;
+            this.surnameProf.Text = "Иванов";
             // 
             // nameProf
             // 
             this.nameProf.AutoSize = true;
             this.nameProf.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.nameProf.Font = new System.Drawing.Font("Times New Roman", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameProf.Location = new System.Drawing.Point(532, 343);
+            this.nameProf.Location = new System.Drawing.Point(532, 357);
             this.nameProf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nameProf.Name = "nameProf";
             this.nameProf.Size = new System.Drawing.Size(128, 36);
@@ -78,24 +79,33 @@
             this.middlenameProf.AutoSize = true;
             this.middlenameProf.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.middlenameProf.Font = new System.Drawing.Font("Times New Roman", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.middlenameProf.Location = new System.Drawing.Point(532, 418);
+            this.middlenameProf.Location = new System.Drawing.Point(532, 432);
             this.middlenameProf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.middlenameProf.Name = "middlenameProf";
             this.middlenameProf.Size = new System.Drawing.Size(148, 36);
             this.middlenameProf.TabIndex = 11;
             this.middlenameProf.Text = "Иванович";
             // 
-            // rankProf
+            // intoJournals
             // 
-            this.rankProf.AutoSize = true;
-            this.rankProf.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.rankProf.Font = new System.Drawing.Font("Times New Roman", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rankProf.Location = new System.Drawing.Point(532, 187);
-            this.rankProf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.rankProf.Name = "rankProf";
-            this.rankProf.Size = new System.Drawing.Size(217, 36);
-            this.rankProf.TabIndex = 10;
-            this.rankProf.Text = "Преподаватель";
+            this.intoJournals.AutoSize = true;
+            this.intoJournals.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.intoJournals.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.intoJournals.Location = new System.Drawing.Point(34, 232);
+            this.intoJournals.Name = "intoJournals";
+            this.intoJournals.Size = new System.Drawing.Size(123, 29);
+            this.intoJournals.TabIndex = 14;
+            this.intoJournals.Text = "Журналы";
+            this.intoJournals.Click += new System.EventHandler(this.intoJournals_Click);
+            // 
+            // labelUserID
+            // 
+            this.labelUserID.AutoSize = true;
+            this.labelUserID.Location = new System.Drawing.Point(0, 0);
+            this.labelUserID.Name = "labelUserID";
+            this.labelUserID.Size = new System.Drawing.Size(19, 17);
+            this.labelUserID.TabIndex = 15;
+            this.labelUserID.Text = "id";
             // 
             // mainTeacherForm
             // 
@@ -104,10 +114,11 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BackgroundImage = global::JournalForStudents.Properties.Resources.Профиль_ГлавныйЭкран;
             this.ClientSize = new System.Drawing.Size(1440, 800);
-            this.Controls.Add(this.lastnameProf);
+            this.Controls.Add(this.labelUserID);
+            this.Controls.Add(this.intoJournals);
+            this.Controls.Add(this.surnameProf);
             this.Controls.Add(this.nameProf);
             this.Controls.Add(this.middlenameProf);
-            this.Controls.Add(this.rankProf);
             this.Controls.Add(this.CloseButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -122,9 +133,10 @@
         #endregion
         private System.Windows.Forms.Label CloseButton;
         public string teacherFromLoginForm = "";
-        private System.Windows.Forms.Label lastnameProf;
+        private System.Windows.Forms.Label surnameProf;
         private System.Windows.Forms.Label nameProf;
         private System.Windows.Forms.Label middlenameProf;
-        private System.Windows.Forms.Label rankProf;
+        private System.Windows.Forms.Label intoJournals;
+        private System.Windows.Forms.Label labelUserID;
     }
 }

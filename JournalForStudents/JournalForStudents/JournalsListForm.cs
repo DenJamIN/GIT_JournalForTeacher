@@ -22,7 +22,7 @@ namespace JournalForStudents
 
         private void LoadJournalsData()
         {
-            string journalsDataDB = "SELECT * FROM groups ORDER BY groups_id";
+            string journalsDataDB = "SELECT * FROM groups WHERE `users_id`=" + labelUserID.Text + " ORDER BY groups_id";
 
             DataBase dataBase = new DataBase();
             MySqlCommand command = new MySqlCommand(journalsDataDB, dataBase.getConnection());

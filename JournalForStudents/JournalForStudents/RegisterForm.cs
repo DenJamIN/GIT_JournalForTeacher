@@ -22,15 +22,16 @@ namespace JournalForStudents
 
         private void FillField()
         {
-            rankRegisterField.Text = "Не выбрано";
-            userNameField.Text = "Введите Имя";
+            userNameField.Text = "Введите имя";
             userNameField.ForeColor = Color.Gray;
-            userSurnameField.Text = "Введите Фамилию";
+            userSurnameField.Text = "Введите фамилию";
             userSurnameField.ForeColor = Color.Gray;
             loginField.Text = "Название аккаунта";
             loginField.ForeColor = Color.Gray;
             passwordField.Text = "Введите пароль";
             passwordField.ForeColor = Color.Gray;
+            middleNameField.Text = "Введите отчество";
+            middleNameField.ForeColor = Color.Gray;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -38,6 +39,9 @@ namespace JournalForStudents
             Application.Exit();
         }
 
+
+        //
+        //Возможность перетаскивать окно
         Point lastPoint;
         private void MenuPanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -52,7 +56,11 @@ namespace JournalForStudents
         {
             lastPoint = new Point(e.X, e.Y);
         }
+        //
+        //
 
+        //
+        //Окрас крестика при наведении
         private void CloseButton_MouseEnter(object sender, EventArgs e)
         {
             CloseButton.ForeColor = Color.Yellow;
@@ -62,41 +70,61 @@ namespace JournalForStudents
         {
             CloseButton.ForeColor = Color.DarkRed;
         }
+        //
+        //
+
+        //
+        //Подгрузка полей для регистрации
+        private void middleNameField_Enter(object sender, EventArgs e)
+        {
+            if (middleNameField.Text == "Введите отчество")
+            {
+                middleNameField.Text = "";
+                middleNameField.ForeColor = Color.Black;
+            }
+        }
+
+        private void middleNameField_Leave(object sender, EventArgs e)
+        {
+            if (middleNameField.Text == "")
+            {
+                middleNameField.Text = "Введите отчество";
+                middleNameField.ForeColor = Color.Gray;
+            }
+        }
 
         private void userNameField_Enter(object sender, EventArgs e)
         {
-            if (userNameField.Text == "Введите Имя")
+            if (userNameField.Text == "Введите имя")
             {
                 userNameField.Text = "";
                 userNameField.ForeColor = Color.Black;
-            }    
-               
-        }
-
-        private void userLastNameField_Enter(object sender, EventArgs e)
-        {
-            if (userSurnameField.Text == "Введите Фамилию")
-            {
-                userSurnameField.Text = "";
-                userSurnameField.ForeColor = Color.Black;
-            }
+            }                   
         }
 
         private void userNameField_Leave(object sender, EventArgs e)
         {
             if (userNameField.Text == "")
             {
-                userNameField.Text = "Введите Имя";
+                userNameField.Text = "Введите имя";
                 userNameField.ForeColor = Color.Gray;
             }
+        }
 
+        private void userLastNameField_Enter(object sender, EventArgs e)
+        {
+            if (userSurnameField.Text == "Введите фамилию")
+            {
+                userSurnameField.Text = "";
+                userSurnameField.ForeColor = Color.Black;
+            }
         }
 
         private void userLastNameField_Leave(object sender, EventArgs e)
         {
             if (userSurnameField.Text == "")
             {
-                userSurnameField.Text = "Введите Фамилию";
+                userSurnameField.Text = "Введите фамилию";
                 userSurnameField.ForeColor = Color.Gray;
             }        
         }
@@ -136,11 +164,15 @@ namespace JournalForStudents
                 passwordField.ForeColor = Color.Gray;
             }
         }
+        //
+        //
 
+        //
+        //Кнопка Регистрации и внесение данных в БД
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            if (userNameField.Text == "Введите Имя" ||
-               userSurnameField.Text == "Введите Фамилию" ||
+            if (userNameField.Text == "Введите имя" ||
+               userSurnameField.Text == "Введите фамилию" ||
                loginField.Text == "Название аккаунта" ||
                passwordField.Text == "Введите пароль")
             {
@@ -154,25 +186,30 @@ namespace JournalForStudents
                 "@login",
                 Convert.ToString(loginField.Text)))
             {
+                MessageBox.Show("Аккаунт с таким названием существует");
                 return;
             }
 
-            InsertUserName();
-
             InsertAutorization();
-
         }
+        //
+        //
 
-        private void InsertAutorization(string id)
+        private void InsertAutorization()
         {
-            string insertAuotorization = "INSERT INTO `authorization` (`login`, `password`, `users_id`) VALUES(@login, @password, @users_id)";
+            string insertAuotorization = 
+                "INSERT INTO `users` " +
+                "(`login`, `password`, `name`, `middlename`, `surname`) " +
+                "VALUES(@login, @password, @name, @middlename, @surname)";
             
             DataBase database = new DataBase();
             MySqlCommand command = new MySqlCommand(insertAuotorization, database.getConnection());
 
             command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
             command.Parameters.Add("@password", MySqlDbType.VarChar).Value = passwordField.Text;
-            command.Parameters.Add("@users_id", MySqlDbType.VarChar).Value = id;
+            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = userNameField.Text;
+            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = userSurnameField.Text;
+            command.Parameters.Add("@middlename", MySqlDbType.VarChar).Value = middleNameField.Text;
 
             bool accountStatus = false;
 
@@ -196,22 +233,5 @@ namespace JournalForStudents
                 loginForm.Show();
             }
         }
-
-        private static void InsertUserName(string name, string surname, string middlename)
-        {
-            string insertUserData = "INSERT INTO `users` (`name`, `middlename`, `surname`) VALUES (@name, @middlename, @surname)";
-
-            DataBase database = new DataBase();
-            MySqlCommand command = new MySqlCommand(insertUserData, database.getConnection());
-
-            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
-            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = surname;
-            command.Parameters.Add("@middlename", MySqlDbType.VarChar).Value = middlename;
-
-            database.openConnection();
-            command.ExecuteNonQuery();
-            database.closeConnection();
-        }
-
     }
 }

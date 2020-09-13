@@ -18,13 +18,13 @@ namespace JournalForStudents
             InitializeComponent();
         }
 
-        public void LoadData()
+        public void LoadData(string teacherFromLoginForm)
         {
             DataBase database = new DataBase();
 
             database.openConnection();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `autorization` WHERE `login` = @nameLogin", database.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @nameLogin", database.getConnection());
 
             MySqlParameter param = new MySqlParameter("@nameLogin", teacherFromLoginForm);
             command.Parameters.Add(param);
@@ -33,9 +33,9 @@ namespace JournalForStudents
 
             while (reader.Read())
             {
-                rankProf.Text = Convert.ToString(reader["rank"]);
+                labelUserID.Text = Convert.ToString(reader["users_id"]);
                 nameProf.Text = Convert.ToString(reader["name"]);
-                lastnameProf.Text = Convert.ToString(reader["lastname"]);
+                surnameProf.Text = Convert.ToString(reader["surname"]);
                 middlenameProf.Text = Convert.ToString(reader["middlename"]);
             }
 
@@ -58,6 +58,13 @@ namespace JournalForStudents
         private void mainTeacherForm_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void intoJournals_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            JournalsListForm journalsList = new JournalsListForm();
+            journalsList.Show();
         }
     }
 }

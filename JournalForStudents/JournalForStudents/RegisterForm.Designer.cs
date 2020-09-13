@@ -36,10 +36,10 @@
             this.loginField = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.middleNameField = new System.Windows.Forms.TextBox();
             this.userSurnameField = new System.Windows.Forms.TextBox();
             this.userNameField = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.middleNameField = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MenuPanel.SuspendLayout();
@@ -153,6 +153,17 @@
             this.MenuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuPanel_MouseDown);
             this.MenuPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuPanel_MouseMove);
             // 
+            // middleNameField
+            // 
+            this.middleNameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.middleNameField.Location = new System.Drawing.Point(43, 295);
+            this.middleNameField.Multiline = true;
+            this.middleNameField.Name = "middleNameField";
+            this.middleNameField.Size = new System.Drawing.Size(369, 64);
+            this.middleNameField.TabIndex = 11;
+            this.middleNameField.Enter += new System.EventHandler(this.middleNameField_Enter);
+            this.middleNameField.Leave += new System.EventHandler(this.middleNameField_Leave);
+            // 
             // userSurnameField
             // 
             this.userSurnameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -185,15 +196,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(899, 121);
             this.panel2.TabIndex = 0;
-            // 
-            // middleNameField
-            // 
-            this.middleNameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.middleNameField.Location = new System.Drawing.Point(43, 295);
-            this.middleNameField.Multiline = true;
-            this.middleNameField.Name = "middleNameField";
-            this.middleNameField.Size = new System.Drawing.Size(369, 64);
-            this.middleNameField.TabIndex = 11;
             // 
             // RegisterForm
             // 

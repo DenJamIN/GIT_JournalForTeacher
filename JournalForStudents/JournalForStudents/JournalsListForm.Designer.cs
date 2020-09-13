@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.intoTimetable = new System.Windows.Forms.Label();
             this.intoJournals = new System.Windows.Forms.Label();
@@ -41,6 +41,7 @@
             this.disciplineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonToJournalForm = new System.Windows.Forms.Button();
             this.labelJournalName = new System.Windows.Forms.Label();
+            this.labelUserID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonCreateNewJournal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableJournalsList)).BeginInit();
@@ -49,6 +50,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.labelUserID);
             this.panel1.Controls.Add(this.intoTimetable);
             this.panel1.Controls.Add(this.intoJournals);
             this.panel1.Controls.Add(this.intoProfile);
@@ -73,7 +75,7 @@
             this.intoJournals.AutoSize = true;
             this.intoJournals.Cursor = System.Windows.Forms.Cursors.Hand;
             this.intoJournals.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.intoJournals.Location = new System.Drawing.Point(12, 208);
+            this.intoJournals.Location = new System.Drawing.Point(12, 223);
             this.intoJournals.Name = "intoJournals";
             this.intoJournals.Size = new System.Drawing.Size(123, 29);
             this.intoJournals.TabIndex = 1;
@@ -84,7 +86,7 @@
             // 
             this.intoProfile.AutoSize = true;
             this.intoProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.intoProfile.Location = new System.Drawing.Point(12, 47);
+            this.intoProfile.Location = new System.Drawing.Point(14, 77);
             this.intoProfile.Name = "intoProfile";
             this.intoProfile.Size = new System.Drawing.Size(121, 29);
             this.intoProfile.TabIndex = 0;
@@ -104,28 +106,28 @@
             // 
             // tableJournalsList
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tableJournalsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tableJournalsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.tableJournalsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableJournalsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.journal_id,
             this.groupName,
             this.disciplineName});
             this.tableJournalsList.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tableJournalsList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableJournalsList.DefaultCellStyle = dataGridViewCellStyle4;
             this.tableJournalsList.Location = new System.Drawing.Point(193, 163);
             this.tableJournalsList.MultiSelect = false;
             this.tableJournalsList.Name = "tableJournalsList";
@@ -186,6 +188,15 @@
             this.labelJournalName.TabIndex = 12;
             this.labelJournalName.Text = "Выберите журнал";
             // 
+            // labelUserID
+            // 
+            this.labelUserID.AutoSize = true;
+            this.labelUserID.Location = new System.Drawing.Point(3, 0);
+            this.labelUserID.Name = "labelUserID";
+            this.labelUserID.Size = new System.Drawing.Size(19, 17);
+            this.labelUserID.TabIndex = 16;
+            this.labelUserID.Text = "id";
+            // 
             // JournalsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -223,5 +234,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn journal_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupName;
         private System.Windows.Forms.DataGridViewTextBoxColumn disciplineName;
+        private System.Windows.Forms.Label labelUserID;
     }
 }

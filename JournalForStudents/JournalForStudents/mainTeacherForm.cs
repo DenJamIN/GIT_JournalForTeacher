@@ -41,7 +41,6 @@ namespace JournalForStudents
 
             database.closeConnection();
         }
-
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -64,6 +63,7 @@ namespace JournalForStudents
         {
             this.Hide();
             JournalsListForm journalsList = new JournalsListForm();
+            journalsList.LoadJournalsData(labelUserID.Text);
             journalsList.Show();
         }
     }

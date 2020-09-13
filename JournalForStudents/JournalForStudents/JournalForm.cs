@@ -17,8 +17,9 @@ namespace Journal
             InitializeComponent();
         }
 
-        public void GetStudentsDataFromDB(string journalData)
+        public void GetStudentsDataFromDB(string journalData, string userID)
         {
+            labelUserID.Text = userID;
             GetJournalName(journalData);
             
             //Автоматическое добавление столбцов в журнале
@@ -482,6 +483,7 @@ namespace Journal
         {
             this.Hide();
             JournalsListForm journalsList = new JournalsListForm();
+            journalsList.LoadJournalsData(labelUserID.Text);
             journalsList.Show();
         }
 

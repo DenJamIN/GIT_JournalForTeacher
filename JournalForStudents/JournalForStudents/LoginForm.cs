@@ -21,7 +21,7 @@ namespace JournalForStudents
             this.passwordField.AutoSize = false;
             this.passwordField.Size = new Size(this.passwordField.Size.Width, this.loginField.Size.Height);
         }
-
+        
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -80,7 +80,7 @@ namespace JournalForStudents
                 MessageBox.Show("Неправильный логин или пароль");
             }
         }
-
+        
         private void intoRegisterForm_Click(object sender, EventArgs e)
         {
             this.Hide();

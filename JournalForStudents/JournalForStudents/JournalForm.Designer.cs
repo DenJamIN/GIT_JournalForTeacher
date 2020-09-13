@@ -48,6 +48,7 @@
             this.scoresPerLesson = new System.Windows.Forms.TextBox();
             this.buttonSafeChanges = new System.Windows.Forms.Button();
             this.labelGroupID = new System.Windows.Forms.Label();
+            this.labelUserID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
@@ -58,6 +59,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.labelUserID);
             this.panel1.Controls.Add(this.intoJournals);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -284,6 +286,15 @@
             this.labelGroupID.TabIndex = 19;
             this.labelGroupID.Text = "id";
             // 
+            // labelUserID
+            // 
+            this.labelUserID.AutoSize = true;
+            this.labelUserID.Location = new System.Drawing.Point(3, 0);
+            this.labelUserID.Name = "labelUserID";
+            this.labelUserID.Size = new System.Drawing.Size(19, 17);
+            this.labelUserID.TabIndex = 20;
+            this.labelUserID.Text = "id";
+            // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -342,6 +353,7 @@
         private System.Windows.Forms.Label labelGroupID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label intoJournals;
+        private System.Windows.Forms.Label labelUserID;
     }
 }
 

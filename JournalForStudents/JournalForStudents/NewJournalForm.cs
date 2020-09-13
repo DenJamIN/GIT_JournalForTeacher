@@ -20,12 +20,14 @@ namespace JournalForStudents
             FiilField();
         }
 
+        public string userID; 
         private void FiilField()
         {
             groupNameField.Text = "Введите название группы";
             groupNameField.ForeColor = Color.Gray;
             disciplineNameField.Text = "Введите название дисциплины";
             disciplineNameField.ForeColor = Color.Gray;
+            
         }
 
         private void groupNameField_Enter(object sender, EventArgs e)
@@ -74,25 +76,22 @@ namespace JournalForStudents
                 MessageBox.Show("Вы заполнили не все поля");
                 return;
             }
-           
-            AccountBusy accountBusy = new AccountBusy();
-            if (accountBusy.isUsersExists("SELECT * FROM `groups` WHERE `discipline` = @discipline",
-                                          "@discipline",
-                                          Convert.ToString(disciplineNameField.Text)))
+
+            if (IsJournalExists(userID))
             {
+                MessageBox.Show("Такой журнал уже есть");
                 return;
             }
 
+            string insertNewJournal = 
+                "INSERT INTO `groups` " +
+                "(`groupName`,`disciplineName`, `users_id`) " +
+                "VALUES(@groupname,@discipline,@usersID)";
             DataBase dataBase = new DataBase();
-            // "INSERT INTO `users` (`login`, `password`, `rank`, `name`, `lastname`) VALUES(@login,@password,@rank,@name,@lastname)"
-            MySqlCommand command = new MySqlCommand(
-                "INSERT INTO `journals` (`groupname`,`discipline`) VALUES(@groupname,@discipline)",
-                dataBase.getConnection());
-
-            //command.Parameters.Add("@teacher", MySqlDbType.VarChar).Value = ;
+            MySqlCommand command = new MySqlCommand(insertNewJournal, dataBase.getConnection());
             command.Parameters.Add("@groupname", MySqlDbType.VarChar).Value = groupNameField.Text;
             command.Parameters.Add("@discipline", MySqlDbType.VarChar).Value = disciplineNameField.Text;
-            //command.Parameters.Add("@password", MySqlDbType.VarChar).Value = ;
+            command.Parameters.Add("@usersID", MySqlDbType.Int32).Value = Convert.ToInt32(userID); 
 
             bool accountStatus = false;
 
@@ -113,9 +112,39 @@ namespace JournalForStudents
             {
                 this.Hide();
                 JournalsListForm journalsList = new JournalsListForm();
+                journalsList.LoadJournalsData(userID);
                 journalsList.Show();
             }
         }
 
+        private bool IsJournalExists(string id)
+        {
+            string searchJournal = "SELECT * FROM `groups` " +
+                "WHERE groupName = @groupname " +
+                "AND disciplineName = @discipline " +
+                "AND users_id = @userID";
+            DataBase database = new DataBase();
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand(searchJournal, database.getConnection());
+
+            command.Parameters.Add("@groupname", MySqlDbType.VarChar).Value = groupNameField.Text;
+            command.Parameters.Add("@discipline", MySqlDbType.VarChar).Value = disciplineNameField.Text;
+            command.Parameters.Add("@userID", MySqlDbType.Int32).Value = Convert.ToInt32(id);
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Аккаунт с таким названием существует");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

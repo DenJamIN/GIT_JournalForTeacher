@@ -47,14 +47,12 @@
             this.labelScorePerLesson = new System.Windows.Forms.Label();
             this.scoresPerLesson = new System.Windows.Forms.TextBox();
             this.buttonSafeChanges = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelGroupID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -115,7 +113,7 @@
             this.tableStudent.Name = "tableStudent";
             this.tableStudent.RowHeadersWidth = 51;
             this.tableStudent.RowTemplate.Height = 24;
-            this.tableStudent.Size = new System.Drawing.Size(264, 527);
+            this.tableStudent.Size = new System.Drawing.Size(1273, 527);
             this.tableStudent.TabIndex = 2;
             this.tableStudent.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tableStudent_Scroll);
             // 
@@ -151,7 +149,7 @@
             this.tableLessonType.RowHeadersWidth = 51;
             this.tableLessonType.RowTemplate.Height = 24;
             this.tableLessonType.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tableLessonType.Size = new System.Drawing.Size(264, 49);
+            this.tableLessonType.Size = new System.Drawing.Size(1273, 49);
             this.tableLessonType.TabIndex = 7;
             // 
             // nullColumns
@@ -177,7 +175,7 @@
             this.tableLessonDate.RowHeadersWidth = 51;
             this.tableLessonDate.RowTemplate.Height = 24;
             this.tableLessonDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tableLessonDate.Size = new System.Drawing.Size(264, 49);
+            this.tableLessonDate.Size = new System.Drawing.Size(1273, 49);
             this.tableLessonDate.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumn1
@@ -276,16 +274,6 @@
             this.buttonSafeChanges.UseVisualStyleBackColor = false;
             this.buttonSafeChanges.Click += new System.EventHandler(this.buttonSafeChanges_Click);
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::JournalForStudents.Properties.Resources.Значок_Кгу;
-            this.pictureBox3.Location = new System.Drawing.Point(167, 81);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(236, 194);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 18;
-            this.pictureBox3.TabStop = false;
-            // 
             // labelGroupID
             // 
             this.labelGroupID.AutoSize = true;
@@ -302,7 +290,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1440, 800);
             this.Controls.Add(this.labelGroupID);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.buttonSafeChanges);
             this.Controls.Add(this.scoresPerLesson);
             this.Controls.Add(this.labelScorePerLesson);
@@ -328,7 +315,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,7 +339,6 @@
         private System.Windows.Forms.Label labelScorePerLesson;
         private System.Windows.Forms.TextBox scoresPerLesson;
         private System.Windows.Forms.Button buttonSafeChanges;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label labelGroupID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label intoJournals;

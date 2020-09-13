@@ -101,7 +101,7 @@ namespace Journal
                 Width = 70
             });
 
-            SlideTables();
+           // SlideTables();
         }
 
         private void buttonForSummation_Click(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace Journal
 
             ScoreSummation();
 
-            SlideTables();
+           // SlideTables();
         }
 
         private void ScoreSummation()
@@ -150,7 +150,8 @@ namespace Journal
                     summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
                     if (!(tableStudent[j-1, i].Value.ToString() == "False") && !(tableStudent[j - 1, i].Value.ToString() == ""))
                     {
-                        summa += Convert.ToDouble(scoresPerLesson.Text);
+                        if(scoresPerLesson.Text!="")
+                            summa += Convert.ToDouble(scoresPerLesson.Text);
                     }
                 }
                 tableStudent["scoreSummation", i].Value = Convert.ToDouble(summa);

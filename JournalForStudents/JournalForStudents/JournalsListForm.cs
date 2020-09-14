@@ -17,12 +17,11 @@ namespace JournalForStudents
         public JournalsListForm()
         {
             InitializeComponent();
-            LoadJournalsData();
         }
-
-        private void LoadJournalsData()
+        public void LoadJournalsData(string userID)
         {
-            string journalsDataDB = "SELECT * FROM groups ORDER BY groups_id";
+            labelUserID.Text = userID;
+            string journalsDataDB = "SELECT * FROM groups WHERE `users_id`=" + userID + " ORDER BY groups_id";
 
             DataBase dataBase = new DataBase();
             MySqlCommand command = new MySqlCommand(journalsDataDB, dataBase.getConnection());
@@ -46,8 +45,9 @@ namespace JournalForStudents
 
         private void buttonCreateNewJournal_Click(object sender, EventArgs e)
         {
-            NewJournalForm newJournal = new NewJournalForm();
             this.Hide();
+            NewJournalForm newJournal = new NewJournalForm();
+            newJournal.userID = labelUserID.Text;
             newJournal.Show();
         }
 
@@ -55,6 +55,7 @@ namespace JournalForStudents
         {
             this.Hide();
             JournalsListForm journalsList = new JournalsListForm();
+            journalsList.LoadJournalsData(labelUserID.Text);
             journalsList.Show();
         }
 
@@ -62,7 +63,7 @@ namespace JournalForStudents
         {
             this.Hide();
             JournalForm journalForm = new JournalForm();
-            journalForm.GetStudentsDataFromDB(labelJournalName.Text.ToString());
+            journalForm.GetStudentsDataFromDB(labelJournalName.Text.ToString(), labelUserID.Text);
             journalForm.Show();
         }
 

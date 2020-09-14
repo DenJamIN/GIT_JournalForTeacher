@@ -21,7 +21,7 @@ namespace JournalForStudents
             this.passwordField.AutoSize = false;
             this.passwordField.Size = new Size(this.passwordField.Size.Width, this.loginField.Size.Height);
         }
-
+        
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -59,11 +59,10 @@ namespace JournalForStudents
             // MySqlDataAdapter - служит для перевода из SQL данных в данные обычные (массивы, объекты...)
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             // MySqlCommand - позволяет записать SQL команду, что будет выполнена в базе данных
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL AND `password` = @uP AND `rank` = @rank", database.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL AND `password` = @uP", database.getConnection());
             //Вместо заглушек вставляем наш пароль и логин и сравниваем с БД
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passwordField.Text;
-            command.Parameters.Add("@rank", MySqlDbType.Text).Value = rankField.Text;
             
             adapter.SelectCommand = command;
             //Переводим наши данные в таблицу (логин и пароль)
@@ -71,30 +70,17 @@ namespace JournalForStudents
             //Если мы смогли авторизоваться значит кол-во наших стобцов в таблице изменится на один отлично от нуля
             if (table.Rows.Count > 0)
             {
-                if (rankField.Text == "Студент")
-                {
-                    //Скрываем текущее окно и передаем значение логина переменной, для работы с базы даннами по логину пользователя
-                    mainStudentForm mainStudent = new mainStudentForm();
-                    mainStudent.studentFromLoginForm = Convert.ToString(loginField.Text);
-                    mainStudent.LoadData();
-                    this.Hide();
-                    mainStudent.Show();
-                }
-                else if (rankField.Text == "Преподаватель")
-                {
-                    mainTeacherForm mainTeacher = new mainTeacherForm();
-                    mainTeacher.teacherFromLoginForm = Convert.ToString(loginField.Text);
-                    mainTeacher.LoadData();
-                    this.Hide();
-                    mainTeacher.Show();
-                }
+                mainTeacherForm mainTeacher = new mainTeacherForm();
+                mainTeacher.LoadData(loginField.Text);
+                this.Hide();
+                mainTeacher.Show();
             }
             else
             {
                 MessageBox.Show("Неправильный логин или пароль");
             }
         }
-
+        
         private void intoRegisterForm_Click(object sender, EventArgs e)
         {
             this.Hide();

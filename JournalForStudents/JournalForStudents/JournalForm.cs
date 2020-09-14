@@ -17,18 +17,44 @@ namespace Journal
             InitializeComponent();
         }
 
-        public void GetStudentsDataFromDB(string journalData)
+        public void GetStudentsDataFromDB(string journalData, string userID)
         {
+            labelUserID.Text = userID;
             GetJournalName(journalData);
             
             //Автоматическое добавление столбцов в журнале
             GetAutoColumnsToJournal();
 
             //Считывание из БД
+            LoadScorePerLesson();
             LoadStudents();
             LoadStudentsScore();    
         }
        
+        private void LoadScorePerLesson()
+        {
+            DataBase dataBase = new DataBase();
+
+            dataBase.openConnection();
+
+            string loadStudentData =
+                "SELECT * FROM `groups` " +
+                "WHERE groups_id = @groups_id";
+
+            MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+            command.Parameters.Add("@groups_id", MySqlDbType.Int32).Value = Convert.ToInt32(labelGroupID.Text);
+
+            dataBase.openConnection();
+
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                scoresPerLesson.Text = Convert.ToString(reader["scorePerLesson"]);
+            }
+
+            dataBase.closeConnection();
+        }
+
         private void GetAutoColumnsToJournal()
         {
             while (tableLessonDate.Columns.Count <= ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
@@ -101,7 +127,7 @@ namespace Journal
                 Width = 70
             });
 
-            SlideTables();
+           // SlideTables();
         }
 
         private void buttonForSummation_Click(object sender, EventArgs e)
@@ -135,7 +161,7 @@ namespace Journal
 
             ScoreSummation();
 
-            SlideTables();
+           // SlideTables();
         }
 
         private void ScoreSummation()
@@ -150,7 +176,8 @@ namespace Journal
                     summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
                     if (!(tableStudent[j-1, i].Value.ToString() == "False") && !(tableStudent[j - 1, i].Value.ToString() == ""))
                     {
-                        summa += Convert.ToDouble(scoresPerLesson.Text);
+                        if(scoresPerLesson.Text!="")
+                            summa += Convert.ToDouble(scoresPerLesson.Text);
                     }
                 }
                 tableStudent["scoreSummation", i].Value = Convert.ToDouble(summa);
@@ -171,9 +198,9 @@ namespace Journal
             tableLessonType.Columns.Remove("nullType");
             tableLessonDate.Columns.Remove("nullDate");
 
-            tableStudent.Width -= generalWidthColumn;
-            tableLessonDate.Width -= generalWidthColumn;
-            tableLessonType.Width -= generalWidthColumn;
+           // tableStudent.Width -= generalWidthColumn;
+           // tableLessonDate.Width -= generalWidthColumn;
+           // tableLessonType.Width -= generalWidthColumn;
         }
 
         Point lastPoint;
@@ -197,6 +224,27 @@ namespace Journal
             InsertStudentToDB();//Студентов
             
             InsertScoreToDB();//Баллов
+
+            InsertScorePerLesson();//Балла за занятие
+        }
+
+        private void InsertScorePerLesson()
+        {
+            DataBase dataBase = new DataBase();
+            string insertStudentData =
+                "UPDATE `groups` " +
+                "SET `scorePerLesson`=@scorePerLesson " +
+                "WHERE groups_id =" + labelGroupID.Text;
+
+            MySqlCommand command = new MySqlCommand(insertStudentData, dataBase.getConnection());
+
+            command.Parameters.Add("@scorePerLesson", MySqlDbType.VarChar).Value = scoresPerLesson.Text;
+
+            dataBase.openConnection();
+
+            command.ExecuteNonQuery();
+
+            dataBase.closeConnection();
         }
 
         private void LoadStudents()
@@ -475,6 +523,20 @@ namespace Journal
 
             }
 
+        }
+
+        private void intoJournals_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            JournalsListForm journalsList = new JournalsListForm();
+            journalsList.LoadJournalsData(labelUserID.Text);
+            journalsList.Show();
+        }
+
+        private void tableStudent_Scroll(object sender, ScrollEventArgs e)
+        {
+            tableLessonDate.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;
+            tableLessonType.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.intoJournals = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableStudent = new System.Windows.Forms.DataGridView();
@@ -46,24 +47,38 @@
             this.labelScorePerLesson = new System.Windows.Forms.Label();
             this.scoresPerLesson = new System.Windows.Forms.TextBox();
             this.buttonSafeChanges = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelGroupID = new System.Windows.Forms.Label();
+            this.labelUserID = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.labelUserID);
+            this.panel1.Controls.Add(this.intoJournals);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(167, 800);
             this.panel1.TabIndex = 0;
+            // 
+            // intoJournals
+            // 
+            this.intoJournals.AutoSize = true;
+            this.intoJournals.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.intoJournals.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.intoJournals.Location = new System.Drawing.Point(21, 256);
+            this.intoJournals.Name = "intoJournals";
+            this.intoJournals.Size = new System.Drawing.Size(123, 29);
+            this.intoJournals.TabIndex = 20;
+            this.intoJournals.Text = "Журналы";
+            this.intoJournals.Click += new System.EventHandler(this.intoJournals_Click);
             // 
             // panel2
             // 
@@ -96,12 +111,13 @@
             this.students});
             this.tableStudent.Location = new System.Drawing.Point(167, 273);
             this.tableStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableStudent.MultiSelect = false;
             this.tableStudent.Name = "tableStudent";
             this.tableStudent.RowHeadersWidth = 51;
             this.tableStudent.RowTemplate.Height = 24;
-            this.tableStudent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tableStudent.Size = new System.Drawing.Size(264, 527);
+            this.tableStudent.Size = new System.Drawing.Size(1273, 527);
             this.tableStudent.TabIndex = 2;
+            this.tableStudent.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tableStudent_Scroll);
             // 
             // students
             // 
@@ -135,7 +151,7 @@
             this.tableLessonType.RowHeadersWidth = 51;
             this.tableLessonType.RowTemplate.Height = 24;
             this.tableLessonType.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tableLessonType.Size = new System.Drawing.Size(264, 49);
+            this.tableLessonType.Size = new System.Drawing.Size(1273, 49);
             this.tableLessonType.TabIndex = 7;
             // 
             // nullColumns
@@ -161,7 +177,7 @@
             this.tableLessonDate.RowHeadersWidth = 51;
             this.tableLessonDate.RowTemplate.Height = 24;
             this.tableLessonDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tableLessonDate.Size = new System.Drawing.Size(264, 49);
+            this.tableLessonDate.Size = new System.Drawing.Size(1273, 49);
             this.tableLessonDate.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumn1
@@ -260,16 +276,6 @@
             this.buttonSafeChanges.UseVisualStyleBackColor = false;
             this.buttonSafeChanges.Click += new System.EventHandler(this.buttonSafeChanges_Click);
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::JournalForStudents.Properties.Resources.Значок_Кгу;
-            this.pictureBox3.Location = new System.Drawing.Point(167, 81);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(236, 194);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 18;
-            this.pictureBox3.TabStop = false;
-            // 
             // labelGroupID
             // 
             this.labelGroupID.AutoSize = true;
@@ -280,14 +286,21 @@
             this.labelGroupID.TabIndex = 19;
             this.labelGroupID.Text = "id";
             // 
+            // labelUserID
+            // 
+            this.labelUserID.AutoSize = true;
+            this.labelUserID.Location = new System.Drawing.Point(3, 0);
+            this.labelUserID.Name = "labelUserID";
+            this.labelUserID.Size = new System.Drawing.Size(19, 17);
+            this.labelUserID.TabIndex = 20;
+            this.labelUserID.Text = "id";
+            // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1440, 800);
             this.Controls.Add(this.labelGroupID);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.buttonSafeChanges);
             this.Controls.Add(this.scoresPerLesson);
             this.Controls.Add(this.labelScorePerLesson);
@@ -307,11 +320,12 @@
             this.Name = "JournalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,9 +350,10 @@
         private System.Windows.Forms.Label labelScorePerLesson;
         private System.Windows.Forms.TextBox scoresPerLesson;
         private System.Windows.Forms.Button buttonSafeChanges;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label labelGroupID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Label intoJournals;
+        private System.Windows.Forms.Label labelUserID;
     }
 }
 

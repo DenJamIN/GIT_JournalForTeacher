@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.MenuPanel = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.rankField = new System.Windows.Forms.ListBox();
             this.intoRegisterForm = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.passwordField = new System.Windows.Forms.TextBox();
@@ -41,7 +39,6 @@
             this.CloseButton = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -50,8 +47,6 @@
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.MenuPanel.Controls.Add(this.pictureBox3);
-            this.MenuPanel.Controls.Add(this.rankField);
             this.MenuPanel.Controls.Add(this.intoRegisterForm);
             this.MenuPanel.Controls.Add(this.buttonLogin);
             this.MenuPanel.Controls.Add(this.passwordField);
@@ -66,29 +61,6 @@
             this.MenuPanel.TabIndex = 0;
             this.MenuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuPanel_MouseDown);
             this.MenuPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuPanel_MouseMove);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::JournalForStudents.Properties.Resources.rankSelection1;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 161);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(75, 80);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 8;
-            this.pictureBox3.TabStop = false;
-            // 
-            // rankField
-            // 
-            this.rankField.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rankField.FormattingEnabled = true;
-            this.rankField.ItemHeight = 38;
-            this.rankField.Items.AddRange(new object[] {
-            "Студент",
-            "Преподаватель"});
-            this.rankField.Location = new System.Drawing.Point(84, 161);
-            this.rankField.Name = "rankField";
-            this.rankField.Size = new System.Drawing.Size(263, 80);
-            this.rankField.TabIndex = 7;
             // 
             // intoRegisterForm
             // 
@@ -209,7 +181,6 @@
             this.Text = "LoginForm";
             this.MenuPanel.ResumeLayout(false);
             this.MenuPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -229,7 +200,5 @@
         private System.Windows.Forms.TextBox loginField;
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Label intoRegisterForm;
-        private System.Windows.Forms.ListBox rankField;
-        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

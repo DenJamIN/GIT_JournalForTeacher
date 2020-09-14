@@ -18,7 +18,7 @@ namespace JournalForStudents
             InitializeComponent();
         }
 
-        public void LoadData()
+        public void LoadData(string teacherFromLoginForm)
         {
             DataBase database = new DataBase();
 
@@ -33,15 +33,14 @@ namespace JournalForStudents
 
             while (reader.Read())
             {
-                rankProf.Text = Convert.ToString(reader["rank"]);
+                labelUserID.Text = Convert.ToString(reader["users_id"]);
                 nameProf.Text = Convert.ToString(reader["name"]);
-                lastnameProf.Text = Convert.ToString(reader["lastname"]);
+                surnameProf.Text = Convert.ToString(reader["surname"]);
                 middlenameProf.Text = Convert.ToString(reader["middlename"]);
             }
 
             database.closeConnection();
         }
-
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -58,6 +57,14 @@ namespace JournalForStudents
         private void mainTeacherForm_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void intoJournals_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            JournalsListForm journalsList = new JournalsListForm();
+            journalsList.LoadJournalsData(labelUserID.Text);
+            journalsList.Show();
         }
     }
 }

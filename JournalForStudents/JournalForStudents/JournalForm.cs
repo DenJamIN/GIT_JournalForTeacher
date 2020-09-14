@@ -26,10 +26,35 @@ namespace Journal
             GetAutoColumnsToJournal();
 
             //Считывание из БД
+            LoadScorePerLesson();
             LoadStudents();
             LoadStudentsScore();    
         }
        
+        private void LoadScorePerLesson()
+        {
+            DataBase dataBase = new DataBase();
+
+            dataBase.openConnection();
+
+            string loadStudentData =
+                "SELECT * FROM `groups` " +
+                "WHERE groups_id = @groups_id";
+
+            MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+            command.Parameters.Add("@groups_id", MySqlDbType.Int32).Value = Convert.ToInt32(labelGroupID.Text);
+
+            dataBase.openConnection();
+
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                scoresPerLesson.Text = Convert.ToString(reader["scorePerLesson"]);
+            }
+
+            dataBase.closeConnection();
+        }
+
         private void GetAutoColumnsToJournal()
         {
             while (tableLessonDate.Columns.Count <= ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
@@ -173,9 +198,9 @@ namespace Journal
             tableLessonType.Columns.Remove("nullType");
             tableLessonDate.Columns.Remove("nullDate");
 
-            tableStudent.Width -= generalWidthColumn;
-            tableLessonDate.Width -= generalWidthColumn;
-            tableLessonType.Width -= generalWidthColumn;
+           // tableStudent.Width -= generalWidthColumn;
+           // tableLessonDate.Width -= generalWidthColumn;
+           // tableLessonType.Width -= generalWidthColumn;
         }
 
         Point lastPoint;
@@ -199,6 +224,27 @@ namespace Journal
             InsertStudentToDB();//Студентов
             
             InsertScoreToDB();//Баллов
+
+            InsertScorePerLesson();//Балла за занятие
+        }
+
+        private void InsertScorePerLesson()
+        {
+            DataBase dataBase = new DataBase();
+            string insertStudentData =
+                "UPDATE `groups` " +
+                "SET `scorePerLesson`=@scorePerLesson " +
+                "WHERE groups_id =" + labelGroupID.Text;
+
+            MySqlCommand command = new MySqlCommand(insertStudentData, dataBase.getConnection());
+
+            command.Parameters.Add("@scorePerLesson", MySqlDbType.VarChar).Value = scoresPerLesson.Text;
+
+            dataBase.openConnection();
+
+            command.ExecuteNonQuery();
+
+            dataBase.closeConnection();
         }
 
         private void LoadStudents()

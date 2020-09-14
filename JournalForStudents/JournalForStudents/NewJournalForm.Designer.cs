@@ -32,6 +32,7 @@
             this.disciplineNameField = new System.Windows.Forms.TextBox();
             this.buttonCreateJournal = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // groupNameField
@@ -80,12 +81,25 @@
             this.label.TabIndex = 3;
             this.label.Text = "Создание нового журнала";
             // 
+            // buttonBack
+            // 
+            this.buttonBack.BackColor = System.Drawing.Color.Orange;
+            this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonBack.Location = new System.Drawing.Point(0, -2);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(104, 36);
+            this.buttonBack.TabIndex = 4;
+            this.buttonBack.Text = "Вернуться";
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
             // NewJournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(533, 457);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.label);
             this.Controls.Add(this.buttonCreateJournal);
             this.Controls.Add(this.disciplineNameField);
@@ -105,5 +119,6 @@
         private System.Windows.Forms.TextBox disciplineNameField;
         private System.Windows.Forms.Button buttonCreateJournal;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Button buttonBack;
     }
 }

@@ -170,9 +170,9 @@ namespace Journal
             for (int i = 0; i < tableStudent.Rows.Count-1; i++)
             {              
                 for (int j = 2; j < tableStudent.Columns.Count; j += 2)
-                {
-                    if (tableStudent[j, i].Value.ToString() == "")
-                        tableStudent[j, i].Value = "0";
+                {                   
+                        if (DBNull.Value == null || tableStudent[j, i].Value.ToString() == "")
+                            tableStudent[j, i].Value = "0";
                     summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
                     if (!(tableStudent[j-1, i].Value.ToString() == "False") && !(tableStudent[j - 1, i].Value.ToString() == ""))
                     {

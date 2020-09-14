@@ -138,13 +138,20 @@ namespace JournalForStudents
 
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show("Аккаунт с таким названием существует");
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            JournalsListForm journalsList = new JournalsListForm();
+            journalsList.LoadJournalsData(userID);
+            journalsList.Show();
         }
     }
 }

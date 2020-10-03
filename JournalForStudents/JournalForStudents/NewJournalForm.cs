@@ -96,16 +96,14 @@ namespace JournalForStudents
             bool accountStatus = false;
 
             dataBase.openConnection();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Журнал успешно создан");
+                    accountStatus = true;
+                }
 
-            if (command.ExecuteNonQuery() == 1)
-            {
-                MessageBox.Show("Журнал успешно создан");
-                accountStatus = true;
-            }
-
-            else
-                MessageBox.Show("Ошибка создания журнала");
-
+                else
+                    MessageBox.Show("Ошибка создания журнала");
             dataBase.closeConnection();
 
             if (accountStatus)

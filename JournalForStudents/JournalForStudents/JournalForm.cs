@@ -163,7 +163,7 @@ namespace Journal
         }
 
         private void ScoreSummation()
-        {        
+        {
             double summa = 0;
             for (int i = 0; i < tableStudent.Rows.Count-1; i++)
             {              
@@ -199,21 +199,6 @@ namespace Journal
            // tableStudent.Width -= generalWidthColumn;
            // tableLessonDate.Width -= generalWidthColumn;
            // tableLessonType.Width -= generalWidthColumn;
-        }
-
-        Point lastPoint;
-        private void panel2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
-            }
-        }
-
-        private void panel2_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
         }
 
         private void buttonSafeChanges_Click(object sender, EventArgs e)

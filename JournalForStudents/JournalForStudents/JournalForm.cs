@@ -26,12 +26,12 @@ namespace Journal
             GetAutoColumnsToJournal();
 
             //Считывание из БД
-            LoadScorePerLesson();
-            LoadStudents();
-            LoadStudentsScore();    
+            GetScorePerLesson();
+            GetStudentsName();
+            GetStudentsScore();    
         }
        
-        private void LoadScorePerLesson()
+        private void GetScorePerLesson()
         {
             DataBase dataBase = new DataBase();
 
@@ -45,19 +45,17 @@ namespace Journal
             command.Parameters.Add("@groups_id", MySqlDbType.Int32).Value = Convert.ToInt32(labelGroupID.Text);
 
             dataBase.openConnection();
-
-            MySqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
-            {
-                scoresPerLesson.Text = Convert.ToString(reader["scorePerLesson"]);
-            }
-
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    scoresPerLesson.Text = Convert.ToString(reader["scorePerLesson"]);
+                }
             dataBase.closeConnection();
         }
 
         private void GetAutoColumnsToJournal()
         {
-            while (tableLessonDate.Columns.Count <= ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
+            while (tableLessonDate.Columns.Count <= ((GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
                 CreateJournalColumns();
         }
 
@@ -66,21 +64,19 @@ namespace Journal
             DataBase dataBase = new DataBase();
 
             dataBase.openConnection();
+                string getNames = "SELECT * FROM `groups` " +
+                    "WHERE groups_id = @groups_id";
 
-            string getNames = "SELECT * FROM `groups` " +
-                "WHERE groups_id = @groups_id";
-
-            MySqlCommand command = new MySqlCommand(getNames, dataBase.getConnection());
-            MySqlParameter parameter = new MySqlParameter("@groups_id", journalData);
-            command.Parameters.Add(parameter);
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                labelGroupID.Text = Convert.ToString(reader["groups_id"]);
-                labelGroupName.Text = Convert.ToString(reader["groupName"]);
-                labelDisciplineName.Text = Convert.ToString(reader["disciplineName"]);
-            }
-
+                MySqlCommand command = new MySqlCommand(getNames, dataBase.getConnection());
+                MySqlParameter parameter = new MySqlParameter("@groups_id", journalData);
+                command.Parameters.Add(parameter);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    labelGroupID.Text = Convert.ToString(reader["groups_id"]);
+                    labelGroupName.Text = Convert.ToString(reader["groupName"]);
+                    labelDisciplineName.Text = Convert.ToString(reader["disciplineName"]);
+                }
             dataBase.closeConnection();
         }
 
@@ -94,8 +90,8 @@ namespace Journal
 
             CreateJournalColumns();
 
-            if (tableLessonDate.Columns.Count - 1 > ((CountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
-                createColumnsIntoDb(tableLessonDate.Columns.Count - 1);
+            if (tableLessonDate.Columns.Count - 1 > ((GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
+                AddColumnsInDB(tableLessonDate.Columns.Count - 1);
         }
 
         private void CreateJournalColumns()
@@ -132,6 +128,8 @@ namespace Journal
 
         private void buttonForSummation_Click(object sender, EventArgs e)
         {
+            InsertStudentsData();
+
             if (tableStudent.Columns.Contains("scoreSummation"))
             {
                 DeleteScoreSummation();
@@ -223,7 +221,7 @@ namespace Journal
             //Заполнение в БД
             InsertStudentToDB();//Студентов
             
-            InsertScoreToDB();//Баллов
+            InsertStudentsData();//Баллов
 
             InsertScorePerLesson();//Балла за занятие
         }
@@ -241,75 +239,66 @@ namespace Journal
             command.Parameters.Add("@scorePerLesson", MySqlDbType.VarChar).Value = scoresPerLesson.Text;
 
             dataBase.openConnection();
-
-            command.ExecuteNonQuery();
-
+                command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
 
-        private void LoadStudents()
+        private void GetStudentsName()
         {
             DataBase dataBase = new DataBase();
 
             dataBase.openConnection();
+                string loadStudentData = 
+                    "SELECT * FROM `students` " +
+                    "WHERE groups_id = @groups_id";
 
-            string loadStudentData = 
-                "SELECT * FROM `students` " +
-                "WHERE groups_id = @groups_id";
+                MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
 
-            MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+                MySqlParameter param = new MySqlParameter("@groups_id", labelGroupID.Text);
+                command.Parameters.Add(param);
 
-            MySqlParameter param = new MySqlParameter("@groups_id", labelGroupID.Text);
-            command.Parameters.Add(param);
+                MySqlDataReader reader = command.ExecuteReader();
+                var data = new List<string[]>();
+                while (reader.Read())
+                {
+                    data.Add(new string[1]);
+                    data[data.Count - 1][0] = reader[1].ToString();
 
-            MySqlDataReader reader = command.ExecuteReader();
-            var data = new List<string[]>();
-            while (reader.Read())
-            {
-                data.Add(new string[1]);
-                data[data.Count - 1][0] = reader[1].ToString();
-
-            }
-            reader.Close();
-            dataBase.closeConnection();
-            foreach (string[] line in data)
-                tableStudent.Rows.Add(line);
-
+                }
+                reader.Close();
+                foreach (string[] line in data)
+                    tableStudent.Rows.Add(line);
             dataBase.closeConnection();
         }
         
-        private void LoadStudentsScore()
+        private void GetStudentsScore()
         {
             for (int studentRows = 0; studentRows < tableStudent.Rows.Count-1; studentRows++)
             {
-                for (int columnScore = 1; columnScore <= (CountColumnsDB("SELECT * FROM `studentdata`")-2)/4; columnScore++)
+                for (int columnScore = 1; columnScore <= (GetCountColumnsDB("SELECT * FROM `studentdata`")-2)/4; columnScore++)
                 {
                     DataBase dataBase = new DataBase();
 
                     dataBase.openConnection();
+                        string loadStudentData =
+                            "SELECT * FROM `studentdata` " +
+                            "WHERE students_id = @students_id";
 
-                    string loadStudentData =
-                        "SELECT * FROM `studentdata` " +
-                        "WHERE students_id = @students_id";
+                        MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+                        command.Parameters.Add("@students_id", MySqlDbType.VarChar).Value 
+                            = GetStudentsID(labelGroupID.Text.ToString(), tableStudent[0, studentRows].Value.ToString());
 
-                    MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+                        MySqlDataReader reader = command.ExecuteReader();
+                        string[] nameColumns = GetScoreColumnsDB(columnScore);
 
-                    command.Parameters.Add("@students_id", MySqlDbType.VarChar).Value 
-                        = GetStudentsID(labelGroupID.Text.ToString(), tableStudent[0, studentRows].Value.ToString());
-
-                    MySqlDataReader reader = command.ExecuteReader();
-
-                    string[] nameColumns = NameColumnsDB(columnScore);
-
-                    while (reader.Read())
-                    {
-                        tableLessonDate[columnScore, 0].Value = Convert.ToString(reader[nameColumns[0]]);
-                        tableLessonType[columnScore, 0].Value = Convert.ToString(reader[nameColumns[1]]);
-                        tableStudent[columnScore*2-1, studentRows].Value = (reader[nameColumns[2]]);
-                        tableStudent[columnScore*2, studentRows].Value = Convert.ToString(reader[nameColumns[3]]);
-                    }
-                    reader.Close();
-
+                        while (reader.Read())
+                        {
+                            tableLessonDate[columnScore, 0].Value = Convert.ToString(reader[nameColumns[0]]);
+                            tableLessonType[columnScore, 0].Value = Convert.ToString(reader[nameColumns[1]]);
+                            tableStudent[columnScore*2-1, studentRows].Value = (reader[nameColumns[2]]);
+                            tableStudent[columnScore*2, studentRows].Value = Convert.ToString(reader[nameColumns[3]]);
+                        }
+                        reader.Close();
                     dataBase.closeConnection();
                 }
             }
@@ -317,8 +306,7 @@ namespace Journal
 
         private void InsertStudentToDB()
         {
-            //Проверяем наличие студента в базе данных. Если его нет, то вписываем в базу. Если есть пропускаем
-            
+            //Проверяем наличие студента в базе данных. Если его нет, то вписываем в базу. Если есть пропускаем          
             for (int i = 0; i < tableStudent.Rows.Count - 1; i++)
             {
                 string searchData = 
@@ -350,8 +338,7 @@ namespace Journal
             {
                 reader.Close();
                 return true;
-            }
-            
+            }    
         }
 
         private void InsertStudentData(string studentData)
@@ -367,13 +354,11 @@ namespace Journal
             command.Parameters.Add("@groups_id", MySqlDbType.VarChar).Value = labelGroupID.Text;
 
             dataBase.openConnection();
-
-            command.ExecuteNonQuery();
-
+                command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
 
-        private void createColumnsIntoDb(int i)
+        private void AddColumnsInDB(int i)
         {
             DataBase dataBase = new DataBase();
 
@@ -388,11 +373,11 @@ namespace Journal
             MySqlCommand command = new MySqlCommand(createNewColumnInDb, dataBase.getConnection());
 
             dataBase.openConnection();
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
 
-        private string[] NameColumnsDB(int i)
+        private string[] GetScoreColumnsDB(int i)
         {
             string names = string.Empty;
 
@@ -404,20 +389,16 @@ namespace Journal
             return names.Split(' ');
         }
 
-        private int CountColumnsDB(string query)
+        private int GetCountColumnsDB(string query)
         {
             DataBase dataBase = new DataBase();
 
             MySqlCommand command = new MySqlCommand(query, dataBase.getConnection());
 
             dataBase.openConnection();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            int countColumns = reader.FieldCount;
-
+                MySqlDataReader reader = command.ExecuteReader();
+                int countColumns = reader.FieldCount;
             dataBase.closeConnection();
-
             //Without studentdata_id, students_id
             return countColumns;
         }
@@ -434,24 +415,22 @@ namespace Journal
             MySqlCommand command = new MySqlCommand(searchStudentID, dataBase.getConnection());
 
             dataBase.openConnection();
+                command.Parameters.Add("@groups_id", MySqlDbType.VarChar).Value = groupID;
+                command.Parameters.Add("@surname_name", MySqlDbType.VarChar).Value = studentName;
 
-            command.Parameters.Add("@groups_id", MySqlDbType.VarChar).Value = groupID;
-            command.Parameters.Add("@surname_name", MySqlDbType.VarChar).Value = studentName;
+                MySqlDataReader reader = command.ExecuteReader();
 
-            MySqlDataReader reader = command.ExecuteReader();
-
-            if (reader.Read())
-            {
-                id = reader[0].ToString();
-            }
-            reader.Close();
-
+                if (reader.Read())
+                {
+                    id = reader[0].ToString();
+                }
+                reader.Close();
             dataBase.closeConnection();
 
             return id;
         }
            
-        private void InsertToStudentData(string id)
+        private void InsertStudentID(string id)
         {
             string insertStudentsID = 
                 "INSERT INTO studentdata(`students_id`) " +
@@ -461,14 +440,12 @@ namespace Journal
             MySqlCommand command = new MySqlCommand(insertStudentsID, dataBase.getConnection());
 
             dataBase.openConnection();
-
-            command.Parameters.Add("@students_id", MySqlDbType.VarChar).Value = id;
-            command.ExecuteNonQuery();
-
+                command.Parameters.Add("@students_id", MySqlDbType.VarChar).Value = id;
+                command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
 
-        private void InsertScoreStudentData(string[] nameColumns, int j, int i, string id)
+        private void InsertStudentsScore(string[] nameColumns, int j, int i, string id)
         {             
             string insertScore = 
                 "UPDATE `studentdata` " +
@@ -494,15 +471,15 @@ namespace Journal
                 : tableStudent[columnNumber + 1, i].Value;
 
             dataBase.openConnection();
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
         
-        private void InsertScoreToDB()
+        private void InsertStudentsData()
         {
             string id;
 
-            for (int columnScore = 1; columnScore <= ((CountColumnsDB("SELECT * FROM studentdata")-2) / 4); columnScore++)
+            for (int columnScore = 1; columnScore <= ((GetCountColumnsDB("SELECT * FROM studentdata")-2) / 4); columnScore++)
             { 
 
                 for (int rowStudent = 0; rowStudent < tableStudent.Rows.Count-1; rowStudent++)
@@ -511,18 +488,15 @@ namespace Journal
 
                     if (!IsStoredInDB("SELECT * FROM `studentdata` WHERE students_id=" +id))
                     {
-                        InsertToStudentData(id);
+                        InsertStudentID(id);
                     }
 
                     if (IsStoredInDB("SELECT * FROM `studentdata` WHERE students_id=" + id))
                     {
-                        InsertScoreStudentData(NameColumnsDB(columnScore),columnScore ,rowStudent, id);
+                        InsertStudentsScore(GetScoreColumnsDB(columnScore),columnScore ,rowStudent, id);
                     }
-
                 }
-
             }
-
         }
 
         private void intoJournals_Click(object sender, EventArgs e)

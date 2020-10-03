@@ -53,6 +53,7 @@ namespace JournalForStudents
         }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            // Вызываем класс подключения к  БД
             DataBase database = new DataBase();
             // DataTable - послужил для преобразования данных из БД в таблицу что можно разобрать на языке C#
             DataTable table = new DataTable();
@@ -65,9 +66,7 @@ namespace JournalForStudents
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passwordField.Text;
             
             adapter.SelectCommand = command;
-            //Переводим наши данные в таблицу (логин и пароль)
             adapter.Fill(table);
-            //Если мы смогли авторизоваться значит кол-во наших стобцов в таблице изменится на один отлично от нуля
             if (table.Rows.Count > 0)
             {
                 mainTeacherForm mainTeacher = new mainTeacherForm();

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableStudent = new System.Windows.Forms.DataGridView();
-            this.buttonCreateRows = new System.Windows.Forms.Button();
+            this.students = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLessonType = new System.Windows.Forms.DataGridView();
             this.nullColumns = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLessonDate = new System.Windows.Forms.DataGridView();
@@ -42,16 +42,23 @@
             this.discipline = new System.Windows.Forms.Label();
             this.labelGroupName = new System.Windows.Forms.Label();
             this.labelDisciplineName = new System.Windows.Forms.Label();
-            this.buttonForSummation = new System.Windows.Forms.Button();
             this.labelScorePerLesson = new System.Windows.Forms.Label();
             this.scoresPerLesson = new System.Windows.Forms.TextBox();
-            this.buttonSafeChanges = new System.Windows.Forms.Button();
             this.labelGroupID = new System.Windows.Forms.Label();
             this.labelUserID = new System.Windows.Forms.Label();
-            this.students = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuJournalTools = new System.Windows.Forms.MenuStrip();
+            this.journalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.summationToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.summationDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.summationAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonDate)).BeginInit();
+            this.menuJournalTools.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableStudent
@@ -80,19 +87,14 @@
             this.tableStudent.TabIndex = 2;
             this.tableStudent.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tableStudent_Scroll);
             // 
-            // buttonCreateRows
+            // students
             // 
-            this.buttonCreateRows.BackColor = System.Drawing.Color.Orange;
-            this.buttonCreateRows.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCreateRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonCreateRows.Location = new System.Drawing.Point(433, -2);
-            this.buttonCreateRows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonCreateRows.Name = "buttonCreateRows";
-            this.buttonCreateRows.Size = new System.Drawing.Size(171, 36);
-            this.buttonCreateRows.TabIndex = 6;
-            this.buttonCreateRows.Text = "Новый столбик";
-            this.buttonCreateRows.UseVisualStyleBackColor = false;
-            this.buttonCreateRows.Click += new System.EventHandler(this.buttonCreateRows_Click);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.students.DefaultCellStyle = dataGridViewCellStyle1;
+            this.students.HeaderText = "Список студентов";
+            this.students.MinimumWidth = 6;
+            this.students.Name = "students";
+            this.students.Width = 125;
             // 
             // tableLessonType
             // 
@@ -203,19 +205,6 @@
             this.labelDisciplineName.TabIndex = 12;
             this.labelDisciplineName.Text = "disciplineName";
             // 
-            // buttonForSummation
-            // 
-            this.buttonForSummation.BackColor = System.Drawing.Color.Gold;
-            this.buttonForSummation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonForSummation.Location = new System.Drawing.Point(601, -2);
-            this.buttonForSummation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonForSummation.Name = "buttonForSummation";
-            this.buttonForSummation.Size = new System.Drawing.Size(164, 36);
-            this.buttonForSummation.TabIndex = 14;
-            this.buttonForSummation.Text = "Суммировать";
-            this.buttonForSummation.UseVisualStyleBackColor = false;
-            this.buttonForSummation.Click += new System.EventHandler(this.buttonForSummation_Click);
-            // 
             // labelScorePerLesson
             // 
             this.labelScorePerLesson.AutoSize = true;
@@ -235,19 +224,7 @@
             this.scoresPerLesson.Name = "scoresPerLesson";
             this.scoresPerLesson.Size = new System.Drawing.Size(75, 30);
             this.scoresPerLesson.TabIndex = 16;
-            // 
-            // buttonSafeChanges
-            // 
-            this.buttonSafeChanges.BackColor = System.Drawing.Color.Coral;
-            this.buttonSafeChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSafeChanges.Location = new System.Drawing.Point(762, -2);
-            this.buttonSafeChanges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonSafeChanges.Name = "buttonSafeChanges";
-            this.buttonSafeChanges.Size = new System.Drawing.Size(164, 36);
-            this.buttonSafeChanges.TabIndex = 17;
-            this.buttonSafeChanges.Text = "Сохранить";
-            this.buttonSafeChanges.UseVisualStyleBackColor = false;
-            this.buttonSafeChanges.Click += new System.EventHandler(this.buttonSafeChanges_Click);
+            this.scoresPerLesson.Text = "0";
             // 
             // labelGroupID
             // 
@@ -268,14 +245,78 @@
             this.labelUserID.TabIndex = 20;
             this.labelUserID.Text = "id";
             // 
-            // students
+            // menuJournalTools
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.students.DefaultCellStyle = dataGridViewCellStyle1;
-            this.students.HeaderText = "Список студентов";
-            this.students.MinimumWidth = 6;
-            this.students.Name = "students";
-            this.students.Width = 125;
+            this.menuJournalTools.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuJournalTools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.journalToolStripMenuItem,
+            this.toolsToolStripMenuItem});
+            this.menuJournalTools.Location = new System.Drawing.Point(0, 0);
+            this.menuJournalTools.Name = "menuJournalTools";
+            this.menuJournalTools.Size = new System.Drawing.Size(1446, 28);
+            this.menuJournalTools.TabIndex = 21;
+            this.menuJournalTools.Text = "menuStrip1";
+            // 
+            // journalToolStripMenuItem
+            // 
+            this.journalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem1,
+            this.saveAsToolStripMenuItem});
+            this.journalToolStripMenuItem.Name = "journalToolStripMenuItem";
+            this.journalToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.journalToolStripMenuItem.Text = "Журнал";
+            // 
+            // saveToolStripMenuItem1
+            // 
+            this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(201, 26);
+            this.saveToolStripMenuItem1.Text = "Сохранить";
+            this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.saveAsToolStripMenuItem.Text = "Сохранить как...";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addColumnToolStripMenuItem,
+            this.summationToolsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
+            this.toolsToolStripMenuItem.Text = "Инструменты";
+            // 
+            // addColumnToolStripMenuItem
+            // 
+            this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
+            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.addColumnToolStripMenuItem.Text = "Добавить колонку";
+            this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.addColumnToolStripMenuItem_Click);
+            // 
+            // summationToolsToolStripMenuItem
+            // 
+            this.summationToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.summationDateToolStripMenuItem,
+            this.summationAllToolStripMenuItem});
+            this.summationToolsToolStripMenuItem.Name = "summationToolsToolStripMenuItem";
+            this.summationToolsToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.summationToolsToolStripMenuItem.Text = "Суммировать";
+            // 
+            // summationDateToolStripMenuItem
+            // 
+            this.summationDateToolStripMenuItem.Name = "summationDateToolStripMenuItem";
+            this.summationDateToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.summationDateToolStripMenuItem.Text = "По дате";
+            this.summationDateToolStripMenuItem.Click += new System.EventHandler(this.summationDateToolStripMenuItem_Click);
+            // 
+            // summationAllToolStripMenuItem
+            // 
+            this.summationAllToolStripMenuItem.Name = "summationAllToolStripMenuItem";
+            this.summationAllToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.summationAllToolStripMenuItem.Text = "Текущий балл";
+            this.summationAllToolStripMenuItem.Click += new System.EventHandler(this.summationAllToolStripMenuItem_Click);
             // 
             // JournalForm
             // 
@@ -284,18 +325,16 @@
             this.ClientSize = new System.Drawing.Size(1446, 800);
             this.Controls.Add(this.labelUserID);
             this.Controls.Add(this.labelGroupID);
-            this.Controls.Add(this.buttonSafeChanges);
             this.Controls.Add(this.scoresPerLesson);
             this.Controls.Add(this.labelScorePerLesson);
-            this.Controls.Add(this.buttonForSummation);
             this.Controls.Add(this.labelDisciplineName);
             this.Controls.Add(this.labelGroupName);
             this.Controls.Add(this.discipline);
             this.Controls.Add(this.group);
             this.Controls.Add(this.tableLessonDate);
             this.Controls.Add(this.tableLessonType);
-            this.Controls.Add(this.buttonCreateRows);
             this.Controls.Add(this.tableStudent);
+            this.Controls.Add(this.menuJournalTools);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "JournalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -303,6 +342,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonDate)).EndInit();
+            this.menuJournalTools.ResumeLayout(false);
+            this.menuJournalTools.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,7 +351,6 @@
 
         #endregion
         private System.Windows.Forms.DataGridView tableStudent;
-        private System.Windows.Forms.Button buttonCreateRows;
         private System.Windows.Forms.DataGridView tableLessonType;
         private System.Windows.Forms.DataGridView tableLessonDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn nullColumns;
@@ -318,14 +358,21 @@
         private System.Windows.Forms.Label discipline;
         private System.Windows.Forms.Label labelGroupName;
         private System.Windows.Forms.Label labelDisciplineName;
-        private System.Windows.Forms.Button buttonForSummation;
         private System.Windows.Forms.Label labelScorePerLesson;
         private System.Windows.Forms.TextBox scoresPerLesson;
-        private System.Windows.Forms.Button buttonSafeChanges;
         private System.Windows.Forms.Label labelGroupID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label labelUserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn students;
+        private System.Windows.Forms.MenuStrip menuJournalTools;
+        private System.Windows.Forms.ToolStripMenuItem journalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addColumnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem summationToolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem summationDateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem summationAllToolStripMenuItem;
     }
 }
 

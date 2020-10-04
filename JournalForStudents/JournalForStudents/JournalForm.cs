@@ -56,7 +56,7 @@ namespace Journal
         private void GetAutoColumnsToJournal()
         {
             while (tableLessonDate.Columns.Count <= ((GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
-                CreateJournalColumns();
+                AddJournalColumns();
         }
 
         private void GetJournalName(string journalData)
@@ -81,20 +81,7 @@ namespace Journal
         }
 
         const int generalWidthColumn = 160;
-        private void buttonCreateRows_Click(object sender, EventArgs e)
-        {
-            if (tableStudent.Columns.Contains("scoreSummation"))
-            {
-                DeleteScoreSummation();
-            }
-
-            CreateJournalColumns();
-
-            if (tableLessonDate.Columns.Count - 1 > ((GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
-                AddColumnsInDB(tableLessonDate.Columns.Count - 1);
-        }
-
-        private void CreateJournalColumns()
+        private void AddJournalColumns()
         {
             tableLessonDate.Columns.Add(new DataGridViewTextBoxColumn()
             {
@@ -122,18 +109,16 @@ namespace Journal
                 HeaderText = "Балл",
                 Width = 70
             });
-
-           // SlideTables();
         }
 
-        private void buttonForSummation_Click(object sender, EventArgs e)
+        private void GetSummation()
         {
-            InsertStudentsData();
-
             if (tableStudent.Columns.Contains("scoreSummation"))
             {
                 DeleteScoreSummation();
             }
+
+            InsertStudentsData();
 
             tableLessonType.Columns.Add(new DataGridViewTextBoxColumn()
             {
@@ -158,8 +143,6 @@ namespace Journal
             });
 
             ScoreSummation();
-
-           // SlideTables();
         }
 
         private void ScoreSummation()
@@ -169,18 +152,29 @@ namespace Journal
             {              
                 for (int j = 2; j < tableStudent.Columns.Count; j += 2)
                 {                   
-                        if (DBNull.Value == null || tableStudent[j, i].Value.ToString() == "")
-                            tableStudent[j, i].Value = "0";
                     summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
                     if (!(tableStudent[j-1, i].Value.ToString() == "False") && !(tableStudent[j - 1, i].Value.ToString() == ""))
                     {
-                        if(scoresPerLesson.Text!="")
-                            summa += Convert.ToDouble(scoresPerLesson.Text);
+                        summa += Convert.ToDouble(scoresPerLesson.Text);
                     }
                 }
                 tableStudent["scoreSummation", i].Value = Convert.ToDouble(summa);
                 summa = 0;
             }
+        }
+
+        private void summationAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetSummation();
+        }
+
+        private void summationDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SummationForm summation = new SummationForm();
+            summation.GetGeneralDate(tableLessonDate[1, 0].Value.ToString(), tableLessonDate[(GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4, 0].Value.ToString());
+            summation.ShowDialog();
+            
+            //summation.
         }
 
         private void SlideTables()
@@ -201,11 +195,11 @@ namespace Journal
            // tableLessonType.Width -= generalWidthColumn;
         }
 
-        private void buttonSafeChanges_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //Заполнение в БД
             InsertStudentToDB();//Студентов
-            
+
             InsertStudentsData();//Баллов
 
             InsertScorePerLesson();//Балла за занятие
@@ -496,6 +490,19 @@ namespace Journal
         {
             tableLessonDate.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;
             tableLessonType.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;
+        }
+
+        private void addColumnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tableStudent.Columns.Contains("scoreSummation"))
+            {
+                DeleteScoreSummation();
+            }
+
+            AddJournalColumns();
+
+            if (tableLessonDate.Columns.Count - 1 > ((GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
+                AddColumnsInDB(tableLessonDate.Columns.Count - 1);
         }
     }
 }

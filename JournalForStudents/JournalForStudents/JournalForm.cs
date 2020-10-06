@@ -111,7 +111,7 @@ namespace Journal
             });
         }
 
-        private void GetSummation()
+        private void GetSummation(int firstDate, int secondDate)
         {
             if (tableStudent.Columns.Contains("scoreSummation"))
             {
@@ -142,16 +142,18 @@ namespace Journal
                 Width = generalWidthColumn
             });
 
-            ScoreSummation();
+            ScoreSummation(firstDate, secondDate);
         }
 
-        private void ScoreSummation()
+        private void ScoreSummation(int firstDate, int secondDate)
         {
             double summa = 0;
             for (int i = 0; i < tableStudent.Rows.Count-1; i++)
             {              
-                for (int j = 2; j < tableStudent.Columns.Count; j += 2)
-                {                   
+                for (int j = firstDate*2; j < (secondDate - firstDate + 1)*2; j += 2)
+                {
+                    if (tableStudent[j, i].Value.ToString() == "")
+                        tableStudent[j, i].Value = "0";
                     summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
                     if (!(tableStudent[j-1, i].Value.ToString() == "False") && !(tableStudent[j - 1, i].Value.ToString() == ""))
                     {
@@ -163,18 +165,21 @@ namespace Journal
             }
         }
 
-        private void summationAllToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SummationAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GetSummation();
+            GetSummation(1,tableLessonDate.Columns.Count);
         }
 
-        private void summationDateToolStripMenuItem_Click(object sender, EventArgs e)
+        public void SummationDate(string firstDate, string secondDate)
+        {
+            labelDatesSummation.Text = $"Выбранный диапазон суммирования: \n От: {firstDate} \n До: {secondDate}";
+        }
+
+        private void GetSummationFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SummationForm summation = new SummationForm();
             summation.GetGeneralDate(tableLessonDate[1, 0].Value.ToString(), tableLessonDate[(GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4, 0].Value.ToString());
             summation.ShowDialog();
-            
-            //summation.
         }
 
         private void SlideTables()

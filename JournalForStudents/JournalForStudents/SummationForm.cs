@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Journal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,9 +26,10 @@ namespace JournalForStudents
 
         private void buttonConfirmDate_Click(object sender, EventArgs e)
         {
-            string firstDate = textBoxFirstDate.Text;
-            string secondDate = textBoxSecondDate.Text;
             this.Hide();
+            JournalForm journal = new JournalForm();
+            journal.SummationDate(textBoxFirstDate.Text.ToString(),textBoxSecondDate.Text.ToString());
+            
         }
     }
 }

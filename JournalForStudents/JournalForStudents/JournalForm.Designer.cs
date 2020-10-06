@@ -55,6 +55,7 @@
             this.summationToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summationDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summationAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelDatesSummation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonDate)).BeginInit();
@@ -291,7 +292,7 @@
             // addColumnToolStripMenuItem
             // 
             this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
-            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addColumnToolStripMenuItem.Text = "Добавить колонку";
             this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.addColumnToolStripMenuItem_Click);
             // 
@@ -301,28 +302,39 @@
             this.summationDateToolStripMenuItem,
             this.summationAllToolStripMenuItem});
             this.summationToolsToolStripMenuItem.Name = "summationToolsToolStripMenuItem";
-            this.summationToolsToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.summationToolsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.summationToolsToolStripMenuItem.Text = "Суммировать";
             // 
             // summationDateToolStripMenuItem
             // 
             this.summationDateToolStripMenuItem.Name = "summationDateToolStripMenuItem";
-            this.summationDateToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.summationDateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.summationDateToolStripMenuItem.Text = "По дате";
-            this.summationDateToolStripMenuItem.Click += new System.EventHandler(this.summationDateToolStripMenuItem_Click);
+            this.summationDateToolStripMenuItem.Click += new System.EventHandler(this.GetSummationFormToolStripMenuItem_Click);
             // 
             // summationAllToolStripMenuItem
             // 
             this.summationAllToolStripMenuItem.Name = "summationAllToolStripMenuItem";
-            this.summationAllToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.summationAllToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.summationAllToolStripMenuItem.Text = "Текущий балл";
-            this.summationAllToolStripMenuItem.Click += new System.EventHandler(this.summationAllToolStripMenuItem_Click);
+            this.summationAllToolStripMenuItem.Click += new System.EventHandler(this.SummationAllToolStripMenuItem_Click);
+            // 
+            // labelDatesSummation
+            // 
+            this.labelDatesSummation.AutoSize = true;
+            this.labelDatesSummation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDatesSummation.Location = new System.Drawing.Point(635, 83);
+            this.labelDatesSummation.Name = "labelDatesSummation";
+            this.labelDatesSummation.Size = new System.Drawing.Size(248, 25);
+            this.labelDatesSummation.TabIndex = 22;
+            this.labelDatesSummation.Text = " диапазон суммирования";
             // 
             // JournalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1446, 800);
+            this.Controls.Add(this.labelDatesSummation);
             this.Controls.Add(this.labelUserID);
             this.Controls.Add(this.labelGroupID);
             this.Controls.Add(this.scoresPerLesson);
@@ -373,6 +385,7 @@
         private System.Windows.Forms.ToolStripMenuItem summationToolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summationDateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summationAllToolStripMenuItem;
+        private System.Windows.Forms.Label labelDatesSummation;
     }
 }
 

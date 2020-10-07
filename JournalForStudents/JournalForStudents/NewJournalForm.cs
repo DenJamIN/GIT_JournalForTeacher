@@ -96,16 +96,14 @@ namespace JournalForStudents
             bool accountStatus = false;
 
             dataBase.openConnection();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Журнал успешно создан");
+                    accountStatus = true;
+                }
 
-            if (command.ExecuteNonQuery() == 1)
-            {
-                MessageBox.Show("Журнал успешно создан");
-                accountStatus = true;
-            }
-
-            else
-                MessageBox.Show("Ошибка создания журнала");
-
+                else
+                    MessageBox.Show("Ошибка создания журнала");
             dataBase.closeConnection();
 
             if (accountStatus)
@@ -138,13 +136,20 @@ namespace JournalForStudents
 
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show("Аккаунт с таким названием существует");
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            JournalsListForm journalsList = new JournalsListForm();
+            journalsList.LoadJournalsData(userID);
+            journalsList.Show();
         }
     }
 }

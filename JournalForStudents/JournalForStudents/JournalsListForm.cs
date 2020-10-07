@@ -61,10 +61,9 @@ namespace JournalForStudents
 
         private void buttonToJournalForm_Click(object sender, EventArgs e)
         {
-            this.Hide();
             JournalForm journalForm = new JournalForm();
             journalForm.GetStudentsDataFromDB(labelJournalName.Text.ToString(), labelUserID.Text);
-            journalForm.Show();
+            journalForm.ShowDialog();
         }
 
         private string GetJournalId(string journalName)

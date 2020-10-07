@@ -113,11 +113,6 @@ namespace Journal
 
         private void GetSummation(int firstDate, int secondDate)
         {
-            if (tableStudent.Columns.Contains("scoreSummation"))
-            {
-                DeleteScoreSummation();
-            }
-
             InsertStudentsData();
 
             tableLessonType.Columns.Add(new DataGridViewTextBoxColumn()
@@ -150,7 +145,7 @@ namespace Journal
             double summa = 0;
             for (int i = 0; i < tableStudent.Rows.Count-1; i++)
             {              
-                for (int j = firstDate*2; j < (secondDate - firstDate + 1)*2; j += 2)
+                for (int j = firstDate*2; j < secondDate * 2; j += 2)
                 {
                     if (tableStudent[j, i].Value.ToString() == "")
                         tableStudent[j, i].Value = "0";
@@ -167,19 +162,50 @@ namespace Journal
 
         private void SummationAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GetSummation(1,tableLessonDate.Columns.Count);
-        }
-
-        public void SummationDate(string firstDate, string secondDate)
-        {
-            labelDatesSummation.Text = $"Выбранный диапазон суммирования: \n От: {firstDate} \n До: {secondDate}";
+            //tableLessonDate[tableLessonDate.Columns.Count - 1, 0].Value.ToString() == "" ? tableLessonDate.Columns.Count - 1 : tableLessonDate.Columns.Count);
+            if (tableStudent.Columns.Contains("scoreSummation"))
+            {
+                DeleteScoreSummation();
+            }
+            GetSummation (1, tableLessonDate.Columns.Count);
+            labelDatesSummation.Text = "Выбранный диапазон суммирования \nОт начала\nДо конца";
         }
 
         private void GetSummationFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SummationForm summation = new SummationForm();
-            summation.GetGeneralDate(tableLessonDate[1, 0].Value.ToString(), tableLessonDate[(GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4, 0].Value.ToString());
-            summation.ShowDialog();
+            if (tableStudent.Columns.Contains("scoreSummation"))
+            {
+                DeleteScoreSummation();
+            }
+            SummationForm summationDates = new SummationForm();
+            summationDates.ShowDialog();
+
+            string firstDate = summationDates.GetFirstDate();
+            string secondDate = summationDates.GetSecondDate();
+
+            int firstDateIndex = 1;
+            int secondDateIndex = tableLessonDate.Columns.Count;
+
+            if (firstDate == "")
+                firstDate = "начала";
+            if (secondDate == "")
+                secondDate = "конца";
+            labelDatesSummation.Text = "Выбранный диапазон суммирования \nОт " + firstDate + "\nДо " + secondDate;
+
+            for (int i = 1; i < tableLessonDate.Columns.Count; i++)
+            {
+                if (firstDate == tableLessonDate[i, 0].Value.ToString())
+                {
+                    firstDateIndex = i;
+                }
+
+                else if (secondDate == tableLessonDate[i, 0].Value.ToString())
+                {
+                    secondDateIndex = i + 1;
+                }
+            }
+
+            GetSummation (firstDateIndex, secondDateIndex);
         }
 
         private void SlideTables()

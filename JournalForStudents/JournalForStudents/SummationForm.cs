@@ -18,18 +18,19 @@ namespace JournalForStudents
             InitializeComponent();
         }
 
-        public void GetGeneralDate(string firstDate, string secondDate)
+        public string GetFirstDate()
         {
-            textBoxFirstDate.Text = firstDate;
-            textBoxSecondDate.Text = secondDate;
+            return textBoxFirstDate.Text;
+        }
+
+        public  string GetSecondDate()
+        {
+            return textBoxSecondDate.Text;
         }
 
         private void buttonConfirmDate_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            JournalForm journal = new JournalForm();
-            journal.SummationDate(textBoxFirstDate.Text.ToString(),textBoxSecondDate.Text.ToString());
-            
+            this.Hide();           
         }
     }
 }

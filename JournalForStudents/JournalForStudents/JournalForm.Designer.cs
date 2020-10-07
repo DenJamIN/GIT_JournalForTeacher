@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableStudent = new System.Windows.Forms.DataGridView();
             this.students = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLessonType = new System.Windows.Forms.DataGridView();
@@ -69,14 +69,14 @@
             this.tableStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.students});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tableStudent.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableStudent.DefaultCellStyle = dataGridViewCellStyle6;
             this.tableStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableStudent.Location = new System.Drawing.Point(0, 273);
             this.tableStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -90,8 +90,8 @@
             // 
             // students
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.students.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.students.DefaultCellStyle = dataGridViewCellStyle5;
             this.students.HeaderText = "Список студентов";
             this.students.MinimumWidth = 6;
             this.students.Name = "students";
@@ -102,14 +102,14 @@
             this.tableLessonType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLessonType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nullColumns});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tableLessonType.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableLessonType.DefaultCellStyle = dataGridViewCellStyle7;
             this.tableLessonType.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLessonType.Location = new System.Drawing.Point(0, 220);
             this.tableLessonType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -137,14 +137,14 @@
             this.tableLessonDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLessonDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tableLessonDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableLessonDate.DefaultCellStyle = dataGridViewCellStyle8;
             this.tableLessonDate.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLessonDate.Location = new System.Drawing.Point(0, 168);
             this.tableLessonDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -254,7 +254,7 @@
             this.toolsToolStripMenuItem});
             this.menuJournalTools.Location = new System.Drawing.Point(0, 0);
             this.menuJournalTools.Name = "menuJournalTools";
-            this.menuJournalTools.Size = new System.Drawing.Size(1446, 28);
+            this.menuJournalTools.Size = new System.Drawing.Size(1446, 30);
             this.menuJournalTools.TabIndex = 21;
             this.menuJournalTools.Text = "menuStrip1";
             // 
@@ -292,7 +292,7 @@
             // addColumnToolStripMenuItem
             // 
             this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
-            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.addColumnToolStripMenuItem.Text = "Добавить колонку";
             this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.addColumnToolStripMenuItem_Click);
             // 
@@ -302,32 +302,32 @@
             this.summationDateToolStripMenuItem,
             this.summationAllToolStripMenuItem});
             this.summationToolsToolStripMenuItem.Name = "summationToolsToolStripMenuItem";
-            this.summationToolsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.summationToolsToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.summationToolsToolStripMenuItem.Text = "Суммировать";
             // 
             // summationDateToolStripMenuItem
             // 
             this.summationDateToolStripMenuItem.Name = "summationDateToolStripMenuItem";
-            this.summationDateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.summationDateToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this.summationDateToolStripMenuItem.Text = "По дате";
             this.summationDateToolStripMenuItem.Click += new System.EventHandler(this.GetSummationFormToolStripMenuItem_Click);
             // 
             // summationAllToolStripMenuItem
             // 
             this.summationAllToolStripMenuItem.Name = "summationAllToolStripMenuItem";
-            this.summationAllToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.summationAllToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this.summationAllToolStripMenuItem.Text = "Текущий балл";
             this.summationAllToolStripMenuItem.Click += new System.EventHandler(this.SummationAllToolStripMenuItem_Click);
             // 
             // labelDatesSummation
             // 
             this.labelDatesSummation.AutoSize = true;
-            this.labelDatesSummation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDatesSummation.Location = new System.Drawing.Point(635, 83);
+            this.labelDatesSummation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDatesSummation.ForeColor = System.Drawing.Color.Goldenrod;
+            this.labelDatesSummation.Location = new System.Drawing.Point(990, 38);
             this.labelDatesSummation.Name = "labelDatesSummation";
-            this.labelDatesSummation.Size = new System.Drawing.Size(248, 25);
+            this.labelDatesSummation.Size = new System.Drawing.Size(0, 25);
             this.labelDatesSummation.TabIndex = 22;
-            this.labelDatesSummation.Text = " диапазон суммирования";
             // 
             // JournalForm
             // 

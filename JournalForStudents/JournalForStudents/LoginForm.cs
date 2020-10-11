@@ -69,10 +69,10 @@ namespace JournalForStudents
             adapter.Fill(table);
             if (table.Rows.Count > 0)
             {
-                mainTeacherForm mainTeacher = new mainTeacherForm();
-                mainTeacher.LoadData(loginField.Text);
+                JournalsListForm journalsList = new JournalsListForm();
+                journalsList.GetNames(loginField.Text);
                 this.Hide();
-                mainTeacher.Show();
+                journalsList.Show();
             }
             else
             {

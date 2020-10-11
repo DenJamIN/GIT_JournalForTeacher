@@ -47,7 +47,6 @@ C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStuden
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.csprojAssemblyReference.cache
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.exe.config
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.LoginForm.resources
-C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.mainTeacherForm.resources
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.Properties.Resources.resources
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.RegisterForm.resources
 C:\Users\denla\Desktop\GIT_JournalForTeacher\JournalForStudents\JournalForStudents\obj\Debug\JournalForStudents.csproj.GenerateResource.cache

@@ -76,12 +76,6 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="mainTeacherForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mainTeacherForm.Designer.cs">
-      <DependentUpon>mainTeacherForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="NewJournalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,9 +107,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="mainTeacherForm.resx">
-      <DependentUpon>mainTeacherForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewJournalForm.resx">
       <DependentUpon>NewJournalForm.cs</DependentUpon>

@@ -149,7 +149,6 @@ namespace JournalForStudents
             this.Hide();
             JournalsListForm journalsList = new JournalsListForm();
             journalsList.LoadJournalsData(userID);
-            journalsList.Show();
         }
     }
 }

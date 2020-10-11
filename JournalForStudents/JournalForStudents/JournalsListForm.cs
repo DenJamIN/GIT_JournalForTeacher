@@ -18,6 +18,33 @@ namespace JournalForStudents
         {
             InitializeComponent();
         }
+
+        public void GetNames(string teacherFromLoginForm)
+        {
+            DataBase database = new DataBase();
+
+            database.openConnection();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @nameLogin", database.getConnection());
+
+            MySqlParameter param = new MySqlParameter("@nameLogin", teacherFromLoginForm);
+            command.Parameters.Add(param);
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                labelUserID.Text = Convert.ToString(reader["users_id"]);
+                nameProf.Text = Convert.ToString(reader["name"]);
+                surnameProf.Text = Convert.ToString(reader["surname"]);
+                middlenameProf.Text = Convert.ToString(reader["middlename"]);
+            }
+
+            database.closeConnection();
+
+            LoadJournalsData(labelUserID.Text);
+        }
+
         public void LoadJournalsData(string userID)
         {
             labelUserID.Text = userID;
@@ -41,14 +68,6 @@ namespace JournalForStudents
             dataBase.closeConnection();
             foreach (string[] line in data)
                 tableJournalsList.Rows.Add(line);
-        }
-
-        private void buttonCreateNewJournal_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            NewJournalForm newJournal = new NewJournalForm();
-            newJournal.userID = labelUserID.Text;
-            newJournal.Show();
         }
 
         private void intoJournals_Click(object sender, EventArgs e)
@@ -85,6 +104,15 @@ namespace JournalForStudents
                 selectedRows += tableJournalsList[i, tableJournalsList.CurrentRow.Index].Value + " | ";
             }
             labelJournalName.Text = selectedRows;
+        }
+
+        private void buttonCreateNewJournal_Click_1(object sender, EventArgs e)
+        {
+            NewJournalForm newJournal = new NewJournalForm
+            {
+                userID = labelUserID.Text
+            };
+            newJournal.Show();
         }
     }
 }

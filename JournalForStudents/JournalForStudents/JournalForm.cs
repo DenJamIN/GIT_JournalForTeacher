@@ -509,14 +509,6 @@ namespace Journal
             }
         }
 
-        private void intoJournals_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            JournalsListForm journalsList = new JournalsListForm();
-            journalsList.LoadJournalsData(labelUserID.Text);
-            journalsList.Show();
-        }
-
         private void tableStudent_Scroll(object sender, ScrollEventArgs e)
         {
             tableLessonDate.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;

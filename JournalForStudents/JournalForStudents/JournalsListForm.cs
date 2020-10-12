@@ -32,7 +32,7 @@ namespace JournalForStudents
 
                 MySqlDataReader reader = command.ExecuteReader();
 
-                string userData = "Пользователь: ";
+                string userData = "Преподаватель: ";
                 while (reader.Read())
                 {
                     userData += Convert.ToString(reader["surname"]) + "   ";
@@ -118,6 +118,11 @@ namespace JournalForStudents
                 userID = labelUserID.Text
             };
             newJournal.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

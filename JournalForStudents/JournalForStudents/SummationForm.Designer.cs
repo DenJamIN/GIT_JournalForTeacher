@@ -58,8 +58,6 @@
             this.textBoxFirstDate.Name = "textBoxFirstDate";
             this.textBoxFirstDate.Size = new System.Drawing.Size(241, 58);
             this.textBoxFirstDate.TabIndex = 1;
-            this.textBoxFirstDate.Enter += new System.EventHandler(this.textBoxFirstDate_Enter);
-            this.textBoxFirstDate.Leave += new System.EventHandler(this.textBoxFirstDate_Leave);
             // 
             // textBoxSecondDate
             // 
@@ -70,8 +68,6 @@
             this.textBoxSecondDate.Name = "textBoxSecondDate";
             this.textBoxSecondDate.Size = new System.Drawing.Size(241, 58);
             this.textBoxSecondDate.TabIndex = 2;
-            this.textBoxSecondDate.Enter += new System.EventHandler(this.textBoxSecondDate_Enter);
-            this.textBoxSecondDate.Leave += new System.EventHandler(this.textBoxSecondDate_Leave);
             // 
             // buttonConfirmDate
             // 

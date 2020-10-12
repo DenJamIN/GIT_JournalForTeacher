@@ -57,7 +57,7 @@
             this.buttonRegister.Font = new System.Drawing.Font("Century", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRegister.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonRegister.Location = new System.Drawing.Point(0, 632);
-            this.buttonRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonRegister.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(525, 59);
             this.buttonRegister.TabIndex = 5;
@@ -70,7 +70,7 @@
             this.passwordField.BackColor = System.Drawing.SystemColors.MenuBar;
             this.passwordField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordField.Location = new System.Drawing.Point(37, 553);
-            this.passwordField.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordField.Margin = new System.Windows.Forms.Padding(2);
             this.passwordField.Name = "passwordField";
             this.passwordField.Size = new System.Drawing.Size(346, 38);
             this.passwordField.TabIndex = 4;
@@ -82,7 +82,7 @@
             // 
             this.pictureBox2.Image = global::JournalForStudents.Properties.Resources.Authorization_Password;
             this.pictureBox2.Location = new System.Drawing.Point(424, 538);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(59, 52);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -94,7 +94,7 @@
             this.loginField.BackColor = System.Drawing.SystemColors.MenuBar;
             this.loginField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginField.Location = new System.Drawing.Point(37, 457);
-            this.loginField.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loginField.Margin = new System.Windows.Forms.Padding(2);
             this.loginField.Multiline = true;
             this.loginField.Name = "loginField";
             this.loginField.Size = new System.Drawing.Size(346, 53);
@@ -106,7 +106,7 @@
             // 
             this.pictureBox1.Image = global::JournalForStudents.Properties.Resources.Authorization_User;
             this.pictureBox1.Location = new System.Drawing.Point(424, 449);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(59, 59);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -127,7 +127,7 @@
             this.MenuPanel.Controls.Add(this.pictureBox1);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
-            this.MenuPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MenuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(525, 691);
             this.MenuPanel.TabIndex = 1;
@@ -140,7 +140,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(525, 114);
             this.panel1.TabIndex = 12;
@@ -163,7 +163,7 @@
             this.middleNameField.BackColor = System.Drawing.SystemColors.MenuBar;
             this.middleNameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.middleNameField.Location = new System.Drawing.Point(37, 339);
-            this.middleNameField.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.middleNameField.Margin = new System.Windows.Forms.Padding(2);
             this.middleNameField.Multiline = true;
             this.middleNameField.Name = "middleNameField";
             this.middleNameField.Size = new System.Drawing.Size(346, 53);
@@ -175,8 +175,8 @@
             // 
             this.userSurnameField.BackColor = System.Drawing.SystemColors.MenuBar;
             this.userSurnameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userSurnameField.Location = new System.Drawing.Point(37, 237);
-            this.userSurnameField.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userSurnameField.Location = new System.Drawing.Point(37, 149);
+            this.userSurnameField.Margin = new System.Windows.Forms.Padding(2);
             this.userSurnameField.Multiline = true;
             this.userSurnameField.Name = "userSurnameField";
             this.userSurnameField.Size = new System.Drawing.Size(346, 53);
@@ -188,8 +188,8 @@
             // 
             this.userNameField.BackColor = System.Drawing.SystemColors.MenuBar;
             this.userNameField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameField.Location = new System.Drawing.Point(37, 144);
-            this.userNameField.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userNameField.Location = new System.Drawing.Point(37, 242);
+            this.userNameField.Margin = new System.Windows.Forms.Padding(2);
             this.userNameField.Multiline = true;
             this.userNameField.Name = "userNameField";
             this.userNameField.Size = new System.Drawing.Size(346, 53);
@@ -204,7 +204,7 @@
             this.ClientSize = new System.Drawing.Size(525, 691);
             this.Controls.Add(this.MenuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Регистрация в электронный журнал";

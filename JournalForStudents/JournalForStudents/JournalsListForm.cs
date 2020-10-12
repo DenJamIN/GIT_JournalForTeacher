@@ -25,20 +25,22 @@ namespace JournalForStudents
 
             database.openConnection();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @nameLogin", database.getConnection());
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @nameLogin", database.getConnection());
 
-            MySqlParameter param = new MySqlParameter("@nameLogin", teacherFromLoginForm);
-            command.Parameters.Add(param);
+                MySqlParameter param = new MySqlParameter("@nameLogin", teacherFromLoginForm);
+                command.Parameters.Add(param);
 
-            MySqlDataReader reader = command.ExecuteReader();
+                MySqlDataReader reader = command.ExecuteReader();
 
-            while (reader.Read())
-            {
-                labelUserID.Text = Convert.ToString(reader["users_id"]);
-                nameProf.Text = Convert.ToString(reader["name"]);
-                surnameProf.Text = Convert.ToString(reader["surname"]);
-                middlenameProf.Text = Convert.ToString(reader["middlename"]);
-            }
+                string userData = "Пользователь: ";
+                while (reader.Read())
+                {
+                    userData += Convert.ToString(reader["surname"]) + "   ";
+                    userData += Convert.ToString(reader["name"]) + "   ";
+                    userData += Convert.ToString(reader["middlename"]);
+                    labelUserID.Text = Convert.ToString(reader["users_id"]);
+                }
+                userName.Text = userData;
 
             database.closeConnection();
 
@@ -80,9 +82,12 @@ namespace JournalForStudents
 
         private void buttonToJournalForm_Click(object sender, EventArgs e)
         {
-            JournalForm journalForm = new JournalForm();
-            journalForm.GetStudentsDataFromDB(labelJournalName.Text.ToString(), labelUserID.Text);
-            journalForm.ShowDialog();
+            if (labelJournalName.Text != "Выберите журнал" && labelJournalName.Text != " |  |  | ")
+            {
+                JournalForm journalForm = new JournalForm();
+                journalForm.GetStudentsDataFromDB(labelJournalName.Text.ToString(), labelUserID.Text);
+                journalForm.ShowDialog();
+            }
         }
 
         private string GetJournalId(string journalName)

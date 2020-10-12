@@ -37,7 +37,6 @@
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.CloseButton = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.MenuPanel.SuspendLayout();
@@ -47,9 +46,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::JournalForStudents.Properties.Resources.Authorization_User;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 185);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 150);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 69);
+            this.pictureBox1.Size = new System.Drawing.Size(56, 56);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -58,18 +58,20 @@
             // 
             this.loginField.BackColor = System.Drawing.SystemColors.MenuBar;
             this.loginField.Font = new System.Drawing.Font("Times New Roman", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginField.Location = new System.Drawing.Point(84, 185);
+            this.loginField.Location = new System.Drawing.Point(63, 150);
+            this.loginField.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loginField.Multiline = true;
             this.loginField.Name = "loginField";
-            this.loginField.Size = new System.Drawing.Size(561, 69);
+            this.loginField.Size = new System.Drawing.Size(422, 57);
             this.loginField.TabIndex = 2;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::JournalForStudents.Properties.Resources.Authorization_Password;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 292);
+            this.pictureBox2.Location = new System.Drawing.Point(9, 237);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(75, 67);
+            this.pictureBox2.Size = new System.Drawing.Size(56, 54);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
@@ -78,9 +80,10 @@
             // 
             this.passwordField.BackColor = System.Drawing.SystemColors.MenuBar;
             this.passwordField.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordField.Location = new System.Drawing.Point(84, 292);
+            this.passwordField.Location = new System.Drawing.Point(63, 237);
+            this.passwordField.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.passwordField.Name = "passwordField";
-            this.passwordField.Size = new System.Drawing.Size(561, 45);
+            this.passwordField.Size = new System.Drawing.Size(422, 38);
             this.passwordField.TabIndex = 4;
             this.passwordField.UseSystemPasswordChar = true;
             // 
@@ -95,9 +98,10 @@
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Century", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonLogin.Location = new System.Drawing.Point(0, 427);
+            this.buttonLogin.Location = new System.Drawing.Point(0, 347);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(700, 73);
+            this.buttonLogin.Size = new System.Drawing.Size(525, 59);
             this.buttonLogin.TabIndex = 5;
             this.buttonLogin.Text = "Авторизоваться";
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -110,9 +114,10 @@
             this.intoRegisterForm.Cursor = System.Windows.Forms.Cursors.Help;
             this.intoRegisterForm.Font = new System.Drawing.Font("Century Schoolbook", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.intoRegisterForm.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.intoRegisterForm.Location = new System.Drawing.Point(508, 400);
+            this.intoRegisterForm.Location = new System.Drawing.Point(381, 325);
+            this.intoRegisterForm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.intoRegisterForm.Name = "intoRegisterForm";
-            this.intoRegisterForm.Size = new System.Drawing.Size(180, 24);
+            this.intoRegisterForm.Size = new System.Drawing.Size(146, 20);
             this.intoRegisterForm.TabIndex = 6;
             this.intoRegisterForm.Text = "Нет аккаунта?";
             this.intoRegisterForm.Click += new System.EventHandler(this.intoRegisterForm_Click);
@@ -129,19 +134,20 @@
             this.MenuPanel.Controls.Add(this.pictureBox1);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
+            this.MenuPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(700, 500);
+            this.MenuPanel.Size = new System.Drawing.Size(525, 406);
             this.MenuPanel.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkCyan;
-            this.panel1.Controls.Add(this.CloseButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 151);
+            this.panel1.Size = new System.Drawing.Size(525, 123);
             this.panel1.TabIndex = 7;
             // 
             // label1
@@ -150,36 +156,24 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Elephant", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(96, 55);
+            this.label1.Location = new System.Drawing.Point(72, 45);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(475, 55);
+            this.label1.Size = new System.Drawing.Size(398, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "Электронный журнал";
             // 
-            // CloseButton
-            // 
-            this.CloseButton.AutoSize = true;
-            this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CloseButton.ForeColor = System.Drawing.Color.Brown;
-            this.CloseButton.Location = new System.Drawing.Point(659, 0);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(41, 39);
-            this.CloseButton.TabIndex = 1;
-            this.CloseButton.Text = "Х";
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click_1);
-            // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 500);
+            this.ClientSize = new System.Drawing.Size(525, 406);
             this.Controls.Add(this.MenuPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginForm";
+            this.Text = "Авторизация";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.MenuPanel.ResumeLayout(false);
@@ -201,6 +195,5 @@
         private System.Windows.Forms.Panel MenuPanel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label CloseButton;
     }
 }

@@ -167,7 +167,7 @@ namespace Journal
             }
             InsertJournalData();
             GetSummation (1, tableLessonDate.Columns.Count);
-            labelDatesSummation.Text = "Выбранный диапазон суммирования \nОт начала\nДо конца";
+            MessageBox.Show("Выбранный диапазон суммирования \nОт начала\nДо конца");
         }
 
         private void GetSummationFormToolStripMenuItem_Click(object sender, EventArgs e)
@@ -190,7 +190,7 @@ namespace Journal
                 firstDate = "начала";
             if (secondDate == "")
                 secondDate = "конца";
-            labelDatesSummation.Text = "Выбранный диапазон суммирования \nОт " + firstDate + "\nДо " + secondDate;
+            MessageBox.Show("Выбранный диапазон суммирования \nОт " + firstDate + "\nДо " + secondDate);
 
             for (int i = 1; i < tableLessonDate.Columns.Count; i++)
             {

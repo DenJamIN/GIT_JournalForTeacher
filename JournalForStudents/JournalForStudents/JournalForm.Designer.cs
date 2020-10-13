@@ -58,7 +58,6 @@
             this.summationToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summationDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summationAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelDatesSummation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tableStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableLessonDate)).BeginInit();
@@ -91,14 +90,14 @@
             this.tableStudent.DefaultCellStyle = dataGridViewCellStyle3;
             this.tableStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableStudent.GridColor = System.Drawing.Color.LightSalmon;
-            this.tableStudent.Location = new System.Drawing.Point(0, 226);
-            this.tableStudent.Margin = new System.Windows.Forms.Padding(2);
+            this.tableStudent.Location = new System.Drawing.Point(0, 256);
+            this.tableStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableStudent.MultiSelect = false;
             this.tableStudent.Name = "tableStudent";
             this.tableStudent.RowHeadersWidth = 51;
             this.tableStudent.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tableStudent.RowTemplate.Height = 24;
-            this.tableStudent.Size = new System.Drawing.Size(1076, 424);
+            this.tableStudent.Size = new System.Drawing.Size(1435, 522);
             this.tableStudent.TabIndex = 2;
             this.tableStudent.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tableStudent_Scroll);
             // 
@@ -134,14 +133,14 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableLessonType.DefaultCellStyle = dataGridViewCellStyle5;
             this.tableLessonType.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLessonType.Location = new System.Drawing.Point(0, 180);
-            this.tableLessonType.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLessonType.Location = new System.Drawing.Point(0, 199);
+            this.tableLessonType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLessonType.MultiSelect = false;
             this.tableLessonType.Name = "tableLessonType";
             this.tableLessonType.RowHeadersWidth = 51;
             this.tableLessonType.RowTemplate.Height = 24;
             this.tableLessonType.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tableLessonType.Size = new System.Drawing.Size(1076, 46);
+            this.tableLessonType.Size = new System.Drawing.Size(1435, 57);
             this.tableLessonType.TabIndex = 7;
             // 
             // nullColumns
@@ -178,14 +177,14 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableLessonDate.DefaultCellStyle = dataGridViewCellStyle7;
             this.tableLessonDate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLessonDate.Location = new System.Drawing.Point(0, 137);
-            this.tableLessonDate.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLessonDate.Location = new System.Drawing.Point(0, 146);
+            this.tableLessonDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLessonDate.MultiSelect = false;
             this.tableLessonDate.Name = "tableLessonDate";
             this.tableLessonDate.RowHeadersWidth = 51;
             this.tableLessonDate.RowTemplate.Height = 24;
             this.tableLessonDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tableLessonDate.Size = new System.Drawing.Size(1076, 43);
+            this.tableLessonDate.Size = new System.Drawing.Size(1435, 53);
             this.tableLessonDate.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumn1
@@ -202,10 +201,9 @@
             // 
             this.group.AutoSize = true;
             this.group.Font = new System.Drawing.Font("Elephant", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.group.Location = new System.Drawing.Point(11, 42);
-            this.group.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.group.Location = new System.Drawing.Point(58, 48);
             this.group.Name = "group";
-            this.group.Size = new System.Drawing.Size(75, 25);
+            this.group.Size = new System.Drawing.Size(96, 31);
             this.group.TabIndex = 9;
             this.group.Text = "Группа";
             // 
@@ -213,10 +211,9 @@
             // 
             this.discipline.AutoSize = true;
             this.discipline.Font = new System.Drawing.Font("Elephant", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.discipline.Location = new System.Drawing.Point(11, 83);
-            this.discipline.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.discipline.Location = new System.Drawing.Point(576, 48);
             this.discipline.Name = "discipline";
-            this.discipline.Size = new System.Drawing.Size(122, 25);
+            this.discipline.Size = new System.Drawing.Size(160, 31);
             this.discipline.TabIndex = 10;
             this.discipline.Text = "Дисциплина";
             // 
@@ -224,10 +221,9 @@
             // 
             this.labelGroupName.AutoSize = true;
             this.labelGroupName.Font = new System.Drawing.Font("Elephant", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGroupName.Location = new System.Drawing.Point(153, 42);
-            this.labelGroupName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelGroupName.Location = new System.Drawing.Point(196, 48);
             this.labelGroupName.Name = "labelGroupName";
-            this.labelGroupName.Size = new System.Drawing.Size(123, 25);
+            this.labelGroupName.Size = new System.Drawing.Size(156, 31);
             this.labelGroupName.TabIndex = 11;
             this.labelGroupName.Text = "groupName";
             // 
@@ -235,10 +231,9 @@
             // 
             this.labelDisciplineName.AutoSize = true;
             this.labelDisciplineName.Font = new System.Drawing.Font("Elephant", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDisciplineName.Location = new System.Drawing.Point(153, 83);
-            this.labelDisciplineName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDisciplineName.Location = new System.Drawing.Point(778, 48);
             this.labelDisciplineName.Name = "labelDisciplineName";
-            this.labelDisciplineName.Size = new System.Drawing.Size(157, 25);
+            this.labelDisciplineName.Size = new System.Drawing.Size(202, 31);
             this.labelDisciplineName.TabIndex = 12;
             this.labelDisciplineName.Text = "disciplineName";
             // 
@@ -246,18 +241,20 @@
             // 
             this.labelScorePerLesson.AutoSize = true;
             this.labelScorePerLesson.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelScorePerLesson.Location = new System.Drawing.Point(392, 112);
+            this.labelScorePerLesson.Location = new System.Drawing.Point(13, 113);
+            this.labelScorePerLesson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelScorePerLesson.Name = "labelScorePerLesson";
-            this.labelScorePerLesson.Size = new System.Drawing.Size(190, 23);
+            this.labelScorePerLesson.Size = new System.Drawing.Size(235, 28);
             this.labelScorePerLesson.TabIndex = 15;
             this.labelScorePerLesson.Text = "Балл за посещение";
             // 
             // scoresPerLesson
             // 
             this.scoresPerLesson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.scoresPerLesson.Location = new System.Drawing.Point(588, 109);
+            this.scoresPerLesson.Location = new System.Drawing.Point(274, 109);
+            this.scoresPerLesson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.scoresPerLesson.Name = "scoresPerLesson";
-            this.scoresPerLesson.Size = new System.Drawing.Size(39, 26);
+            this.scoresPerLesson.Size = new System.Drawing.Size(51, 30);
             this.scoresPerLesson.TabIndex = 16;
             this.scoresPerLesson.Text = "0";
             // 
@@ -265,20 +262,18 @@
             // 
             this.labelGroupID.AutoSize = true;
             this.labelGroupID.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelGroupID.Location = new System.Drawing.Point(888, 7);
-            this.labelGroupID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelGroupID.Location = new System.Drawing.Point(1184, 9);
             this.labelGroupID.Name = "labelGroupID";
-            this.labelGroupID.Size = new System.Drawing.Size(15, 13);
+            this.labelGroupID.Size = new System.Drawing.Size(19, 17);
             this.labelGroupID.TabIndex = 19;
             this.labelGroupID.Text = "id";
             // 
             // labelUserID
             // 
             this.labelUserID.AutoSize = true;
-            this.labelUserID.Location = new System.Drawing.Point(744, 7);
-            this.labelUserID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelUserID.Location = new System.Drawing.Point(992, 9);
             this.labelUserID.Name = "labelUserID";
-            this.labelUserID.Size = new System.Drawing.Size(15, 13);
+            this.labelUserID.Size = new System.Drawing.Size(19, 17);
             this.labelUserID.TabIndex = 20;
             this.labelUserID.Text = "id";
             // 
@@ -291,8 +286,8 @@
             this.toolsToolStripMenuItem});
             this.menuJournalTools.Location = new System.Drawing.Point(0, 0);
             this.menuJournalTools.Name = "menuJournalTools";
-            this.menuJournalTools.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuJournalTools.Size = new System.Drawing.Size(1076, 27);
+            this.menuJournalTools.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuJournalTools.Size = new System.Drawing.Size(1435, 31);
             this.menuJournalTools.TabIndex = 21;
             this.menuJournalTools.Text = "menuStrip1";
             // 
@@ -302,20 +297,20 @@
             this.saveToolStripMenuItem1,
             this.saveAsToolStripMenuItem});
             this.journalToolStripMenuItem.Name = "journalToolStripMenuItem";
-            this.journalToolStripMenuItem.Size = new System.Drawing.Size(70, 23);
+            this.journalToolStripMenuItem.Size = new System.Drawing.Size(85, 27);
             this.journalToolStripMenuItem.Text = "Журнал";
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(179, 24);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(220, 28);
             this.saveToolStripMenuItem1.Text = "Сохранить";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(220, 28);
             this.saveAsToolStripMenuItem.Text = "Сохранить как...";
             // 
             // toolsToolStripMenuItem
@@ -324,13 +319,13 @@
             this.addColumnToolStripMenuItem,
             this.summationToolsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(107, 23);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(130, 27);
             this.toolsToolStripMenuItem.Text = "Инструменты";
             // 
             // addColumnToolStripMenuItem
             // 
             this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
-            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
+            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(238, 28);
             this.addColumnToolStripMenuItem.Text = "Добавить колонку";
             this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.addColumnToolStripMenuItem_Click);
             // 
@@ -340,41 +335,29 @@
             this.summationDateToolStripMenuItem,
             this.summationAllToolStripMenuItem});
             this.summationToolsToolStripMenuItem.Name = "summationToolsToolStripMenuItem";
-            this.summationToolsToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
+            this.summationToolsToolStripMenuItem.Size = new System.Drawing.Size(238, 28);
             this.summationToolsToolStripMenuItem.Text = "Суммировать";
             // 
             // summationDateToolStripMenuItem
             // 
             this.summationDateToolStripMenuItem.Name = "summationDateToolStripMenuItem";
-            this.summationDateToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
+            this.summationDateToolStripMenuItem.Size = new System.Drawing.Size(204, 28);
             this.summationDateToolStripMenuItem.Text = "По дате";
             this.summationDateToolStripMenuItem.Click += new System.EventHandler(this.GetSummationFormToolStripMenuItem_Click);
             // 
             // summationAllToolStripMenuItem
             // 
             this.summationAllToolStripMenuItem.Name = "summationAllToolStripMenuItem";
-            this.summationAllToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
+            this.summationAllToolStripMenuItem.Size = new System.Drawing.Size(204, 28);
             this.summationAllToolStripMenuItem.Text = "Текущий балл";
             this.summationAllToolStripMenuItem.Click += new System.EventHandler(this.SummationAllToolStripMenuItem_Click);
             // 
-            // labelDatesSummation
-            // 
-            this.labelDatesSummation.AutoSize = true;
-            this.labelDatesSummation.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDatesSummation.ForeColor = System.Drawing.Color.Black;
-            this.labelDatesSummation.Location = new System.Drawing.Point(683, 27);
-            this.labelDatesSummation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDatesSummation.Name = "labelDatesSummation";
-            this.labelDatesSummation.Size = new System.Drawing.Size(0, 23);
-            this.labelDatesSummation.TabIndex = 22;
-            // 
             // JournalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1076, 650);
-            this.Controls.Add(this.labelDatesSummation);
+            this.ClientSize = new System.Drawing.Size(1435, 778);
             this.Controls.Add(this.labelUserID);
             this.Controls.Add(this.labelGroupID);
             this.Controls.Add(this.scoresPerLesson);
@@ -387,7 +370,7 @@
             this.Controls.Add(this.tableLessonType);
             this.Controls.Add(this.tableStudent);
             this.Controls.Add(this.menuJournalTools);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "JournalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Электронный журнал";
@@ -425,7 +408,6 @@
         private System.Windows.Forms.ToolStripMenuItem summationToolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summationDateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summationAllToolStripMenuItem;
-        private System.Windows.Forms.Label labelDatesSummation;
     }
 }
 

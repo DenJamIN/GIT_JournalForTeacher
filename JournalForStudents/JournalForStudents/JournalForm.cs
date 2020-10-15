@@ -113,8 +113,6 @@ namespace Journal
 
         private void GetSummation(int firstDate, int secondDate)
         {
-            InsertStudentsData();
-
             tableLessonType.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "nullType",
@@ -147,7 +145,7 @@ namespace Journal
             {              
                 for (int j = firstDate*2; j < secondDate * 2; j += 2)
                 {
-                    if (tableStudent[j, i].Value.ToString() == "")
+                    if (tableStudent[j, i].Value == null || tableStudent[j, i].Value.ToString() == "")
                         tableStudent[j, i].Value = "0";
                     summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
                     if (!(tableStudent[j-1, i].Value.ToString() == "False") && !(tableStudent[j - 1, i].Value.ToString() == ""))
@@ -167,8 +165,9 @@ namespace Journal
             {
                 DeleteScoreSummation();
             }
+            InsertJournalData();
             GetSummation (1, tableLessonDate.Columns.Count);
-            labelDatesSummation.Text = "Выбранный диапазон суммирования \nОт начала\nДо конца";
+            MessageBox.Show("Подсчитана сумма баллов за весь период");
         }
 
         private void GetSummationFormToolStripMenuItem_Click(object sender, EventArgs e)
@@ -177,6 +176,7 @@ namespace Journal
             {
                 DeleteScoreSummation();
             }
+            InsertJournalData();
             SummationForm summationDates = new SummationForm();
             summationDates.ShowDialog();
 
@@ -190,7 +190,7 @@ namespace Journal
                 firstDate = "начала";
             if (secondDate == "")
                 secondDate = "конца";
-            labelDatesSummation.Text = "Выбранный диапазон суммирования \nОт " + firstDate + "\nДо " + secondDate;
+            MessageBox.Show("Выбранный диапазон суммирования \nОт " + firstDate + "\nДо " + secondDate);
 
             for (int i = 1; i < tableLessonDate.Columns.Count; i++)
             {
@@ -227,6 +227,11 @@ namespace Journal
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            InsertJournalData();
+        }
+
+        private void InsertJournalData()
         {
             //Заполнение в БД
             InsertStudentToDB();//Студентов

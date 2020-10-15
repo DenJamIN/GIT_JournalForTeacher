@@ -59,12 +59,10 @@ namespace JournalForStudents
 
         private void disciplineNameField_Leave(object sender, EventArgs e)
         {
+            if (disciplineNameField.Text == "")
             {
-                if (disciplineNameField.Text == "")
-                {
-                    disciplineNameField.Text = "Введите название дисциплины";
-                    disciplineNameField.ForeColor = Color.Gray;
-                }
+                disciplineNameField.Text = "Введите название дисциплины";
+                disciplineNameField.ForeColor = Color.Gray;
             }
         }
 

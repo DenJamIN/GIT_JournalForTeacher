@@ -60,20 +60,6 @@ namespace JournalForStudents
         //
 
         //
-        //Окрас крестика при наведении
-        private void CloseButton_MouseEnter(object sender, EventArgs e)
-        {
-            CloseButton.ForeColor = Color.Yellow;
-        }
-
-        private void CloseButton_MouseLeave(object sender, EventArgs e)
-        {
-            CloseButton.ForeColor = Color.DarkRed;
-        }
-        //
-        //
-
-        //
         //Подгрузка полей для регистрации
         private void middleNameField_Enter(object sender, EventArgs e)
         {

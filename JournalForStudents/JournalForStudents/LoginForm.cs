@@ -21,36 +21,7 @@ namespace JournalForStudents
             this.passwordField.AutoSize = false;
             this.passwordField.Size = new Size(this.passwordField.Size.Width, this.loginField.Size.Height);
         }
-        
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
-        private void CloseButton_MouseEnter(object sender, EventArgs e)
-        {
-            CloseButton.ForeColor = Color.Yellow;
-        }
-
-        private void CloseButton_MouseLeave(object sender, EventArgs e)
-        {
-            CloseButton.ForeColor = Color.Gray;
-        }
-
-        Point lastPoint;
-        private void MenuPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
-            }
-        }
-
-        private void MenuPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
-        }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             // Вызываем класс подключения к  БД
@@ -85,6 +56,11 @@ namespace JournalForStudents
             this.Hide();
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
+        }
+
+        private void CloseButton_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

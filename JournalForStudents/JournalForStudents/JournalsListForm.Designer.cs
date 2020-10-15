@@ -176,7 +176,7 @@
             this.buttonCloseApplication.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCloseApplication.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonCloseApplication.Location = new System.Drawing.Point(1197, 0);
-            this.buttonCloseApplication.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCloseApplication.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCloseApplication.Name = "buttonCloseApplication";
             this.buttonCloseApplication.Size = new System.Drawing.Size(43, 41);
             this.buttonCloseApplication.TabIndex = 18;

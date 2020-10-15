@@ -167,7 +167,7 @@ namespace Journal
             }
             InsertJournalData();
             GetSummation (1, tableLessonDate.Columns.Count);
-            MessageBox.Show("Выбранный диапазон суммирования \nОт начала\nДо конца");
+            MessageBox.Show("Подсчитана сумма баллов за весь период");
         }
 
         private void GetSummationFormToolStripMenuItem_Click(object sender, EventArgs e)

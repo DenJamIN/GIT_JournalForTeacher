@@ -252,7 +252,7 @@
             // 
             this.scoresPerLesson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.scoresPerLesson.Location = new System.Drawing.Point(274, 109);
-            this.scoresPerLesson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scoresPerLesson.Margin = new System.Windows.Forms.Padding(4);
             this.scoresPerLesson.Name = "scoresPerLesson";
             this.scoresPerLesson.Size = new System.Drawing.Size(51, 30);
             this.scoresPerLesson.TabIndex = 16;
@@ -370,6 +370,7 @@
             this.Controls.Add(this.tableLessonType);
             this.Controls.Add(this.tableStudent);
             this.Controls.Add(this.menuJournalTools);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "JournalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

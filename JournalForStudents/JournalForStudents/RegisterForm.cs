@@ -215,8 +215,6 @@ namespace JournalForStudents
             if (accountStatus)
             {
                 this.Hide();
-                LoginForm loginForm = new LoginForm();
-                loginForm.Show();
             }
         }
     }

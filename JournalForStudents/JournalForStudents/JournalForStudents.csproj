@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Журнал.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -143,6 +146,7 @@
   <ItemGroup>
     <Content Include="images\Authorization_Password.png" />
     <Content Include="images\Authorization_User.png" />
+    <Content Include="Журнал.ico" />
     <None Include="images\CreateNewJournal.png" />
     <None Include="images\Значок_Кгу.png" />
     <Content Include="images\Профиль_ГлавныйЭкран.png" />

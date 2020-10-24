@@ -53,7 +53,6 @@ namespace JournalForStudents
         
         private void intoRegisterForm_Click(object sender, EventArgs e)
         {
-            this.Hide();
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
         }

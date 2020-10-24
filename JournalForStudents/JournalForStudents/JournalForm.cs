@@ -16,7 +16,7 @@ namespace Journal
         {
             InitializeComponent();
         }
-
+        //Выписываем данные о студентах и их успеваемости в таблицу, которые есть в данном журнале
         public void GetStudentsDataFromDB(string journalData, string userID)
         {
             labelUserID.Text = userID;
@@ -26,39 +26,39 @@ namespace Journal
             GetAutoColumnsToJournal();
 
             //Считывание из БД
-            GetScorePerLesson();
-            GetStudentsName();
-            GetStudentsScore();    
+            GetScorePerLesson();//Получение балла за посещение
+            GetStudentsName();//Получение ФИО студента
+            GetStudentsScore(); //Получение успеваемости учащихся  
         }
-       
+        //Получение балла за посещение
         private void GetScorePerLesson()
         {
             DataBase dataBase = new DataBase();
 
             dataBase.openConnection();
 
-            string loadStudentData =
-                "SELECT * FROM `groups` " +
-                "WHERE groups_id = @groups_id";
+                string loadStudentData =
+                    "SELECT * FROM `groups` " +
+                    "WHERE groups_id = @groups_id";
 
-            MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
-            command.Parameters.Add("@groups_id", MySqlDbType.Int32).Value = Convert.ToInt32(labelGroupID.Text);
+                MySqlCommand command = new MySqlCommand(loadStudentData, dataBase.getConnection());
+                command.Parameters.Add("@groups_id", MySqlDbType.Int32).Value = Convert.ToInt32(labelGroupID.Text);
 
-            dataBase.openConnection();
-                MySqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    scoresPerLesson.Text = Convert.ToString(reader["scorePerLesson"]);
-                }
+                dataBase.openConnection();
+                    MySqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        scoresPerLesson.Text = Convert.ToString(reader["scorePerLesson"]);
+                    }
             dataBase.closeConnection();
         }
-
+        //Автоматическое создание в таблицу новых колонок успеваемости 
         private void GetAutoColumnsToJournal()
         {
             while (tableLessonDate.Columns.Count <= ((GetCountColumnsDB("SELECT * FROM `studentdata`") - 2) / 4))
                 AddJournalColumns();
         }
-
+        //Получение Названия группы и дисциплины
         private void GetJournalName(string journalData)
         {
             DataBase dataBase = new DataBase();
@@ -81,28 +81,31 @@ namespace Journal
         }
 
         const int generalWidthColumn = 160;
+        //Функция добавления колонки успеваемости
         private void AddJournalColumns()
         {
+            //Дата занятия
             tableLessonDate.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "lessonDate",
                 HeaderText = "Дата (дд/мм)",
                 Width = generalWidthColumn
             });
-
+            //Тип занятия
             DataGridViewComboBoxColumn comboBox = new DataGridViewComboBoxColumn();
             tableLessonType.Columns.Add(comboBox);
             comboBox.Name = "lessonType";
             comboBox.HeaderText = "Тип занятий";
             comboBox.Width = generalWidthColumn;
             comboBox.Items.AddRange("Лекционное", "Практическое", "Индивидуальное", "Лабораторная");
-
+            //Посещаемость True/False
             tableStudent.Columns.Add(new DataGridViewCheckBoxColumn()
             {
                 Name = "checkPresence",
                 HeaderText = "Посещение",
                 Width = 90
             });
+            //Балл за занятие
             tableStudent.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "scorePerLesson",
@@ -110,88 +113,96 @@ namespace Journal
                 Width = 70
             });
         }
-
+        //Функция Суммирования
         private void GetSummation(int firstDate, int secondDate)
         {
+            //Создаем пустую колонку в таблице, так как данные в ней не имеют значения
             tableLessonType.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "nullType",
                 HeaderText = "",
                 Width = generalWidthColumn
             });
-
+            //Создаем пустую колонку в таблице, так как данные в ней не имеют значения
             tableLessonDate.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "nullDate",
                 HeaderText = "",
                 Width = generalWidthColumn
             });
-
-
+            //Создаем пустую колонку в таблице, так как данные в ней не имеют значения
             tableStudent.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "scoreSummation",
                 HeaderText = "Набранные баллы",
                 Width = generalWidthColumn
             });
-
+            //Создаем пустую колонку в таблице, так как данные в ней не имеют значения
             ScoreSummation(firstDate, secondDate);
         }
-
-        private void ScoreSummation(int firstDate, int secondDate)
+        //Реализация функции суммирования
+        private void ScoreSummation(int firstDate, int secondDate)//Принимаем 2 значения: первая дата и последняя дата. Чтобы определить границы 
         {
             double summa = 0;
-            for (int i = 0; i < tableStudent.Rows.Count-1; i++)
+            for (int i = 0; i < tableStudent.Rows.Count-1; i++)//Проходим по каждой строке, где вписан студент
             {              
-                for (int j = firstDate*2; j < secondDate * 2; j += 2)
+                for (int j = firstDate*2; j < secondDate * 2; j += 2)//Проходим по данным об успеваемости студента
                 {
+                    //Если значения нет. Значит оно равно нулю
                     if (tableStudent[j, i].Value == null || tableStudent[j, i].Value.ToString() == "")
                         tableStudent[j, i].Value = "0";
                     summa += Convert.ToDouble(tableStudent[j, i].Value.ToString());
+                    //Если студент был на занятии он получает балл за посещение, иначе ноль
                     if (!(tableStudent[j-1, i].Value.ToString() == "False") && !(tableStudent[j - 1, i].Value.ToString() == ""))
                     {
                         summa += Convert.ToDouble(scoresPerLesson.Text);
                     }
                 }
+                //Заполняем новую колонку суммой баллов за указанный период
                 tableStudent["scoreSummation", i].Value = Convert.ToDouble(summa);
                 summa = 0;
             }
         }
-
+        //Функция суммирования всех баллов студента
         private void SummationAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //tableLessonDate[tableLessonDate.Columns.Count - 1, 0].Value.ToString() == "" ? tableLessonDate.Columns.Count - 1 : tableLessonDate.Columns.Count);
+            //Если уже есть колонка суммы, удаляем её
             if (tableStudent.Columns.Contains("scoreSummation"))
             {
                 DeleteScoreSummation();
             }
+            //Вставим все значения в БД, чтобы избежать пробелов в БД
             InsertJournalData();
-            GetSummation (1, tableLessonDate.Columns.Count);
+            //Вызываем функцию суммирования и передаем ей первый и последний индекс колонки успеваемости как границу
+            GetSummation(1, tableLessonDate.Columns.Count);
             MessageBox.Show("Подсчитана сумма баллов за весь период");
         }
-
+        //Функция суммирования по дате
         private void GetSummationFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Если есть колонка суммирования удаляем её
             if (tableStudent.Columns.Contains("scoreSummation"))
             {
                 DeleteScoreSummation();
             }
+            //Вставляем данные в БД
             InsertJournalData();
+            //Вызываем форму "Суммирование по дате"
             SummationForm summationDates = new SummationForm();
             summationDates.ShowDialog();
-
+            //Получаем границы дат, которые ввел пользователь
             string firstDate = summationDates.GetFirstDate();
             string secondDate = summationDates.GetSecondDate();
 
             int firstDateIndex = 1;
             int secondDateIndex = tableLessonDate.Columns.Count;
-
+            //Если он ничего не ввел, по умолчанию высчитывается все баллы студента по дисциплине
             if (firstDate == "")
                 firstDate = "начала";
             if (secondDate == "")
                 secondDate = "конца";
             MessageBox.Show("Выбранный диапазон суммирования \nОт " + firstDate + "\nДо " + secondDate);
-
+            //Ищем введенные даты в таблице журнала
             for (int i = 1; i < tableLessonDate.Columns.Count; i++)
             {
                 if (firstDate == tableLessonDate[i, 0].Value.ToString())
@@ -204,28 +215,17 @@ namespace Journal
                     secondDateIndex = i + 1;
                 }
             }
-
-            GetSummation (firstDateIndex, secondDateIndex);
+            //Вызываем функцию суммирования и передаем найденные значения(иначе значения по умолчанию)
+            GetSummation(firstDateIndex, secondDateIndex);
         }
-
-        private void SlideTables()
-        {
-            tableStudent.Width += generalWidthColumn;
-            tableLessonDate.Width += generalWidthColumn;
-            tableLessonType.Width += generalWidthColumn;
-        }
-
+        //Удаление колонки суммы баллов
         private void DeleteScoreSummation()
         {
             tableStudent.Columns.Remove("scoreSummation");
             tableLessonType.Columns.Remove("nullType");
             tableLessonDate.Columns.Remove("nullDate");
-
-           // tableStudent.Width -= generalWidthColumn;
-           // tableLessonDate.Width -= generalWidthColumn;
-           // tableLessonType.Width -= generalWidthColumn;
         }
-
+        //Функция Сохранить. Переносим все изменные значения в БД
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             InsertJournalData();
@@ -240,7 +240,7 @@ namespace Journal
 
             InsertScorePerLesson();//Балла за занятие
         }
-
+        //Внесение в БД балла за посещение
         private void InsertScorePerLesson()
         {
             DataBase dataBase = new DataBase();
@@ -257,7 +257,7 @@ namespace Journal
                 command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
-
+        //Загружаем в таблицу ФИО студента
         private void GetStudentsName()
         {
             DataBase dataBase = new DataBase();
@@ -285,7 +285,7 @@ namespace Journal
                     tableStudent.Rows.Add(line);
             dataBase.closeConnection();
         }
-        
+        //Загружаем в таблицу успеваемость студента
         private void GetStudentsScore()
         {
             for (int studentRows = 0; studentRows < tableStudent.Rows.Count-1; studentRows++)
@@ -318,7 +318,7 @@ namespace Journal
                 }
             }
         }
-
+        //Сохраняем в БД ФИО студентов
         private void InsertStudentToDB()
         {
             //Проверяем наличие студента в базе данных. Если его нет, то вписываем в базу. Если есть пропускаем          
@@ -335,7 +335,7 @@ namespace Journal
             }
            
         }
-
+        //Проверяем существует ли искомые данные в БД
         private static bool IsStoredInDB(string searchData)
         {
             DataBase dataBase = new DataBase();
@@ -355,7 +355,7 @@ namespace Journal
                 return true;
             }    
         }
-
+        //Сохраняем в БД ФИО студента
         private void InsertStudentData(string studentData)
         {
             DataBase dataBase = new DataBase();
@@ -372,7 +372,7 @@ namespace Journal
                 command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
-
+        //Создаем новую колонку данных в БД, где будет храниться успеваемость студентов
         private void AddColumnsInDB(int i)
         {
             DataBase dataBase = new DataBase();
@@ -391,7 +391,7 @@ namespace Journal
                 command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
-
+        //Заполняем в указанные колонки в БД данные
         private string[] GetScoreColumnsDB(int i)
         {
             string names = string.Empty;
@@ -403,7 +403,7 @@ namespace Journal
 
             return names.Split(' ');
         }
-
+        //Получаем количество колонок, которые уже есть в БД
         private int GetCountColumnsDB(string query)
         {
             DataBase dataBase = new DataBase();
@@ -414,10 +414,10 @@ namespace Journal
                 MySqlDataReader reader = command.ExecuteReader();
                 int countColumns = reader.FieldCount;
             dataBase.closeConnection();
-            //Without studentdata_id, students_id
+            //Без studentdata_id, students_id
             return countColumns;
         }
-
+        //Получаем уникальный индентификатор студента
         private string GetStudentsID(string groupID, string studentName)
         {
             string id = string.Empty;
@@ -444,7 +444,7 @@ namespace Journal
 
             return id;
         }
-           
+        //Сохраняем в БД уникальный идентификатор студента
         private void InsertStudentID(string id)
         {
             string insertStudentsID = 
@@ -459,7 +459,7 @@ namespace Journal
                 command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
-
+        //Сохраняем в БД успеваемость студента
         private void InsertStudentsScore(string[] nameColumns, int j, int i, string id)
         {             
             string insertScore = 
@@ -489,37 +489,37 @@ namespace Journal
                 command.ExecuteNonQuery();
             dataBase.closeConnection();
         }
-        
+        //Проводим сохранение всех данных студента
         private void InsertStudentsData()
         {
             string id;
-
+            //Выполняем цикл, пока не дойдем до последней колонки в БД
             for (int columnScore = 1; columnScore <= ((GetCountColumnsDB("SELECT * FROM studentdata")-2) / 4); columnScore++)
-            { 
-
+            {
+                //Заполяем в БД данные каждого студента
                 for (int rowStudent = 0; rowStudent < tableStudent.Rows.Count-1; rowStudent++)
                 {
                     id = GetStudentsID(labelGroupID.Text.ToString(), tableStudent[0, rowStudent].Value.ToString());
-
+                    //Если студент не существует
                     if (!IsStoredInDB("SELECT * FROM `studentdata` WHERE students_id=" +id))
                     {
-                        InsertStudentID(id);
+                        InsertStudentID(id);//Добавляем его
                     }
-
+                    //Если студент уже есть в БД
                     if (IsStoredInDB("SELECT * FROM `studentdata` WHERE students_id=" + id))
                     {
-                        InsertStudentsScore(GetScoreColumnsDB(columnScore),columnScore ,rowStudent, id);
+                        InsertStudentsScore(GetScoreColumnsDB(columnScore),columnScore ,rowStudent, id);//Заполняем данные
                     }
                 }
             }
         }
-
+        //Создаем 2 ползунка, которые объединяют все таблицы
         private void tableStudent_Scroll(object sender, ScrollEventArgs e)
         {
             tableLessonDate.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;
             tableLessonType.FirstDisplayedScrollingColumnIndex = tableStudent.FirstDisplayedScrollingColumnIndex;
         }
-
+        //Функция добавления новой колонки успеваемости в таблице журнала
         private void addColumnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (tableStudent.Columns.Contains("scoreSummation"))

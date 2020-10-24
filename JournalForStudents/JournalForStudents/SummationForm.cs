@@ -17,17 +17,17 @@ namespace JournalForStudents
         {
             InitializeComponent();
         }
-
+        //Получаем первую границу даты
         public string GetFirstDate()
         {
             return textBoxFirstDate.Text;
         }
-
+        //Получаем вторую гпаницу даты
         public  string GetSecondDate()
         {
             return textBoxSecondDate.Text;
         }
-
+        //Скрываем форму
         private void buttonConfirmDate_Click(object sender, EventArgs e)
         {
             this.Hide();           

@@ -21,6 +21,7 @@ namespace JournalForStudents
         }
 
         public string userID; 
+        //Заполняем TextBox в форме указательными надписями
         private void FiilField()
         {
             groupNameField.Text = "Введите название группы";
@@ -29,7 +30,7 @@ namespace JournalForStudents
             disciplineNameField.ForeColor = Color.Gray;
             
         }
-
+        //Если выбрали поле, то автоматически стираем начальную надпись
         private void groupNameField_Enter(object sender, EventArgs e)
         {
             if (groupNameField.Text == "Введите название группы")
@@ -38,7 +39,7 @@ namespace JournalForStudents
                 groupNameField.ForeColor = Color.Black;
             }
         }
-
+        //Если выбрали поле, и не ввели значений, возвращаем надпись
         private void groupNameField_Leave(object sender, EventArgs e)
         {
             if (groupNameField.Text == "")
@@ -47,7 +48,7 @@ namespace JournalForStudents
                 groupNameField.ForeColor = Color.Gray;
             }
         }
-
+        //Если выбрали поле, то автоматически стираем начальную надпись
         private void disciplineNameField_Enter(object sender, EventArgs e)
         {
             if (disciplineNameField.Text == "Введите название дисциплины")
@@ -56,7 +57,7 @@ namespace JournalForStudents
                 disciplineNameField.ForeColor = Color.Black;
             }
         }
-
+        //Если выбрали поле, и не ввели значений, возвращаем надпись
         private void disciplineNameField_Leave(object sender, EventArgs e)
         {
             if (disciplineNameField.Text == "")
@@ -65,7 +66,7 @@ namespace JournalForStudents
                 disciplineNameField.ForeColor = Color.Gray;
             }
         }
-
+        //Создаем данный журнал в БД
         private void button1_Click(object sender, EventArgs e)
         {
             if (groupNameField.Text == "Введите название группы" ||
@@ -91,6 +92,7 @@ namespace JournalForStudents
             command.Parameters.Add("@discipline", MySqlDbType.VarChar).Value = disciplineNameField.Text;
             command.Parameters.Add("@usersID", MySqlDbType.Int32).Value = Convert.ToInt32(userID); 
 
+            //Если такой журнал уже есть, не создаем его
             bool accountStatus = false;
 
             dataBase.openConnection();
@@ -103,16 +105,15 @@ namespace JournalForStudents
                 else
                     MessageBox.Show("Ошибка создания журнала");
             dataBase.closeConnection();
-
+            //Возвращаемся к начальной форме пользователя
             if (accountStatus)
             {
                 this.Hide();
                 JournalsListForm journalsList = new JournalsListForm();
                 journalsList.LoadJournalsData(userID);
-                journalsList.Show();
             }
         }
-
+        //Проверяем существуют ли данный журнал в БД
         private bool IsJournalExists(string id)
         {
             string searchJournal = "SELECT * FROM `groups` " +
@@ -145,8 +146,6 @@ namespace JournalForStudents
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Hide();
-            JournalsListForm journalsList = new JournalsListForm();
-            journalsList.LoadJournalsData(userID);
         }
     }
 }

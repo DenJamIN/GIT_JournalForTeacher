@@ -17,6 +17,8 @@ namespace JournalForStudents
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Проверка на существование таблиц и бд
+            CreateDB createDB = new CreateDB();
             Application.Run(new LoginForm());
         }
     }

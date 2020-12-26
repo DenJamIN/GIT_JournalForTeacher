@@ -24,7 +24,7 @@ namespace JournalForStudents
 
             //Create new columns in data base
             string createNewDB =
-                "CREATE DATABASE IF NOT EXISTS el_journal";
+                "CREATE DATABASE IF NOT EXISTS maindata";//el_journal
 
             MySqlCommand command = new MySqlCommand(createNewDB, dataBase.getConnection());
 
@@ -38,7 +38,7 @@ namespace JournalForStudents
 
             //Create new columns in data base
             string useDB =
-                "USE el_journal";
+                "USE maindata";//el_journal
             string createTableGroups =
                 "CREATE TABLE IF NOT EXISTS groups" +
                 "(groups_id INT(255) NOT NULL AUTO_INCREMENT," +
